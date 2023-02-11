@@ -1,0 +1,19 @@
+{
+  "name": "place-door",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/boyz-3000/place-door.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/boyz-3000/place-door/issues"
+  },
+  "homepage": "https://github.com/boyz-3000/place-door#readme"
+}
