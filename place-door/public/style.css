@@ -3,11 +3,5 @@ body{
     height: 100%;
     margin: 0px;
     padding: 0px;
-    overflow-x: hidden;
+    --bs-gutter-x: 0;
 }
-
-/* * {
-    background: #000 !important;
-    color: #0f0 !important;
-    outline: solid #f00 1px !important;
-  } */

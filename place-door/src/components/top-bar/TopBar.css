@@ -1,27 +1,19 @@
-
-.navbar{
-    margin-left: -15px;
-    margin-right: -15px;
-    background-color: #C9BBCF;
-  }
-
 .bg-light{
     background-color: #D6EFED !important;
 }
 
 .row{
     padding-top: 0.6%;
+    --bs-gutter-x: 0;
 }
 
 .row i{
     font-size: 1.5rem;
-    /* color: #3d1766; */
     color: #645cbb;
 }
 
 span{
     text-align: center;
-    /* color: #3d1766; */
     color: #645cbb;
 }
 
@@ -62,7 +54,5 @@ span{
         padding-top: 1.8%;
         padding-left: 4%;
         padding-right: 4%;
-        margin-left: -15px;
-        margin-right: -15px;
     }
   }
