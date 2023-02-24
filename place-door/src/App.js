@@ -1,11 +1,11 @@
-import React from 'react';
-import './App.css';
-import CardDashboard from './components/card/CardDashboard';
+import React from "react";
+import TopBar from "./components/top-bar/TopBar";
+import "./App.css";
 
-function App() {
+function App(){
   return (
-    <div>
-      <CardDashboard />
+    <div className="app">
+      <TopBar />
     </div>
   )
 }
