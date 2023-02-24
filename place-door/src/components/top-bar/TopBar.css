@@ -1,0 +1,58 @@
+.bg-light{
+    background-color: #D6EFED !important;
+}
+
+.row{
+    padding-top: 0.6%;
+    --bs-gutter-x: 0;
+}
+
+.row i{
+    font-size: 1.5rem;
+    color: #645cbb;
+}
+
+span{
+    text-align: center;
+    color: #645cbb;
+}
+
+.name-logo{
+    display: block;
+    text-align: center;
+}
+
+.fa-sharp{
+    cursor: pointer;
+}
+
+.item1 div{
+    padding: 1%;
+    text-align: center;
+}
+
+.item3 div{
+    padding: 1%;
+    text-align: center;
+}
+
+.item3 i{
+    text-align: center;
+}
+
+.item1 i{
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+.col-lg-1{
+    text-align: center;
+}
+
+@media only screen and (max-width: 400px) {
+    .row{
+        padding-top: 1.8%;
+        padding-left: 4%;
+        padding-right: 4%;
+    }
+  }
