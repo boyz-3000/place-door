@@ -1,11 +1,10 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
-import "../node_modules/font-awesome/css/font-awesome.min.css";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 ReactDOM.render(
   <div>
     <App />
-  </div>,
-  document.getElementById("root")
+  </div>,document.getElementById("root")
 );
