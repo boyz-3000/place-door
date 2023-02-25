@@ -1,5 +1,5 @@
 .bg-light{
-    background-color: #D6EFED !important;
+    background-color: #645cbb !important;
 }
 
 .row{
@@ -9,12 +9,12 @@
 
 .row i{
     font-size: 1.5rem;
-    color: #645cbb;
+    color: #fff;
 }
 
 span{
     text-align: center;
-    color: #645cbb;
+    color: #fff;
 }
 
 .name-logo{

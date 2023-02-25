@@ -20,10 +20,10 @@ function Card(props) {
             <div className="card-border">
               <p className="card-text">
                 <ul>
-                  <li>Posting : {props.posting}</li>
-                  <li>Last Date to apply : {props.lastDate}</li>
-                  <li>Mode : {props.mode}</li>
-                  <li>Location : {props.location}</li>
+                  <li><i className="fa-solid fa-briefcase"></i>Posting : {props.posting}</li>
+                  <li><i className="fa-solid fa-clock"></i>Last Date to apply : {props.lastDate}</li>
+                  <li><i className="fa-solid fa-building"></i>Mode : {props.mode}</li>
+                  <li><i className="fa-solid fa-location-dot"></i>Location : {props.location}</li>
                 </ul>
               </p>
             </div>
