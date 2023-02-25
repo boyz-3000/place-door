@@ -1,9 +1,9 @@
 import React from "react";
-import Card from "./Card";
-import "./CardDashboard.css";
+import Card from "../../components/card/Card";
+import "./Jobs.css";
 import CardData from "./CardData";
 
-function CardDashboard() {
+function Jobs() {
   return (
     <div className="container text-center dashboard">
       <div className="row">
@@ -24,4 +24,4 @@ function CardDashboard() {
   );
 }
 
-export default CardDashboard;
+export default Jobs;
