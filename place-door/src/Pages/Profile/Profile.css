@@ -1,0 +1,66 @@
+#profile {
+    /* background-color: blue; */
+}
+
+header {
+    padding: 2% 4%;
+}
+
+hr {
+    color: rgb(252, 228, 228);
+}
+
+#profile-icon-div {
+    /* background-color: yellow; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-right: 1px solid grey;
+}
+
+#profile-icon {
+    font-size: 15rem;
+    color: #645cbb;
+    /* background-color: red; */
+    margin-bottom: 23%;
+}
+
+@media screen and (max-width: 400px) {
+    #profile-icon {
+        font-size: 7rem;
+        margin-bottom: 15%;
+    }
+
+    #profile-icon-div {
+        border-right: none;
+    }
+}
+
+.input-group {
+    padding: 1% 4%;
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-direction: column;
+    /* background-color: red; */
+}
+
+.input-group>.form-control {
+    width: 100%;
+    /* background-color: green; */
+}
+
+#profile-details {
+    padding: 5% 5%;
+    /* background-color: green; */
+}
+
+.button-div {
+    margin-top: 4%;
+    /* background-color: yellow; */
+    display: flex;
+    align-items: right;
+    padding: 1% 4%;
+    justify-content: right;
+}
