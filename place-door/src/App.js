@@ -4,12 +4,12 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Updates from "./Pages/Updates";
 import Jobs from "./Pages/Jobs/Jobs";
 import Resume from "./Pages/Resume";
-import Applied from "./Pages/Applied";
+import Applied from "./Pages/Applied/Applied";
 import Profile from "./Pages/Profile/Profile";
-
 import TopBar from "./components/top-bar/TopBar";
-import "./App.css";
 import Signin from "./Pages/Signin";
+
+import "./App.css";
 
 function App(){
   return (
