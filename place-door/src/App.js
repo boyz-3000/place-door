@@ -8,6 +8,7 @@ import Applied from "./Pages/Applied";
 
 import TopBar from "./components/top-bar/TopBar";
 import "./App.css";
+import Signin from "./Pages/Signin";
 
 function App(){
   return (
@@ -19,6 +20,7 @@ function App(){
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/applied" element={<Applied />} />
+          <Route path="/signup" element={<Signin />} />
         </Routes>
       </BrowserRouter>
     </div>
