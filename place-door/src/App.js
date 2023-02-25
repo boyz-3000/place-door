@@ -9,6 +9,7 @@ import Profile from "./Pages/Profile/Profile";
 
 import TopBar from "./components/top-bar/TopBar";
 import "./App.css";
+import Signin from "./Pages/Signin";
 
 function App(){
   return (
@@ -21,6 +22,7 @@ function App(){
           <Route path="/resume" element={<Resume />} />
           <Route path="/applied" element={<Applied />} />
           <Route path="/profile" element={<Profile />} />
+          <Route path="/signup" element={<Signin />} />
         </Routes>
       </BrowserRouter>
     </div>
