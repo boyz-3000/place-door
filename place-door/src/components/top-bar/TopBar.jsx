@@ -34,8 +34,13 @@ function TopBar() {
         </div>
       </div>
       <Modal show={show} onClose={() => setShow(false)} height={500} width={300}>
-        <h1> Menu </h1>
-        <Menu />
+        <div className="modal-content-div">
+          <hr />
+          <h1> Menu </h1>
+          <hr />
+          <br />
+          <Menu />
+        </div>
       </Modal>
     </div>
   );

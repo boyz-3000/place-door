@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import routes from "./_routes";
 import "./Menu.css";
 
-const Menu = ({show}) => {
+const Menu = ({show, setShow}) => {
   if(show){
     return null;
   }

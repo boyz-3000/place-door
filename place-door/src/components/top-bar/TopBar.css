@@ -2,6 +2,15 @@
     background-color: #645cbb !important;
 }
 
+.modal-content-div {
+    text-align: center;
+}
+
+hr {
+    color: white;
+}
+
+
 .row{
     padding-top: 0.6%;
     --bs-gutter-x: 0;

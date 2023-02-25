@@ -39,16 +39,28 @@
     }
   }
 
-  .link{
+
+  .link {
+    text-decoration: none;
     display: flex;
     color: #fff;
     gap: 10px;
-    padding: .5rem 2rem;
+    padding: 0.5rem 2rem;
     border-right: 4px solid transparent;
     transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
     font-size: 1.4rem;
-    width: 100%;
-    text-decoration: none;
+  }
+
+  .link:hover {
+    /* text-decoration: none; */
+    background-color: #fff;
+    /* border-right: 4px solid #5f5b85;
+    border-left: 4px solid #5f5b85; */
+    transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+    opacity: 0.8;
+    /* border-radius: 2%; */
+    color: #645cbb;
+    font-size: 1.43rem;
   }
 
   
