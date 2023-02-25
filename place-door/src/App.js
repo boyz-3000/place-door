@@ -2,9 +2,9 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Updates from "./Pages/Updates";
-import Jobs from "./Pages/Jobs";
+import Jobs from "./Pages/Jobs/Jobs";
 import Resume from "./Pages/Resume";
-import Applied from "./Pages/Applied";
+import Applied from "./Pages/Applied_Jobs/Applied";
 
 import TopBar from "./components/top-bar/TopBar";
 import "./App.css";

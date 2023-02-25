@@ -1,0 +1,113 @@
+.alert {
+  margin: 3% 8% 2% 8%;
+  max-height: 120px;
+  overflow: hidden;
+  padding-left: 2%;
+}
+
+.card-details {
+  margin-bottom: 2%;
+  margin-top: 2%;
+}
+
+@media screen and (max-width: 400px) {
+  .card-details {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .alert {
+    max-height: 117px;
+  }
+
+  .col-lg-2 {
+    margin-top: 5%;
+  }
+}
+
+.alert:hover {
+  max-height: 100%;
+  box-shadow: 0 0 8px #d3d3d3;
+  cursor: pointer;
+  transition: all 0.9s ease;
+  -webkit-transition: all 0.9s ease;
+}
+
+.hidden-details {
+  font-size: 0.8rem;
+  margin-top: 7%;
+}
+
+.hidden-details .key {
+  margin-top: 10%;
+  margin-bottom: 10%;
+  background-color: #635985;
+  border-radius: 5%;
+  padding: 1.9%;
+}
+
+.hidden-details .value {
+  background-color: #8ea7e9;
+  color: #635985;
+  margin-top: 7%;
+  margin-bottom: 10%;
+  border-radius: 5%;
+  padding: 1.9%;
+}
+
+/* .btn-tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.btn-tooltip .tooltiptext {
+  visibility: hidden;
+  width: 120px;
+  background-color: red;
+  color: #fff;
+  font-size: 0.6rem;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: -5px;
+  left: 50%;
+}
+
+.btn-tooltip:hover .tooltiptext {
+  visibility: visible;
+} 
+
+@media screen and (max-width: 400px) {
+    .btn-tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: red;
+        color: #fff;
+        font-size: 0.6rem;
+        text-align: center;
+        border-radius: 6px;
+        padding: 5px 0;
+        position: absolute;
+        z-index: 1;
+        top: -5px;
+        left: 35%;
+      }
+      
+      .btn-outline-secondary{
+        background-color: rgb(221, 47, 47);
+        color: #fff;
+        border: 0px;
+      }
+
+      .btn-tooltip:hover .tooltiptext {
+        visibility: hidden;
+      }
+  } */
+
+.btn-outline-secondary:hover {
+  background-color: rgb(221, 47, 47);
+  color: #fff;
+  border: 1px solid red;
+}
