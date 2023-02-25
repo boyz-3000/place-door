@@ -1,7 +1,8 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import logo from "./logo.png";
 import "./TopBar.css";
+
+import Modal from "../modal/Modal";
+import Menu from "../menu/Menu";
 
 const click = ()=>{
   return alert("Clicked for menu.")
@@ -11,13 +12,14 @@ const clickProfile = () =>{
   return alert("Clicked for Profile.")
 }
 function TopBar() {
+  const [show, setShow] = React.useState(false);
   return (
     <div>
       <div className="bg-light">
         <div className="row">
           <div className="col-lg-1 col-md-1 col-sm-1 col-1 item-1">
             <div >
-            <i class="fa-sharp fa-solid fa-bars" onClick={click}></i>
+            <i class="fa-sharp fa-solid fa-bars" onClick={() => setShow(true)}></i>
             </div>
            
           </div>
@@ -31,6 +33,10 @@ function TopBar() {
           </div>
         </div>
       </div>
+      <Modal show={show} onClose={() => setShow(false)} height={500} width={300}>
+        <h1> Menu </h1>
+        <Menu />
+      </Modal>
     </div>
   );
 }
