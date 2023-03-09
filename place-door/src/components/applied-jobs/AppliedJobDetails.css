@@ -30,7 +30,7 @@
   max-height: 100%;
   box-shadow: 0 0 8px #d3d3d3;
   cursor: pointer;
-    transition-delay: 0.5s;
+    transition-delay: 10s;
   /* transition: all 0.9s ease;*/
   /* -webkit-transition: all 0.9s ease; */
 }

@@ -8,6 +8,7 @@ import Applied from "./Pages/Applied/Applied";
 import Profile from "./Pages/Profile/Profile";
 import TopBar from "./components/top-bar/TopBar";
 import Signin from "./Pages/Signin";
+import AppliedStudent from "./components/comp-applied-stud/CompAppliedStud";
 
 import "./App.css";
 
@@ -23,6 +24,7 @@ function App(){
           <Route path="/applied" element={<Applied />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/signup" element={<Signin />} />
+          <Route path="/applied-student" element={<AppliedStudent />} />
         </Routes>
       </BrowserRouter>
     </div>
