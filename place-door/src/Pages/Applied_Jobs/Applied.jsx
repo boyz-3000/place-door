@@ -1,9 +1,12 @@
 import React from "react";
 import AppliedJobDetails from "../../components/applied-jobs/AppliedJobDetails";
+import TopBar from "../../components/top-bar/TopBar";
 import AppliedJobData from "./AppliedJobsData";
 
 function AppliedJobs() {
   return (
+    <>
+    <TopBar />
     <div>
       {AppliedJobData.map((x) => (
         <AppliedJobDetails
@@ -18,6 +21,7 @@ function AppliedJobs() {
         />
       ))}
     </div>
+    </>
   );
 }
 
