@@ -6,8 +6,11 @@
     text-align: center;
 }
 
-hr {
-    color: white;
+.modal-content-div hr{
+    background-color: #ffffff;
+    height: 1%;
+    margin-bottom: 10%;
+    margin-top: 0;
 }
 
 

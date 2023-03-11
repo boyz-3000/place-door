@@ -7,7 +7,6 @@ const Menu = ({show, setShow}) => {
   if(show){
     return null;
   }
-
   return (
     <div className="menuWrapper">
       <div className="menu">
@@ -17,7 +16,6 @@ const Menu = ({show, setShow}) => {
             <div className="icon">{route.icon}</div>
             <div className="link_name">{route.name}</div>
           </NavLink>
-          
         ))}
       </div>
     </div>

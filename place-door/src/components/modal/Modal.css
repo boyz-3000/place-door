@@ -18,7 +18,7 @@
   height: 50%;
   /* height: 700px; */
   background: #645cbb;
-  border-radius: 5px;
+  border-radius: 15px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -26,6 +26,7 @@
   position: relative;
   animation: fadeInDown 0.8s;
   color: #fff;
+  /* background: linear-gradient(180deg, rgba(100,92,187,1) 15%, rgba(131,124,213,1) 60%); */
 }
 
 
@@ -52,8 +53,8 @@
 }
 
 .leftright {
-  height: 4px;
-  width: 30px;
+  height: 2px;
+  width: 25px;
   position: absolute;
   margin-top: 24px;
   background-color: #fff;
@@ -63,8 +64,8 @@
 }
 
 .rightleft {
-  height: 4px;
-  width: 30px;
+  height: 2px;
+  width: 25px;
   position: absolute;
   margin-top: 24px;
   background-color: #fff;
@@ -108,4 +109,3 @@ label {
     transform: translateY(0);
   }
 }
-

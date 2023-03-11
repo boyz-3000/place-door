@@ -1,10 +1,11 @@
 import * as Ai from "react-icons/ai";
 import * as Bs from "react-icons/bs";
 import * as Io from "react-icons/io";
+import * as Bi from "react-icons/bi";
 
 const routes = [
   {
-    path: "/",
+    path: "/updates",
     name: "Updates",
     icon: <Ai.AiFillBell />,
   },
@@ -23,6 +24,11 @@ const routes = [
     name: "Resume",
     icon: <Ai.AiFillFileText />,
   },
+  {
+    path: "/",
+    name: "Logout",
+    icon: <Bi.BiLogOut/>,
+  }
 ];
 
 export default routes;

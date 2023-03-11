@@ -1,8 +1,11 @@
 import React from "react";
+import TopBar from "../../components/top-bar/TopBar";
 import "./Profile.css";
 
 function Profile() {
     return (
+        <>
+        <TopBar/>
         <div>
             <header>
                 <h3>Profile</h3>
@@ -90,6 +93,7 @@ function Profile() {
 
             </div>
         </div>
+        </>
     );
 }
 

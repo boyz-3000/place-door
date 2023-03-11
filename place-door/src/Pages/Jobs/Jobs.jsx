@@ -2,9 +2,12 @@ import React from "react";
 import Card from "../../components/card/Card";
 import "./Jobs.css";
 import CardData from "./CardData";
+import TopBar from "../../components/top-bar/TopBar";
 
 function Jobs() {
   return (
+    <>
+    <TopBar/>
     <div className="container text-center dashboard">
       <div className="row">
         {CardData.map((x) => (
@@ -21,6 +24,8 @@ function Jobs() {
         ))}
       </div>
     </div>
+    </>
+
   );
 }
 
