@@ -99,7 +99,7 @@
   /* border-bottom: 1px solid #ddd; */
 }
 
-.card-text i{
+.card-text .fa-solid{
   font-size: 0.8rem;
   color: #645cbb;
   margin-right: 2%;
