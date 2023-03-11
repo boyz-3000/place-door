@@ -1,0 +1,40 @@
+const AppliedStudentsData = [
+  {
+    id: 1,
+    name: "Yash Agarwal",
+    email: "yashagarwal@jklu.edu.in",
+    position: "React Developer",
+    roll: "2020BTechCSE102",
+    cgpa: "7.6",
+    phone: "9876234512",
+    resume: "..",
+    techstack: [
+      "ReactJS",
+      "NodeJS",
+      "NextJS",
+      "MongoDB",
+      "Express",
+      "Python",
+      "Java",
+      "Kotlin",
+      "Android Development",
+      "Docker",
+      "OpenCV",
+      "Machine Learning",
+      "Bash",
+    ],
+  },
+  {
+    id: 2,
+    name: "Somya Gautam",
+    email: "somyagautam@jklu.edu.in",
+    position: "Flutter Developer",
+    roll: "2020BTechCSE76",
+    cgpa: "7.9",
+    phone: "9876234512",
+    resume: "..",
+    techstack: ["Flutter", "Kotlin"],
+  },
+];
+
+export default AppliedStudentsData;
