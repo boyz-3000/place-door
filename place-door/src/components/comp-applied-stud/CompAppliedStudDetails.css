@@ -3,7 +3,7 @@
   max-height: 120px;
   overflow: hidden;
   padding-left: 2%;
-  transition: all 0.5s;
+  transition: 2s;
 }
 
 .card-details {
@@ -34,9 +34,6 @@
   max-height: 100%;
   box-shadow: 0 0 8px #d3d3d3;
   cursor: pointer;
-  transition-delay: 10s;
-  /* transition: all 0.9s ease;*/
-  /* -webkit-transition: all 0.9s ease; */
 }
 
 .hidden-details {
