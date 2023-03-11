@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/boyz-3000/place-door/issues"
   },
-  "homepage": "https://github.com/boyz-3000/place-door#readme"
+  "homepage": "https://github.com/boyz-3000/place-door#readme",
+  "dependencies": {
+    "react-scripts": "^5.0.1"
+  }
 }

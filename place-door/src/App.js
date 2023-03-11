@@ -6,7 +6,6 @@ import Jobs from "./Pages/Jobs/Jobs";
 import Resume from "./Pages/Resume";
 import Applied from "./Pages/Applied/Applied";
 import Profile from "./Pages/Profile/Profile";
-import TopBar from "./components/top-bar/TopBar";
 import Signin from "./Pages/Signin";
 import AppliedStudent from "./components/comp-applied-stud/CompAppliedStud";
 
@@ -16,14 +15,13 @@ function App(){
   return (
     <div className="app">
       <BrowserRouter>
-        <TopBar />
         <Routes>
           <Route path="/" element={<Updates />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/resume" element={<Resume />} />
           <Route path="/applied" element={<Applied />} />
           <Route path="/profile" element={<Profile />} />
-          <Route path="/signup" element={<Signin />} />
+          <Route path="/signin" element={<Signin />} />
           <Route path="/applied-student" element={<AppliedStudent />} />
         </Routes>
       </BrowserRouter>
