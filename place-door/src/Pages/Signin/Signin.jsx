@@ -6,9 +6,6 @@ function Signin(props) {
   })
   
   return (
-    
-
-
     <div className="page">
       <div className="card">{props.children}</div>
     </div>
