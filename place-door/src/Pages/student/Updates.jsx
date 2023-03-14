@@ -1,5 +1,5 @@
 import React from "react";
-import TopBar from "../components/top-bar/TopBar";
+import TopBar from "../../components/top-bar/TopBar";
 
 const Updates=()=> {
   return (
