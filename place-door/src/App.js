@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Updates from "./Pages/student/Updates";
-import SigninForm from "./Pages/Signin/SigninForm";
+import SigninForm from "./components/signin/SigninForm";
 import Jobs from "./Pages/student/Jobs/Jobs";
 import Resume from "./Pages/student/Resume";
 import Applied from "./Pages/student/Applied/Applied";

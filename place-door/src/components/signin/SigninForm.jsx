@@ -1,7 +1,8 @@
 import React, {useState} from 'react'
 import "./SigninForm.css";
-import Signin from './Signin';
-import { database } from './databse';
+import Signin from '../../Pages/Signin/Signin';
+import { database } from '../../Pages/Signin/databse';
+
 function SigninForm() {
   const [username,setUsername]=useState("");
   const [password,setPassword]=useState("");
