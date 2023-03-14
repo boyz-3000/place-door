@@ -7,7 +7,7 @@ import Jobs from "./Pages/student/Jobs/Jobs";
 import Resume from "./Pages/student/Resume";
 import Applied from "./Pages/student/Applied/Applied";
 import Profile from "./Pages/student/Profile/Profile";
-import AppliedStudent from "./Pages/company/applied-students";
+import AppliedStudent from "./Pages/company/applied-students/applied-students";
 
 import "./App.css";
 
