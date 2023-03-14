@@ -2,17 +2,7 @@ import React from "react";
 import "./Card.css";
 
 import Modal from "../modal/Modal";
-
-// const Click = () => {
-//   return (
-//     <Modal
-//       show={show}
-//       onClose={() => setShow(false)}
-//       height={500}
-//       width={300}
-//     ></Modal>
-//   );
-// };
+import Company_Detail_Card from "../company-details-card/Company_Detail_Card";
 
 function Card(props) {
   const [show, setShow] = React.useState(false);
@@ -54,27 +44,10 @@ function Card(props) {
       <Modal
         show={show}
         onClose={() => setShow(false)}
-        height={400}
-        width={800}
+        height={550}
+        width={900}
       >
-        <p className="card-text">
-          <ul>
-            <li>
-              <i className="fa-solid fa-briefcase"></i>Posting : {props.posting}
-            </li>
-            <li>
-              <i className="fa-solid fa-clock"></i>Last Date to apply :{" "}
-              {props.lastDate}
-            </li>
-            <li>
-              <i className="fa-solid fa-building"></i>Mode : {props.mode}
-            </li>
-            <li>
-              <i className="fa-solid fa-location-dot"></i>Location :{" "}
-              {props.location}
-            </li>
-          </ul>
-        </p>
+        < Company_Detail_Card/>
       </Modal>
     </div>
   );
