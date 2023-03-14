@@ -1,8 +1,8 @@
 const CardData = [
   {
     id: 1,
-    name: "Comp-1",
-    email: "www.comp1.co.in",
+    name: "Deepklarity",
+    email: "www.deepklarity.co.in",
     posting: "Flutter Devloper",
     lastDate: "2023",
     mode: "Onsite",
@@ -10,8 +10,8 @@ const CardData = [
   },
   {
     id: 2,
-    name: "Comp-2",
-    email: "www.comp2.co.in",
+    name: "RoboMQ",
+    email: "www.robo.co.in",
     posting: "IOS Devloper",
     lastDate: "2023",
     mode: "Offsite",
@@ -19,8 +19,8 @@ const CardData = [
   },
   {
     id: 3,
-    name: "Comp-3",
-    email: "www.comp3.co.in",
+    name: "Sandvine",
+    email: "www.sandvine.co.in",
     posting: "Android Devloper",
     lastDate: "2023",
     mode: "Onsite",
@@ -28,8 +28,8 @@ const CardData = [
   },
   {
     id: 4,
-    name: "Comp-4",
-    email: "www.comp4.co.in",
+    name: "Celebal",
+    email: "www.celebal.co.in",
     posting: "Mac Devloper",
     lastDate: "2023",
     mode: "Onsite",
@@ -37,8 +37,8 @@ const CardData = [
   },
   {
     id: 5,
-    name: "Comp-5",
-    email: "www.comp5.co.in",
+    name: "MotoData",
+    email: "www.motodata.co.in",
     posting: "Flutter Devloper",
     lastDate: "2023",
     mode: "Onsite",
