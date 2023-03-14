@@ -1,6 +1,6 @@
 import React from "react";
 import AppliedStudentsData from "./AppliedStudentsData";
-import CompAppliedStudDetails from "./CompAppliedStudDetails";
+import CompAppliedStudDetails from "../../components/company/comp-applied-stud/CompAppliedStudDetails";
 
 
 function CompAppliedStud (){

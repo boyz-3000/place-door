@@ -1,8 +1,8 @@
 import React from "react";
-import Card from "../../components/card/Card";
+import Card from "../../../components/card/Card";
 import "./Jobs.css";
 import CardData from "./CardData";
-import TopBar from "../../components/top-bar/TopBar";
+import TopBar from "../../../components/top-bar/TopBar";
 
 function Jobs() {
   return (

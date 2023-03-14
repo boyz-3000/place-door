@@ -2,7 +2,7 @@ import React from "react";
 import "./Card.css";
 
 import Modal from "../modal/Modal";
-import Company_Detail_Card from "../company-details-card/Company_Detail_Card";
+import Company_Detail_Card from "../company/company-details-card/Company_Detail_Card";
 
 function Card(props) {
   const [show, setShow] = React.useState(false);

@@ -3,11 +3,11 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Updates from "./Pages/student/Updates";
 import SigninForm from "./Pages/Signin/SigninForm";
-import Jobs from "./Pages/Jobs/Jobs";
+import Jobs from "./Pages/student/Jobs/Jobs";
 import Resume from "./Pages/student/Resume";
-import Applied from "./Pages/Applied/Applied";
-import Profile from "./Pages/Profile/Profile";
-import AppliedStudent from "./components/comp-applied-stud/CompAppliedStud";
+import Applied from "./Pages/student/Applied/Applied";
+import Profile from "./Pages/student/Profile/Profile";
+import AppliedStudent from "./Pages/company/applied-students";
 
 import "./App.css";
 
