@@ -11,7 +11,7 @@ const CardData = [
   {
     id: 2,
     name: "RoboMQ",
-    email: "www.robo.co.in",
+    email: "www.robomq.co.in",
     posting: "IOS Devloper",
     lastDate: "2023",
     mode: "Offsite",

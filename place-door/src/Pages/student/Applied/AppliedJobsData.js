@@ -8,7 +8,7 @@ const AppliedJobsData = [
     stipend: "10000",
     mode: "Offsite",
     city: "Banglore",
-    email: "comp1.co.in",
+    email: "www.deepklarity.co.in",
   },
   {
     id: 2,
@@ -19,18 +19,18 @@ const AppliedJobsData = [
     stipend: "20000",
     mode: "Offsite",
     city: "Noida",
-    email: "comp2.co.in",
+    email: "www.robomq.co.in",
   },
   {
     id: 3,
-    name: "Company - 3",
+    name: "Celebal",
     position: "Android Developer",
     appliedOn: "2023",
     package: "10LPA",
     stipend: "25000",
     mode: "Onsite",
     city: "Ahemdabad",
-    email: "comp2.co.in",
+    email: "www.celebal.co.in",
   },
 ];
 
