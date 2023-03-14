@@ -5,7 +5,7 @@ import * as Bi from "react-icons/bi";
 
 const routes = [
   {
-    path: "/updates",
+    path: "/update",
     name: "Updates",
     icon: <Ai.AiFillBell />,
   },
