@@ -1,13 +1,10 @@
 import React from "react";
 import AppliedJobDetails from "../../../components/student/applied-jobs/AppliedJobDetails";
-import TopBar from "../../../components/top-bar/TopBar";
 import AppliedJobData from "./AppliedJobsData";
 
 function AppliedJobs() {
   return (
     <>
-    <TopBar />
-    <div>
       {AppliedJobData.map((x) => (
         <AppliedJobDetails
           name={x.name}
@@ -20,7 +17,6 @@ function AppliedJobs() {
           email={x.email}
         />
       ))}
-    </div>
     </>
   );
 }

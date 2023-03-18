@@ -4,7 +4,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: rgba(0,0,0, 0.7);
+  background-color: rgba(0, 0, 0, 0.7);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,10 +13,7 @@
 }
 
 .modal {
-  /* width: 400px;
-  width: 300px; */
   height: 50%;
-  /* height: 700px; */
   background: #645cbb;
   border-radius: 15px;
   display: flex;
@@ -26,7 +23,6 @@
   position: relative;
   animation: fadeInDown 0.8s;
   color: #fff;
-  /* background: linear-gradient(180deg, rgba(100,92,187,1) 15%, rgba(131,124,213,1) 60%); */
 }
 
 
@@ -34,12 +30,6 @@
 .routes {
   height: 500px;
 }
-
-/* .btnClose {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-  } */
 
 .close-container {
   position: relative;
@@ -104,6 +94,7 @@ label {
     opacity: 0;
     transform: translateY(-50px);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0);

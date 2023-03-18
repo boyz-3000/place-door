@@ -1,4 +1,4 @@
-.bg-light{
+.bg-light {
     background-color: #645cbb !important;
 }
 
@@ -6,7 +6,7 @@
     text-align: center;
 }
 
-.modal-content-div hr{
+.modal-content-div hr {
     background-color: #ffffff;
     height: 1%;
     margin-bottom: 10%;
@@ -14,57 +14,58 @@
 }
 
 
-.row{
+.row {
     padding-top: 0.6%;
     --bs-gutter-x: 0;
 }
 
-.row i{
+.row i {
     font-size: 1.5rem;
     color: #fff;
 }
 
-span{
+span {
     text-align: center;
     color: #fff;
 }
 
-.name-logo{
+.name-logo {
     display: block;
     text-align: center;
 }
 
-.fa-sharp{
+.fa-sharp {
     cursor: pointer;
 }
 
-.item1 div{
+.item1 div {
     padding: 1%;
     text-align: center;
 }
 
-.item3 div{
+.item3 div {
     padding: 1%;
     text-align: center;
 }
 
-.item3 i{
+.item3 i {
     text-align: center;
 }
 
-.item1 i{
+.item1 i {
     height: 100%;
     width: 100%;
     text-align: center;
 }
-.col-lg-1{
+
+.col-lg-1 {
     text-align: center;
 }
 
 @media only screen and (max-width: 400px) {
-    .row{
+    .row {
         padding-top: 1.8%;
         padding-left: 4%;
         padding-right: 4%;
     }
-  }
+}

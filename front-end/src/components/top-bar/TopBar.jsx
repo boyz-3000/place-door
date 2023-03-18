@@ -1,13 +1,8 @@
 import React from "react";
 import "./TopBar.css";
-import Profile from "../../Pages/student/Profile/Profile";
 import Modal from "../modal/Modal";
 import Menu from "../menu/Menu";
 import { Link } from "react-router-dom";
-
-const click = () => {
-  return alert("Clicked for menu.");
-};
 
 function TopBar() {
   const [show, setShow] = React.useState(false);

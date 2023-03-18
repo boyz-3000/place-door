@@ -1,38 +1,9 @@
-/* .menuWrapper {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background:#505050;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  .menu {
-    width: 50%;
-    height: 50%;
-    background: white;
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    animation: fadeInDown 0.8s;
-  } */
-  /* .btnClose {
-    position: absolute;
-    top: 8px;
-    right: 8px;
-  } */
-  
   @keyframes fadeInDown {
     0% {
       opacity: 0;
       transform: translateY(-50px);
     }
+
     100% {
       opacity: 1;
       transform: translateY(0);
@@ -45,139 +16,16 @@
     display: flex;
     color: #fff;
     gap: 10px;
-    /* justify-content: left; */
     padding: 0.5rem 2rem;
-    /* border-right: 4px solid transparent; */
     transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
     font-size: 1.4rem;
-    /* background-color: RED; */
-    /* margin: 5%; */
-    /* border: #fff solid .2px; */
   }
 
   .link:hover {
-    /* text-decoration: none; */
     background-color: #fff;
-    /* border-right: 4px solid #5f5b85;
-    border-left: 4px solid #5f5b85; */
     transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
     opacity: 0.7;
-    /* border-radius: 2%; */
     color: #645cbb;
     border-radius: 22px;
     margin: 2%;
-    /* font-size: 1.43rem; */
   }
-/* 
-  .menuWrapper{
-    padding-right: 30px;
-  } */
-  /* body.active-modal {
-      overflow-y: hidden;
-    }
-    
-    a{
-      text-decoration: none;
-    } 
-    
-    .btn-modal {
-      padding: 10px 20px;
-      display: block;
-      margin: 100px auto 0;
-      font-size: 18px;
-    }
-    
-    
-    .link{
-      display: flex;
-      color: white;
-      gap: 10px;
-      padding: .5rem 2rem;
-      border-right: 4px solid transparent;
-      transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-      font-size: 1.4rem;
-    }
-    .overlay {
-      min-width: 400px;
-    min-height: 300px;
-    background: white;
-    border-radius: 5px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    animation: fadeInDown 0.8s;
-    }
-  
-    .modal {
-      position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    background: #505050;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    }
-    
-    .overlay {
-      backdrop-filter: blur(1px);
-    }
-    
-    .modal-content {
-      position: absolute;
-      top: 40%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: #645cbb;
-      border-radius: 10px;
-      min-width: 250px;
-      max-width: 600px;
-    }
-    .routes{
-      padding: 10%;
-      
-    }
-    .close-modal {
-      position: absolute;
-      padding: 5px 7px;
-    }
-    .top{
-      text-align: center;
-      font-size: 2rem;
-      color: white;
-    }
-    
-    .link:hover{
-      border-right: 4px solid white;
-      background-color: #4f4a8a;
-      border-left: 4px solid white;
-      transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-    }
-    
-    @media only screen and (max-width: 400px) {
-      .modal-content {
-        position: absolute;
-        top: 30%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background: #645cbb;
-        border-radius: 10px;  
-        width: 300px;
-        height: 19rem;
-        padding-bottom: 10%;
-      }
-    
-      .link{
-        display: flex;
-        color: white;
-        gap: 10px;
-        padding: .5rem 2rem;
-        border-right: 4px solid transparent;
-        transition: 0.2s cubic-bezier(0.6, -0.28, 0.735, 0.045);
-        font-size: 1.8rem;
-      }
-    }
-    
-     */

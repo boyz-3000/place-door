@@ -53,7 +53,6 @@ function AppliedJobDetails(props) {
             <button type="button" className="btn btn-outline-secondary">
               Withdraw
             </button>
-            {/* <span className="tooltiptext">Withdraw Application</span> */}
           </div>
         </div>
       </div>

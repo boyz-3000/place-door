@@ -8,13 +8,15 @@ import Resume from "./Pages/student/Resume";
 import Applied from "./Pages/student/Applied/Applied";
 import Profile from "./Pages/student/Profile/Profile";
 import AppliedStudent from "./Pages/company/applied-students/applied-students";
+import TopBar from "./components/top-bar/TopBar";
 
 import "./App.css";
 
-function App(){
+function App() {
   return (
     <div className="app">
       <BrowserRouter>
+        <TopBar />
         <Routes>
           <Route path="/" element={<SigninForm />} />
           <Route path="/jobs" element={<Jobs />} />
