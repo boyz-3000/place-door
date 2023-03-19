@@ -9,9 +9,14 @@
   @media screen and (max-width:400px) {
     .job-modal{
       padding-left: 3%;
+      height: 100%;
+      padding-bottom: 3%;
     }
     .row .comp-details{
       text-align: left;
+    }
+    .col-lg-2{
+      margin-bottom: 13%;
     }
   }
   
