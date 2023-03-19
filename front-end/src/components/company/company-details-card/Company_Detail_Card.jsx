@@ -1,4 +1,6 @@
 import React from "react";
+import "./Company_Detail_Card.css";
+
 
 function Company_Detail_Card(props) {
     return (
