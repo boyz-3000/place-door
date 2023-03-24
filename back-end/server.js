@@ -7,9 +7,10 @@ const app = express();
 
 app.use(express.json());
 dotenv.config();
-connectDB();
 
 PORT = process.env.PORT
+
+connectDB();
 
 app.get('/', (req, res) => {
     res.send("API is running...")
