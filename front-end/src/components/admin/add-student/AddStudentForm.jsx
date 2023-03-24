@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import "./AddStudentForm.css";
 // import { database } from '../../Pages/signin/databse';
 import AddStudents from "../../../Pages/admin/AddStudents";
+import axios from "axios";
 
 function SigninForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessages, setErrorMessages] = useState({});
+  const [loading, setLoading] = useState(false);
 
   const errors = {
     username: "Invalid Username",
@@ -19,6 +21,37 @@ function SigninForm() {
     name === errorMessages.name && (
       <p className="error_msg">{errorMessages.message}</p>
     );
+
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json"
+        }
+      }
+
+      setLoading(true);
+
+      const { data } = await axios.post("/api/users/login",
+        {
+          username,
+          password
+        },
+        config
+      );
+
+      console.log(data);
+      localStorage.setItem('userInfo', JSON.stringify(data));
+      setLoading(false);
+
+    } catch (error) {
+        setErrorMessages(error.response.data.message);
+    }
+
+    console.log(username, password);
+  }
 
   return (
     <div>
@@ -86,7 +119,7 @@ function SigninForm() {
               </div>
             </div>
           </div>
-          <input className="login_button" type="submit" value="ADD" />
+          <input className="login_button" type="submit" value="ADD" onClick={submitHandler}/>
           <div className="link_container"></div>
         </form>
       </AddStudents>
