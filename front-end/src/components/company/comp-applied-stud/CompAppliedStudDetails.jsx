@@ -3,7 +3,7 @@ import "./CompAppliedStudDetails.css";
 
 function CompAppliedStudDetails(props) {
   return (
-    <>
+    <div>
       <div className="card-details">
         <div className="alert alert-secondary" role="alert">
           <div className="row">
@@ -48,18 +48,18 @@ function CompAppliedStudDetails(props) {
               <div className="col-12">
                 <h6 className="techstack-head">Technology Stack</h6>
                 <div className="row">
-                  <div className="col-lg-10 col-md-10 col-sm-12">
-                    <div className="tech-items container-fluid">
-                      {
-                        props.techstack.map((x) => (
-                          <span className="tech-name">{x}</span>
-                        ))
-                      }
+                    <div className="col-lg-10 col-md-10 col-sm-12">
+                        <div className="tech-items container-fluid">
+                            {
+                                props.techstack.map((x)=>(
+                                    <span className="tech-name">{x}</span>
+                                ))
+                            }
+                        </div>
+                        
+
                     </div>
-
-
-                  </div>
-                  <div className="col-lg-2 col-md-2 col-sm-12"></div>
+                    <div className="col-lg-2 col-md-2 col-sm-12"></div>
                 </div>
               </div>
             </div>
@@ -76,7 +76,7 @@ function CompAppliedStudDetails(props) {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

@@ -1,11 +1,11 @@
 import React from "react";
+import TopBar from "../../components/top-bar/TopBar";
 
-const Resume = () => {
-    return (
+const Resume=()=>{
+    return(
         <>
-            <div>
-                Resume
-            </div>
+        <TopBar/>
+        <div>Resume</div>
         </>
     );
 }

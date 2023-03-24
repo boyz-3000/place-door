@@ -1,0 +1,63 @@
+
+.job-modal{
+    /* background-color: red; */
+    padding: 7%;
+    display: flex;
+    justify-content: left;
+  }
+  
+  @media screen and (max-width:400px) {
+    .job-modal{
+      padding-left: 3%;
+      height: 100%;
+      padding-bottom: 3%;
+    }
+    .row .comp-details{
+      text-align: left;
+    }
+    .col-lg-2{
+      margin-bottom: 13%;
+    }
+  }
+  
+  .col-lg-12 .comp-name{
+    text-align: left;
+    padding-bottom: 5%;
+  }
+  
+  .row .comp-details{
+    text-align: left;
+  }
+  
+  .col-lg-3 .key{
+    font-size: 1.2rem;
+    padding: 2.1%;
+    padding-left: 8%;
+    background-color: #fff;
+    border-top-left-radius:15px;
+    border-bottom-left-radius: 15px;
+    /* border-top-right-radius:2px;
+    border-bottom-right-radius:2px; */
+    color: #645cbb;
+    transition: 1s;
+  }
+  
+  .col-lg-8 .value{
+    padding: 1%;
+    padding-left: 5%;
+    font-size: 1.08rem;
+  }
+  
+  .col-lg-8 .value:hover{
+    color: #645cbb;
+    background-color: #fff;
+    border-top-right-radius:15px;
+    border-bottom-right-radius:15px;
+    padding-left: 5%;
+  }
+  
+  .btn-outline-success{
+    margin-top: 8%;
+    background-color: #fff;
+    font-size: 1.2rem;
+  }

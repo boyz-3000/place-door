@@ -128,7 +128,7 @@
 }
 
 @media screen and (max-width: 700px) {
-  .resume {
+  .resume{
     margin-top: 10%;
     margin-bottom: 10%;
   }
@@ -152,37 +152,36 @@ h6 {
   }
 }
 
-.tech-items {
-  text-align: left;
-  padding-left: 0;
+.tech-items{
+    text-align: left;
+    padding-left: 0;
 }
 
-.tech-items .tech-name {
-  background-color: #635985;
-  border-radius: 5%;
-  padding: 0.6%;
-  margin-right: 1%;
-  display: inline-block;
-  margin-top: 1%;
-  margin-bottom: 1%;
-  font-weight: 500;
+.tech-items .tech-name{
+    background-color: #635985;
+    border-radius: 5%;
+    padding: 0.6%;
+    margin-right: 1%;
+    display: inline-block;
+    margin-top: 1%;
+    margin-bottom: 1%;
+    font-weight: 500;
 }
 
-.techstack-head {
+.techstack-head{
   margin-top: 2%;
 }
 
 @media screen and (max-width: 400px) {
-
   /* .hidden-details {
     font-size: 0.8rem;
   } */
-  .tech-items .tech-name {
+  .tech-items .tech-name{
     margin-top: 1%;
     margin-bottom: 2%;
     margin-right: 3%;
     padding: 1%;
     padding-left: 2%;
     padding-right: 2%;
-  }
+}
 }

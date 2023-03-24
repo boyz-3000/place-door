@@ -1,10 +1,12 @@
 import React from "react";
+import TopBar from "../../components/top-bar/TopBar";
 
-const Updates = () => {
+const Updates=()=> {
   return (
-    <>
-      <h1>Updates</h1>
-    </>
+    <div>
+    <TopBar />
+    <h1>Updates</h1>
+    </div>
 
   );
 }

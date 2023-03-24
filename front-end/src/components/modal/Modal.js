@@ -3,12 +3,12 @@ import "./Modal.css";
 
 const Modal = ({ show, onClose, children, height, width }) => {
   if (!show) {
-    return null;
+    return null;  
   }
 
   return (
     <div className="modalWrapper">
-      <div className="modal" style={{ height: height, width: width }}>
+      <div className="modal" style={{height: height, width: width}}>
         {/* <button onClick={onClose} className={`${styles.btnClose} btn-close`} /> */}
         {/* <button onClick={onClose} className="btnClose"/> */}
         <div class="close-container" onClick={onClose}>

@@ -1,3 +1,7 @@
+#profile {
+    /* background-color: blue; */
+}
+
 header {
     padding: 2% 4%;
 }
@@ -7,6 +11,7 @@ hr {
 }
 
 #profile-icon-div {
+    /* background-color: yellow; */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -17,6 +22,7 @@ hr {
 #profile-icon {
     font-size: 15rem;
     color: #645cbb;
+    /* background-color: red; */
     margin-bottom: 23%;
 }
 
@@ -37,18 +43,22 @@ hr {
     align-items: left;
     justify-content: left;
     flex-direction: column;
+    /* background-color: red; */
 }
 
 .input-group>.form-control {
     width: 100%;
+    /* background-color: green; */
 }
 
 #profile-details {
     padding: 5% 5%;
+    /* background-color: green; */
 }
 
 .button-div {
     margin-top: 4%;
+    /* background-color: yellow; */
     display: flex;
     align-items: right;
     padding: 1% 4%;

@@ -8,15 +8,13 @@ import Resume from "./Pages/student/Resume";
 import Applied from "./Pages/student/Applied/Applied";
 import Profile from "./Pages/student/Profile/Profile";
 import AppliedStudent from "./Pages/company/applied-students/applied-students";
-import TopBar from "./components/top-bar/TopBar";
-
+import AddStudentForm from "./components/admin/add-student/AddStudentForm";
 import "./App.css";
 
-function App() {
+function App(){
   return (
     <div className="app">
       <BrowserRouter>
-        <TopBar />
         <Routes>
           <Route path="/" element={<SigninForm />} />
           <Route path="/jobs" element={<Jobs />} />
@@ -25,6 +23,7 @@ function App() {
           <Route path="/update" element={<Updates />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/applied-student" element={<AppliedStudent />} />
+          <Route path="/add-student" element={<AddStudentForm />} />
         </Routes>
       </BrowserRouter>
     </div>
