@@ -51,7 +51,7 @@ function SigninForm() {
   )
 
   return (
-    <Signin>
+      <Signin>
         <i className="fa-solid fa-graduation-cap"></i>
         <h1 className='title'>PlaceDoor</h1>
         <hr></hr>
@@ -73,7 +73,6 @@ function SigninForm() {
             </div>
         </form>
     </Signin>
-
   )
 }
 
