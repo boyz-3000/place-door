@@ -18,16 +18,6 @@ const DetailsData = [
         "Batch":"2020 BTech",
         "Stream":"CSE",
         "CGPA":"7.8"
-    },
-    {
-        "id":2,
-        "Name":"Ayush Ranwa",
-        "Roll":"2020BTechCSE016",
-        "Email":"ayushranwa@jklu.edu.in",
-        "Phone":6377563998,
-        "Batch":"2020 BTech",
-        "Stream":"CSE",
-        "CGPA":"7.8"
     }
 ]
 

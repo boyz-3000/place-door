@@ -8,7 +8,7 @@ function DetailsTable() {
       <div className="alert alert-secondary" role="alert">
         Student Details
       </div>
-      <div className="table-container">
+      <div className="table-container table-responsive-sm table-responsive-md">
         <table className="table table-hover">
           <thead>
             <tr>
