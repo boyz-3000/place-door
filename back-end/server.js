@@ -1,7 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./config/connectdb');
-const userRoutes = require('././routes/user')
+const userRoutes = require('././routes/user');
+const jobRoutes = require('./routes/jobs');
 
 const app = express();
 
@@ -17,5 +18,6 @@ app.get('/', (req, res) => {
 });
 
 app.use('/', userRoutes);
+app.use('/', jobRoutes)
 
 app.listen(PORT, console.log(`Server started at ${PORT}`));

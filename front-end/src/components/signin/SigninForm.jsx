@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import "./SigninForm.css";
 import Signin from '../../Pages/signin/Signin';
 import { database } from '../../Pages/signin/databse';
-import axios from "axios";
+import { useNavigate } from 'react-router-dom';
 
 
 function SigninForm() {
@@ -10,6 +10,8 @@ function SigninForm() {
   const [password, setPassword] = useState("");
   const [errorMessages, setErrorMessages] = useState({})
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
+
 
   const errors = {
     username: "Invalid Username",
@@ -66,36 +68,42 @@ function SigninForm() {
       });
 
       const data = await response.json();
-
+      console.log(data.status)
       console.log(data); // Do something with the response
+      if (data.status === 201) {
+        navigate('/jobs')
+      }
     } catch (error) {
+      console.log('ero')
       console.error(error);
     }
   };
 
   return (
-    <Signin>
-      <i className="fa-solid fa-graduation-cap"></i>
-      <h1 className='title'>PlaceDoor</h1>
-      <hr></hr>
-      <p className='subtitle'> Login using your username and password.</p>
-      <form onSubmit={handleSubmit}>
-        <div className='input_container'>
-          <input type="text" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} />
-          {/* {renderErrorMsg("username")}
-          {renderErrorMsg("noUsername")} */}
-          <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
-          {/* {renderErrorMsg("password")}
-          {renderErrorMsg("noPassword")} */}
-        </div>
-        <input className="login_button" type="submit" value="LOGIN" onClick={submitHandler} />
-        <div className='link_container'>
-          <a href='' className='small'>
-            Forgot Password
-          </a>
-        </div>
-      </form>
-    </Signin>
+    <div className='signin-page'>
+      <Signin>
+        <i className="fa-solid fa-graduation-cap"></i>
+        <h1 className='title'>PlaceDoor</h1>
+        <hr></hr>
+        <p className='subtitle'> Login using your username and password.</p>
+        <form onSubmit={handleSubmit}>
+          <div className='input_container'>
+            <input type="text" placeholder='Username' value={username} onChange={(e) => setUsername(e.target.value)} />
+            {/* {renderErrorMsg("username")}
+            {renderErrorMsg("noUsername")} */}
+            <input type="password" placeholder='Password' value={password} onChange={(e) => setPassword(e.target.value)} />
+            {/* {renderErrorMsg("password")}
+            {renderErrorMsg("noPassword")} */}
+          </div>
+          <input className="login_button" type="submit" value="LOGIN" onClick={submitHandler} />
+          <div className='link_container'>
+            <a href='' className='small'>
+              Forgot Password
+            </a>
+          </div>
+        </form>
+      </Signin>
+    </div>
   )
 }
 
