@@ -19,6 +19,11 @@
   },
   "homepage": "https://github.com/boyz-3000/place-door#readme",
   "dependencies": {
-    "react-scripts": "^5.0.1"
+    "@syncfusion/ej2-react-dropdowns": "^21.1.35",
+    "multiselect-react-dropdown": "^2.0.25",
+    "primeicons": "^6.0.1",
+    "primereact": "^9.2.1",
+    "react-scripts": "^5.0.1",
+    "react-tag-autocomplete": "^6.3.0"
   }
 }

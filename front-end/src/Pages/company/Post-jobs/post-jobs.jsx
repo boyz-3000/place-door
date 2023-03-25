@@ -4,15 +4,17 @@ import "../../../components/top-bar/TopBar";
 import TopBar from "../../../components/top-bar/TopBar";
 import "./states_data";
 import { states } from "./states_data";
+import Multiselect from "multiselect-react-dropdown";
 
 const Post_jobs = () => {
   const [city, setcity] = useState([]);
-
   const handlestate = (e) => {
     const getstate = e.target.value;
     const citydata = states.find((s) => s.state === getstate).districts;
     setcity(citydata);
   };
+
+  const [options, setOptions]=useState([]);
 
   return (
     <>
@@ -150,6 +152,21 @@ const Post_jobs = () => {
                 Post Job
               </button>
             </div>
+{/* 
+            <>
+              <Multiselect isObject={false}
+              options={["Option 1", "Option 2"]}/>
+            </> */}
+
+            {/* <>
+              
+              <select name="select" multiple multiselect-search="true" multiselect-search-all="true">
+                  <option>React</option>
+                  <option>Js</option>
+                  <option>HTML</option>
+                  <option>C++</option>
+              </select>
+            </> */}
           </form>
         </div>
       </div>
