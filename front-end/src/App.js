@@ -10,6 +10,7 @@ import Profile from "./Pages/student/Profile/Profile";
 import AppliedStudent from "./Pages/company/applied-students/applied-students";
 import Post_jobs from "./Pages/company/Post-jobs/post-jobs";
 import "./App.css";
+import StudentDetails from "./Pages/admin/Student Details/StudentDetails";
 
 function App(){
   return (
