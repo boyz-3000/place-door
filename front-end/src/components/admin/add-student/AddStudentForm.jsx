@@ -34,7 +34,7 @@ function SigninForm() {
 
       setLoading(true);
 
-      const { data } = await axios.post("/api/users/login",
+      const { data } = await axios.post("http://localhost:5001/signup",
         {
           username,
           password
@@ -67,16 +67,16 @@ function SigninForm() {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
-            {renderErrorMsg("username")}
-            {renderErrorMsg("noUsername")}
+            {/* {renderErrorMsg("username")}
+            {renderErrorMsg("noUsername")} */}
             <input
               type="password"
               placeholder="Password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {renderErrorMsg("password")}
-            {renderErrorMsg("noPassword")}
+            {/* {renderErrorMsg("password")}
+            {renderErrorMsg("noPassword")} */}
           </div>
 
           <div className="radio-buttons">
