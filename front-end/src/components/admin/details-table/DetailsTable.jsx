@@ -1,8 +1,30 @@
-import React from "react";
+import React, { useState, useEffect }  from "react";
 import DetailsData from "./DetailsData";
 import "./DetailsTable.css";
+import axios from "axios";
 
 function DetailsTable() {
+
+  const [students, setStudents] = useState([]);
+
+  useEffect(() => {
+    async function fetchStudents() {
+      const response = await axios.get('http://localhost:5001/student-details');
+      // const response = await fetch('http://localhost:5001/jobs', {
+      //   method: 'GET',
+      //   headers: {
+      //     'Content-Type': 'application/json'
+      //   },
+      //   // body: JSON.stringify({ username, password })
+      // });
+      setStudents(response.data);
+    }
+
+    fetchStudents();
+    console.log('waiting');
+    console.log(fetchStudents());
+  }, []);
+
   return (
     <>
       <div className="alert alert-secondary" role="alert">
@@ -23,17 +45,17 @@ function DetailsTable() {
             </tr>
           </thead>
           <tbody>
-            {DetailsData.map((x)=>(
-              <tr>
-              <th scope="row">{x.id}</th>
-              <td>{x.Name}</td>
-              <td>{x.Roll}</td>
-              <td>{x.Email}</td>
-              <td>{x.Phone}</td>
-              <td>{x.Batch}</td>
-              <td>{x.Stream}</td>
-              <td>{x.CGPA}</td>
-            </tr>
+            {students?.map((student, i)=>(
+              <tr key={i}>
+                <th scope="row">{i+1}</th>
+                <td>{student.name}</td>
+                <td>{student.roll}</td>
+                <td>{student.email}</td>
+                <td>{student.phone}</td>
+                <td>{student.batch}</td>
+                <td>{student.stream}</td>
+                <td>{student.cgpa}</td>
+              </tr>
             ))}
           </tbody>
         </table>

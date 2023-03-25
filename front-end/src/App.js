@@ -10,7 +10,8 @@ import Profile from "./Pages/student/Profile/Profile";
 import AppliedStudent from "./Pages/company/applied-students/applied-students";
 import Post_jobs from "./Pages/company/Post-jobs/post-jobs";
 import "./App.css";
-import StudentDetails from "./Pages/admin/Student Details/StudentDetails";
+// import StudentDetails from "./Pages/admin/student-details/StudentDetails";
+import StudentDetails from "./Pages/admin/student_details/StudentDetails";
 
 function App(){
   return (
@@ -25,6 +26,7 @@ function App(){
           <Route path="/profile" element={<Profile />} />
           <Route path="/applied-student" element={<AppliedStudent />} />
           <Route path="/post-jobs" element={<Post_jobs />} />
+          <Route path="/student-details" element={<StudentDetails />} />
 
         </Routes>
       </BrowserRouter>
