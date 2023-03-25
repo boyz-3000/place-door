@@ -3,9 +3,11 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const User = require('../models/user');
+const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
+app.use(cors());
 
 app.post('/signup', async (req, res) => {
     const { username, password } = req.body;
@@ -26,8 +28,27 @@ app.post('/signup', async (req, res) => {
         res.status(201).json({ message: "User registered successfully!!" });
     } catch(error) {
         console.error(error);
-        res.status(500).json({ error: "Internal server error" });
+        res.status(500).json({ status: 500, error: "Internal server error" });
     }
+});
+
+app.post('/signin', async (req, res) => {
+    const { username, password } = req.body;
+
+    const user = await User.findOne({ username });
+
+    if (!user) {
+        return res.status(404).json({ status: 404, error: 'User not found' });
+    }
+
+    const passwordMatch = await bcrypt.compare(password, user.password);
+
+    if (!password) {
+        return res.status(401).json({ status: 401, error: 'Incorrect Password' });
+    }
+    
+    res.status(201).json({ status: 201, error: 'User logged In' });
+
 });
 
 module.exports = app;

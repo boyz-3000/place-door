@@ -21,8 +21,8 @@ function Card(props) {
               <p className="card-text">
                 <ul>
                   <li>
-                    <i className="fa-solid fa-briefcase"></i>Posting :{" "}
-                    {props.posting}
+                    <i className="fa-solid fa-briefcase"></i>Job Profile :{" "}
+                    {props.job_profile}
                   </li>
                   <li>
                     <i className="fa-solid fa-clock"></i>Last Date to apply :{" "}
