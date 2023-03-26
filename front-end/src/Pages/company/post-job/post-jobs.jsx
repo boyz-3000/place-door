@@ -5,16 +5,81 @@ import TopBar from "../../../components/top-bar/TopBar";
 import "./states_data";
 import { states } from "./states_data";
 import Multiselect from "multiselect-react-dropdown";
+import { WithContext as ReactTags} from 'react-tag-input';
+import { COUNTRIES } from './countries';
+
+
+const suggestions = COUNTRIES.map(country => {
+  return {
+    id: country,
+    text: country
+  };
+});
+
+const KeyCodes = {
+  comma: 188,
+  enter: 13
+};
+
+const delimiters = [KeyCodes.comma, KeyCodes.enter];
 
 const Post_jobs = () => {
+
+  const [tags, setTags] = React.useState([
+    { id: 'India', text: 'India' },
+    { id: 'Pakistan', text: 'Pakistan' },
+  ]);
+
+  const handleDelete = i => {
+    setTags(tags.filter((tag, index) => index !== i));
+  };
+
+  const handleAddition = tag => {
+    setTags([...tags, tag]);
+  };
+
+  const handleDrag = (tag, currPos, newPos) => {
+    const newTags = tags.slice();
+
+    newTags.splice(currPos, 1);
+    newTags.splice(newPos, 0, tag);
+
+    // re-render
+    setTags(newTags);
+  };
+
+  const handleTagClick = index => {
+    console.log('The tag at index ' + index + ' was clicked');
+  };
+
+
+  const [job_role, setJobRole] = useState([]);
   const [city, setcity] = useState([]);
-  const handlestate = (e) => {
+  const [mode, setMode] = useState([]);
+  const [date, setDate] = useState([]);
+  const [options, setOptions] = useState([]);
+  const [pincode, setPincode] = useState([]);
+  const [stipend, setStipend] = useState([]);
+  const [_package, setPackage] = useState([]);
+  const [add_details, setAddDetails] = useState([]);
+
+  const [selectedOption, setSelectedOption] = useState("option1");
+
+  const handleOptionChange = (event) => {
+    setSelectedOption(event.target.value);
+  };
+
+  const handleState = (e) => {
     const getstate = e.target.value;
     const citydata = states.find((s) => s.state === getstate).districts;
     setcity(citydata);
   };
 
-  const [options, setOptions]=useState([]);
+  const submit=()=>{
+    console.log(_package);
+    console.log(mode);
+  }
+
 
   return (
     <>
@@ -30,10 +95,10 @@ const Post_jobs = () => {
               </label>
               <div className="col-sm-10 col-lg-4 ">
                 <input
+                  id="job_role"
                   type="text"
                   className="form-control"
                   placeholder="Job Role"
-                  id="job_role"
                 />
               </div>
             </div>
@@ -45,8 +110,10 @@ const Post_jobs = () => {
                     className="form-check-input"
                     type="radio"
                     id="onsite"
-                    value="onsite"
                     name="radio"
+                    value="option_1"
+                    checked={selectedOption === "option1"}
+                    onChange={handleOptionChange}
                   />
                   <label className="form-check-label" for="onsite">
                     Onsite
@@ -57,8 +124,10 @@ const Post_jobs = () => {
                     className="form-check-input"
                     type="radio"
                     id="WFH"
-                    value="WFH"
                     name="radio"
+                    value="option_2"
+                    checked={selectedOption === "option2"}
+                    onChange={handleOptionChange}
                   />
                   <label className="form-check-label" for="WFH">
                     WFH
@@ -71,7 +140,7 @@ const Post_jobs = () => {
                 Last Date to Apply
               </label>
               <div className="col-sm-10 col-lg-4 ">
-                <input type="date" className="form-control" id="date" />
+                <input type="date" className="form-control" id="date" value={date} onChange={(e) => setDate(e.target.value)}/>
               </div>
             </div>
             <div className="col-md-4">
@@ -81,7 +150,7 @@ const Post_jobs = () => {
               <select
                 id="inputState"
                 className="form-select"
-                onChange={(e) => handlestate(e)}
+                onChange={(e) => handleState(e)}
               >
                 <option value="">--Select State--</option>
                 {states.map((s, index) => (
@@ -108,7 +177,7 @@ const Post_jobs = () => {
               <label for="pincode" className="form-label">
                 Pin Code
               </label>
-              <input type="text" className="form-control" id="pincode" />
+              <input type="text" className="form-control" id="pincode" onChange={(e) => setPincode(e.target.value)}/>
             </div>
             <div className="col-12">
               <label for="skills" className="form-label">
@@ -119,6 +188,7 @@ const Post_jobs = () => {
                 className="form-control"
                 id="skills"
                 placeholder="Skills"
+                // onChange={(e) => setSkill(e.target.value)}
               />
             </div>
 
@@ -128,7 +198,7 @@ const Post_jobs = () => {
               </label>
               <div className="input-box">
                 <span className="prefix">₹</span>
-                <input type="text" placeholder="Stipend" id="stipend" />
+                <input type="text" placeholder="Stipend" id="stipend" onChange={(e) => setStipend(e.target.value)}/>
               </div>
             </div>
 
@@ -138,17 +208,17 @@ const Post_jobs = () => {
               </label>
               <div className="input-box">
                 <span className="prefix">₹</span>
-                <input type="text" placeholder="Package" id="package" />
+                <input type="text" placeholder="Package" id="package" value={_package} onChange={(e) => setPackage(e.target.value)}/>
               </div>
             </div>
             <div className="col-sm-8">
               <label>Additional Details</label>
               <div className="file_input">
-                <input type="file" className="inputfile" />
+                <input type="file" className="inputfile" onChange={(e) => setAddDetails(e.target.value)}/>
               </div>
             </div>
             <div className="col-12">
-              <button type="submit" className="btn btn-primary post_job_button">
+              <button type="submit" className="btn btn-primary post_job_button" onClick={submit()}>
                 Post Job
               </button>
             </div>
@@ -170,6 +240,24 @@ const Post_jobs = () => {
           </form>
         </div>
       </div>
+
+      <div className="testing">
+        <div>
+          <ReactTags
+            classNames={{remove: 'remove_tags'}}
+            tags={tags}
+            delimiters={delimiters}
+            handleDelete={handleDelete}
+            handleAddition={handleAddition}
+            handleDrag={handleDrag}
+            handleTagClick={handleTagClick}
+            inputFieldPosition="bottom"
+            autocomplete
+          />
+        </div>
+      </div>
+      <br />
+      <br />
     </>
   );
 };

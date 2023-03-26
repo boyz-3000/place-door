@@ -111,3 +111,12 @@
   .multiselect{
     background-color: red;
   }
+
+  .testing {
+    background-color: red;
+    border: 5px solid blue;
+}
+.remove_tags {
+    color: green;
+    background-color: pink;
+}

@@ -8,9 +8,8 @@ import Resume from "./Pages/student/Resume";
 import Applied from "./Pages/student/Applied/Applied";
 import Profile from "./Pages/student/Profile/Profile";
 import AppliedStudent from "./Pages/company/applied-students/applied-students";
-import Post_jobs from "./Pages/company/Post-jobs/post-jobs";
+import Post_jobs from "./Pages/company/post-job/post-jobs";
 import "./App.css";
-// import StudentDetails from "./Pages/admin/student-details/StudentDetails";
 import StudentDetails from "./Pages/admin/student_details/StudentDetails";
 
 function App(){
