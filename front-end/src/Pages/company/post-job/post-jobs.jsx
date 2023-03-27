@@ -80,7 +80,6 @@ const Post_jobs = () => {
     console.log(mode);
   }
 
-
   return (
     <>
       <TopBar />
