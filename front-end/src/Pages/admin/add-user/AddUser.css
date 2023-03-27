@@ -1,5 +1,20 @@
-.signin-page {
+.add-user-page-bg {
     height: 100vh;
+    background-color: #645cbb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.signin-page {
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 5%;
+    border-radius: 1rem;
 }
 
 .title{
@@ -114,6 +129,24 @@ hr{
     font-size: 0.7rem;
     padding-left: .6rem;
 }
+
+.p-error {
+    color: red;
+    font-size: 0.8rem;
+    font-weight: 500;
+    animation: fade 0.5s ease-in-out;
+}
+
+@keyframes fade {
+    from {
+      visibility: hidden;
+      opacity: 0;
+    }
+    to {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
 
 @media only screen and (max-width:500px){
 
