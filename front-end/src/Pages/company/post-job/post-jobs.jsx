@@ -4,37 +4,16 @@ import "../../../components/top-bar/TopBar";
 import TopBar from "../../../components/top-bar/TopBar";
 import "./states_data";
 import { states } from "./states_data";
-import Multiselect from "multiselect-react-dropdown";
-import { WithContext as ReactTags} from 'react-tag-input';
-import { COUNTRIES } from './countries';
-
-
-const suggestions = COUNTRIES.map(country => {
-  return {
-    id: country,
-    text: country
-  };
-});
-
-const KeyCodes = {
-  comma: 188,
-  enter: 13
-};
-
-const delimiters = [KeyCodes.comma, KeyCodes.enter];
+import { WithContext as ReactTags } from "react-tag-input";
 
 const Post_jobs = () => {
+  const [tags, setTags] = React.useState([]);
 
-  const [tags, setTags] = React.useState([
-    { id: 'India', text: 'India' },
-    { id: 'Pakistan', text: 'Pakistan' },
-  ]);
-
-  const handleDelete = i => {
+  const handleDelete = (i) => {
     setTags(tags.filter((tag, index) => index !== i));
   };
 
-  const handleAddition = tag => {
+  const handleAddition = (tag) => {
     setTags([...tags, tag]);
   };
 
@@ -48,10 +27,9 @@ const Post_jobs = () => {
     setTags(newTags);
   };
 
-  const handleTagClick = index => {
-    console.log('The tag at index ' + index + ' was clicked');
+  const handleTagClick = (index) => {
+    console.log("The tag at index " + index + " was clicked");
   };
-
 
   const [job_role, setJobRole] = useState([]);
   const [city, setcity] = useState([]);
@@ -75,11 +53,10 @@ const Post_jobs = () => {
     setcity(citydata);
   };
 
-  const submit=()=>{
+  const submit = () => {
     console.log(_package);
     console.log(mode);
-  }
-
+  };
 
   return (
     <>
@@ -89,58 +66,88 @@ const Post_jobs = () => {
           <div className="container form_title">Post Job</div>
           <hr className="job_form_hr" />
           <form className="row g-3 post-form">
-            <div className="row job_role">
-              <label for="jobrole" className="col-sm-1 col-form-label">
-                Job Role
-              </label>
-              <div className="col-sm-10 col-lg-4 ">
-                <input
-                  id="job_role"
-                  type="text"
-                  className="form-control"
-                  placeholder="Job Role"
-                />
+            <div className="row first-div">
+              <div className="col-lg-6 job_role">
+                <label for="jobrole" className="col-form-label">
+                  Job Role
+                </label>
+                <div className="col-lg-8">
+                  <input
+                    id="job_role"
+                    type="text"
+                    className="form-control"
+                    placeholder="Job Role"
+                  />
+                </div>
               </div>
+
+              <div className="col-lg-6 mb-3">
+                <label className="col-form-label col-sm-1 mode_label">Mode</label>
+                  <label className="toggle">
+                    <input type="checkbox"/>
+                    <span className="slider"></span>
+                    <span className="labels" data-on="Onsite" data-off="WFH"></span>
+                  </label>
+              </div>
+                {/* <div className="form-check form-switch mode-toggle-switch">
+                  <input
+                    className="form-check-input"
+                    type="checkbox"
+                    role="switch"
+                    id="flexSwitchCheckDefault"
+                  />
+                  <label
+                    className="form-check-label"
+                    for="flexSwitchCheckDefault"
+                  >
+                    Default
+                  </label>
+                </div> */}
+                {/* <div className="mode-div-temp">
+                  <div className="col-sm-10 mode-div">
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        id="onsite"
+                        name="radio"
+                        value="option_1"
+                        checked={selectedOption === "option1"}
+                        onChange={handleOptionChange}
+                      />
+                      <label className="form-check-label" for="onsite">
+                        Onsite
+                      </label>
+                    </div>
+                    <div className="form-check">
+                      <input
+                        className="form-check-input"
+                        type="radio"
+                        id="WFH"
+                        name="radio"
+                        value="option_2"
+                        checked={selectedOption === "option2"}
+                        onChange={handleOptionChange}
+                      />
+                      <label className="form-check-label" for="WFH">
+                        WFH
+                      </label>
+                    </div>
+                  </div>
+                </div> */}
             </div>
-            <fieldset className="row mb-3">
-              <label className="col-form-label col-sm-1 pt-0">Mode</label>
-              <div className="col-sm-10">
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    id="onsite"
-                    name="radio"
-                    value="option_1"
-                    checked={selectedOption === "option1"}
-                    onChange={handleOptionChange}
-                  />
-                  <label className="form-check-label" for="onsite">
-                    Onsite
-                  </label>
-                </div>
-                <div className="form-check">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    id="WFH"
-                    name="radio"
-                    value="option_2"
-                    checked={selectedOption === "option2"}
-                    onChange={handleOptionChange}
-                  />
-                  <label className="form-check-label" for="WFH">
-                    WFH
-                  </label>
-                </div>
-              </div>
-            </fieldset>
             <div className="row mb-3">
               <label className="col-sm-2 col-form-label">
                 Last Date to Apply
               </label>
               <div className="col-sm-10 col-lg-4 ">
-                <input type="date" className="form-control" id="date" value={date} onChange={(e) => setDate(e.target.value)}/>
+                <input
+                  type="date"
+                  className="form-control"
+                  id="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                />
               </div>
             </div>
             <div className="col-md-4">
@@ -177,9 +184,14 @@ const Post_jobs = () => {
               <label for="pincode" className="form-label">
                 Pin Code
               </label>
-              <input type="text" className="form-control" id="pincode" onChange={(e) => setPincode(e.target.value)}/>
+              <input
+                type="text"
+                className="form-control"
+                id="pincode"
+                onChange={(e) => setPincode(e.target.value)}
+              />
             </div>
-            <div className="col-12">
+            {/* <div className="col-12">
               <label for="skills" className="form-label">
                 Skills
               </label>
@@ -190,6 +202,20 @@ const Post_jobs = () => {
                 placeholder="Skills"
                 // onChange={(e) => setSkill(e.target.value)}
               />
+            </div> */}
+            <div className="col-12">
+              <label for="stipend" className="form-label">
+                Skills Required
+              </label>
+              <ReactTags
+                tags={tags}
+                handleDelete={handleDelete}
+                handleAddition={handleAddition}
+                handleDrag={handleDrag}
+                handleTagClick={handleTagClick}
+                inputFieldPosition="inline"
+                placeholder="Enter Skills Required"
+              />
             </div>
 
             <div className="col-sm-8">
@@ -198,7 +224,12 @@ const Post_jobs = () => {
               </label>
               <div className="input-box">
                 <span className="prefix">₹</span>
-                <input type="text" placeholder="Stipend" id="stipend" onChange={(e) => setStipend(e.target.value)}/>
+                <input
+                  type="text"
+                  placeholder="Stipend"
+                  id="stipend"
+                  onChange={(e) => setStipend(e.target.value)}
+                />
               </div>
             </div>
 
@@ -208,21 +239,35 @@ const Post_jobs = () => {
               </label>
               <div className="input-box">
                 <span className="prefix">₹</span>
-                <input type="text" placeholder="Package" id="package" value={_package} onChange={(e) => setPackage(e.target.value)}/>
+                <input
+                  type="text"
+                  placeholder="Package"
+                  id="package"
+                  value={_package}
+                  onChange={(e) => setPackage(e.target.value)}
+                />
               </div>
             </div>
             <div className="col-sm-8">
               <label>Additional Details</label>
               <div className="file_input">
-                <input type="file" className="inputfile" onChange={(e) => setAddDetails(e.target.value)}/>
+                <input
+                  type="file"
+                  className="inputfile"
+                  onChange={(e) => setAddDetails(e.target.value)}
+                />
               </div>
             </div>
             <div className="col-12">
-              <button type="submit" className="btn btn-primary post_job_button" onClick={submit()}>
+              <button
+                type="submit"
+                className="btn btn-primary post_job_button"
+                onClick={submit()}
+              >
                 Post Job
               </button>
             </div>
-{/* 
+            {/* 
             <>
               <Multiselect isObject={false}
               options={["Option 1", "Option 2"]}/>
@@ -241,12 +286,11 @@ const Post_jobs = () => {
         </div>
       </div>
 
-      <div className="testing">
+      {/* <div className="testing">
         <div>
           <ReactTags
             classNames={{remove: 'remove_tags'}}
             tags={tags}
-            delimiters={delimiters}
             handleDelete={handleDelete}
             handleAddition={handleAddition}
             handleDrag={handleDrag}
@@ -257,7 +301,7 @@ const Post_jobs = () => {
         </div>
       </div>
       <br />
-      <br />
+      <br /> */}
     </>
   );
 };
