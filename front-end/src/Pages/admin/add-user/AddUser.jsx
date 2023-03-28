@@ -10,6 +10,7 @@ function AddUser(props) {
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [submitMsg, setSubmitMsg] = useState("");
+  const [buttonClicked, setButtonClicked] = useState(false);
 
   const handleUserType = (event) => {
     setUserType(event.target.value);
@@ -18,7 +19,7 @@ function AddUser(props) {
   const submitHandler = async (e) => {
     e.preventDefault();
 
-    if(isUsernameValid && isPasswordValid){
+    if (isUsernameValid && isPasswordValid) {
       let status = 0;
       try {
         const config = {
@@ -38,7 +39,7 @@ function AddUser(props) {
         );
 
         status = data['status']
-        console.log(data['status']===400);
+        console.log(data['status'] === 400);
         localStorage.setItem('userInfo', JSON.stringify(data));
 
       } catch (error) {
@@ -46,19 +47,20 @@ function AddUser(props) {
         // setErrorMessages(error.response.data.message);
       }
       console.log(status);
-      if (status===201){
+      if (status === 201) {
         setSubmitMsg("User Registered Successfully !!");
         console.log(username, password, userType);
         setUsername("");
         setPassword("");
         setUserType("admin");
-      } else if(status===400) {
+      } else if (status === 400) {
         setSubmitMsg("User Already Registered !!");
       }
     }
   }
 
   const handleUsernameChange = (event) => {
+    setButtonClicked(false);
     const value = event.target.value;
     setUsername(value);
     if (value.length < 5) {
@@ -68,7 +70,10 @@ function AddUser(props) {
     }
   };
 
+
+
   const handlePasswordChange = (event) => {
+    setButtonClicked(false);
     const value = event.target.value;
     setPassword(value);
     if (value.length < 8) {
@@ -87,6 +92,11 @@ function AddUser(props) {
   //   }
   // }
 
+  const checkField = () => {
+    setButtonClicked(true);
+    
+  }
+
   return (
     <div className="add-user-page-bg">
       <div className="signin-page">
@@ -102,7 +112,7 @@ function AddUser(props) {
               // onChange={(e) => setUsername(e.target.value)}
               onChange={handleUsernameChange}
             />
-            {!isUsernameValid && (
+            {usernameError && (
               <p className="p-error">{usernameError}</p>
             )}
             <input
@@ -111,7 +121,7 @@ function AddUser(props) {
               value={password}
               onChange={handlePasswordChange}
             />
-            {!isPasswordValid && (
+            {passwordError && (
               <p className="p-error">{passwordError}</p>
             )}
           </div>
@@ -161,10 +171,11 @@ function AddUser(props) {
               </div>
             </div>
           </div>
-          <button className="login_button" type="submit" disabled={!isUsernameValid && !isPasswordValid}>
+          <button className="login_button" type="submit" onClick={() => { checkField() }} disabled={!(!usernameError && !passwordError)}>
             ADD
           </button>
-          {(usernameError!="" || passwordError!="") && (
+          {console.log(!(!usernameError && !passwordError))}
+          {(usernameError || passwordError) && buttonClicked && (
             <p className="p-error">* Please fill the required fields !!</p>
           )}
           <p className="p-error">{submitMsg}</p>

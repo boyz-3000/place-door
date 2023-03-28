@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import "./Signin.css";
 import { useNavigate } from 'react-router-dom';
 
-
 function SigninForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -15,11 +14,6 @@ function SigninForm() {
     noPassword: "Please enter your password",
     noUsername: "Please enter your Username"
   };
-
-  const renderErrorMsg = (name) =>
-    name === errorMessages.name && (
-      <p className="error_msg">{errorMessages.message}</p>
-    )
 
   const submitHandler = async (e) => {
     e.preventDefault();
