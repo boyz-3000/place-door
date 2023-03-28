@@ -77,6 +77,7 @@ const Post_jobs = () => {
                     type="text"
                     className="form-control"
                     placeholder="Job Role"
+                    onChange={(e) => setJobRole(e.target.value)}
                   />
                 </div>
               </div>
@@ -89,52 +90,6 @@ const Post_jobs = () => {
                     <span className="labels" data-on="Onsite" data-off="WFH"></span>
                   </label>
               </div>
-                {/* <div className="form-check form-switch mode-toggle-switch">
-                  <input
-                    className="form-check-input"
-                    type="checkbox"
-                    role="switch"
-                    id="flexSwitchCheckDefault"
-                  />
-                  <label
-                    className="form-check-label"
-                    for="flexSwitchCheckDefault"
-                  >
-                    Default
-                  </label>
-                </div> */}
-                {/* <div className="mode-div-temp">
-                  <div className="col-sm-10 mode-div">
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        id="onsite"
-                        name="radio"
-                        value="option_1"
-                        checked={selectedOption === "option1"}
-                        onChange={handleOptionChange}
-                      />
-                      <label className="form-check-label" for="onsite">
-                        Onsite
-                      </label>
-                    </div>
-                    <div className="form-check">
-                      <input
-                        className="form-check-input"
-                        type="radio"
-                        id="WFH"
-                        name="radio"
-                        value="option_2"
-                        checked={selectedOption === "option2"}
-                        onChange={handleOptionChange}
-                      />
-                      <label className="form-check-label" for="WFH">
-                        WFH
-                      </label>
-                    </div>
-                  </div>
-                </div> */}
             </div>
             <div className="row mb-3">
               <label className="col-sm-2 col-form-label">
@@ -191,18 +146,6 @@ const Post_jobs = () => {
                 onChange={(e) => setPincode(e.target.value)}
               />
             </div>
-            {/* <div className="col-12">
-              <label for="skills" className="form-label">
-                Skills
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="skills"
-                placeholder="Skills"
-                // onChange={(e) => setSkill(e.target.value)}
-              />
-            </div> */}
             <div className="col-12">
               <label for="stipend" className="form-label">
                 Skills Required
@@ -267,41 +210,9 @@ const Post_jobs = () => {
                 Post Job
               </button>
             </div>
-            {/* 
-            <>
-              <Multiselect isObject={false}
-              options={["Option 1", "Option 2"]}/>
-            </> */}
-
-            {/* <>
-              
-              <select name="select" multiple multiselect-search="true" multiselect-search-all="true">
-                  <option>React</option>
-                  <option>Js</option>
-                  <option>HTML</option>
-                  <option>C++</option>
-              </select>
-            </> */}
           </form>
         </div>
       </div>
-
-      {/* <div className="testing">
-        <div>
-          <ReactTags
-            classNames={{remove: 'remove_tags'}}
-            tags={tags}
-            handleDelete={handleDelete}
-            handleAddition={handleAddition}
-            handleDrag={handleDrag}
-            handleTagClick={handleTagClick}
-            inputFieldPosition="bottom"
-            autocomplete
-          />
-        </div>
-      </div>
-      <br />
-      <br /> */}
     </>
   );
 };
