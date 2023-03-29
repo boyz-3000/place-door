@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Updates from "./Pages/student/Updates";
@@ -13,25 +13,32 @@ import "./App.css";
 import StudentDetails from "./Pages/admin/student_details/StudentDetails";
 import AddUser from "./Pages/admin/add-user/AddUser";
 
-function App(){
-  return (
-    <div className="app">
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<SigninForm />} />
-          <Route path="/jobs" element={<Jobs />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/applied" element={<Applied />} />
-          <Route path="/update" element={<Updates />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/applied-student" element={<AppliedStudent />} />
-          <Route path="/post-jobs" element={<Post_jobs />} />
-          <Route path="/student-details" element={<StudentDetails />} />
-          <Route path="/add-user" element={<AddUser />} />
+import UserContext from './UserContext';
 
-        </Routes>
-      </BrowserRouter>
-    </div>
+
+function App(){
+  const [user, setUser] = useState("ayush");
+
+  return (
+    <UserContext.Provider value={{ user, setUser }}>
+      <div className="app">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<SigninForm />} />
+            <Route path="/jobs" element={<Jobs />} />
+            <Route path="/resume" element={<Resume />} />
+            <Route path="/applied" element={<Applied />} />
+            <Route path="/update" element={<Updates />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/applied-student" element={<AppliedStudent />} />
+            <Route path="/post-jobs" element={<Post_jobs />} />
+            <Route path="/student-details" element={<StudentDetails />} />
+            <Route path="/add-user" element={<AddUser />} />
+
+          </Routes>
+        </BrowserRouter>
+      </div>
+      </UserContext.Provider>
   )
 }
 

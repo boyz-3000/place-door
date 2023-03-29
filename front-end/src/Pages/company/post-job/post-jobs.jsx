@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./post-jobs.css";
 import "../../../components/top-bar/TopBar";
 import TopBar from "../../../components/top-bar/TopBar";
@@ -6,10 +6,15 @@ import "./states_data";
 import { states } from "./states_data";
 import { WithContext as ReactTags } from "react-tag-input";
 // import { statesDB } from "./states_data";
+import UserContext from "../../../UserContext";
+import { useNavigate } from 'react-router-dom';
+
 
 const Post_jobs = () => {
+  const { user } = useContext(UserContext);
+  const navigate = useNavigate();
 
-  let statesDB = require('./states.json');
+  // let statesDB = require('./states.json');
 
   const handleDelete = (i) => {
     setTags(tags.filter((tag, index) => index !== i));
@@ -33,28 +38,49 @@ const Post_jobs = () => {
     // console.log("The tag at index " + index + " was clicked");
   };
 
-  const [job_role, setJobRole] = useState("");
+  const [jobRole, setJobRole] = useState("");
   const [mode, setMode] = useState(false);
-  const [date, setDate] = useState("");
+  const [lastDate, setLastDate] = useState("");
   const [state, setState] = useState([]);
-  const [city, setcity] = useState([]);
+  const [cityDB, setcityDB] = useState([]);
+  const [city, setCity] = useState("");
   const [pincode, setPincode] = useState([]);
   const [tags, setTags] = React.useState([]);
   const [stipend, setStipend] = useState([]);
-  const [_package, setPackage] = useState([]);
+  const [ctc, setCTC] = useState([]);
   const [add_details, setAddDetails] = useState([]);
 
   const handleState = (e) => {
     setState(e.target.value);
     const getstate = e.target.value;
-    // const citydata = states.find((s) => s.state === getstate).districts;
-    const citydata =  statesDB[getstate];
-    setcity(citydata);
+    const citydata = states.find((s) => s.state === getstate).districts;
+    // const citydata =  statesDB[getstate];
+    setcityDB(citydata);
   };
 
-  const submit = () => {
-    // console.log(_package);
-    // console.log(mode);
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      console.log(jobRole, mode, lastDate, state, tags, stipend, ctc);
+      const response = await fetch('http://localhost:5001/post-job', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ jobRole, mode, lastDate, state, city, tags, stipend, ctc })
+      });
+
+      const data = await response.json();
+      console.log(data.status)
+      console.log(data); // Do something with the response
+      if (data.status === 201) {
+        navigate('/jobs')
+      }
+    } catch (error) {
+      console.log(error)
+      console.error(error);
+    }
   };
 
   return (
@@ -66,13 +92,13 @@ const Post_jobs = () => {
           <hr className="job_form_hr" />
           <form className="row g-3 post-form">
             <div className="row first-div">
-              <div className="col-lg-6 job_role">
+              <div className="col-lg-6 jobRole">
                 <label for="jobrole" className="col-form-label">
                   Job Role
                 </label>
                 <div className="col-lg-8">
                   <input
-                    id="job_role"
+                    id="jobRole"
                     type="text"
                     className="form-control"
                     placeholder="Job Role"
@@ -85,7 +111,7 @@ const Post_jobs = () => {
                 <label className="col-form-label col-sm-1 mode_label">Mode</label>
                 <label className="toggle">
                   <input type="checkbox"onChange={(e) => setMode(e.target.checked)} checked={mode} />
-                  {console.log(job_role, mode, date, state, city, pincode, stipend, _package)}
+                  {/* {console.log(jobRole, mode, date, state, city, pincode, stipend, ctc)} */}
                   <span className="slider"></span>
                   <span className="labels" data-on="Onsite" data-off="WFH" ></span>
                 </label>
@@ -99,9 +125,9 @@ const Post_jobs = () => {
                 <input
                   type="date"
                   className="form-control"
-                  id="date"
-                  value={date}
-                  onChange={(e) => setDate(e.target.value)}
+                  id="lastDate"
+                  value={lastDate}
+                  onChange={(e) => setLastDate(e.target.value)}
                 />
               </div>
             </div>
@@ -126,9 +152,9 @@ const Post_jobs = () => {
               <label for="inputState" className="form-label">
                 City
               </label>
-              <select id="inputCity" className="form-select">
+              <select id="inputCity" className="form-select" onChange={(e) => setCity(e.target.value)}>
                 <option selected>--Select City--</option>
-                {city.map((c, index) => (
+                {cityDB.map((c, index) => (
                   <option value={c} key={index}>
                     {c}
                   </option>
@@ -160,7 +186,6 @@ const Post_jobs = () => {
                 placeholder="Enter Skills Required"
               />
             </div>
-
             <div className="col-sm-8">
               <label for="stipend" className="form-label">
                 Stipend
@@ -184,10 +209,10 @@ const Post_jobs = () => {
                 <span className="prefix">₹</span>
                 <input
                   type="text"
-                  placeholder="Package"
-                  id="package"
-                  value={_package}
-                  onChange={(e) => setPackage(e.target.value)}
+                  placeholder="CTC"
+                  id="ctc"
+                  value={ctc}
+                  onChange={(e) => setCTC(e.target.value)}
                 />
               </div>
             </div>
@@ -205,7 +230,7 @@ const Post_jobs = () => {
               <button
                 type="submit"
                 className="btn btn-primary post_job_button"
-                onClick={submit()}
+                onClick={submitHandler}
               >
                 Post Job
               </button>

@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import "./Signin.css";
 import { useNavigate } from 'react-router-dom';
 
+import UserContext from '../../UserContext';
+
+
 function SigninForm() {
+  const { setUser } = useContext(UserContext);
+
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -31,6 +36,7 @@ function SigninForm() {
       console.log(data.status)
       console.log(data); // Do something with the response
       if (data.status === 201) {
+        setUser(username);
         navigate('/jobs')
       }
     } catch (error) {
