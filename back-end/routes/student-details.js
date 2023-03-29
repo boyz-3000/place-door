@@ -2,17 +2,17 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
-const Jobs = require('../models/jobs');
+const Student = require('../models/student-details')
 const cors = require('cors');
 
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/jobs', async (req, res) => {
+app.get('/student-details', async (req, res) => {
     try {
-      const jobs = await Jobs.find();
-      res.json(jobs);
+      const student = await Student.find();
+      res.json(student);
     } catch (error) {
       console.error(error);
       res.status(500).send('Internal server error');

@@ -2,14 +2,16 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Updates from "./Pages/student/Updates";
-import SigninForm from "./components/signin/SigninForm";
+import SigninForm from "./Pages/signin/Signin";
 import Jobs from "./Pages/student/Jobs/Jobs";
 import Resume from "./Pages/student/Resume";
 import Applied from "./Pages/student/Applied/Applied";
 import Profile from "./Pages/student/Profile/Profile";
 import AppliedStudent from "./Pages/company/applied-students/applied-students";
-import AddStudentForm from "./components/admin/add-student/AddStudentForm";
+import Post_jobs from "./Pages/company/post-job/post-jobs";
 import "./App.css";
+import StudentDetails from "./Pages/admin/student_details/StudentDetails";
+import AddUser from "./Pages/admin/add-user/AddUser";
 
 function App(){
   return (
@@ -23,7 +25,10 @@ function App(){
           <Route path="/update" element={<Updates />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/applied-student" element={<AppliedStudent />} />
-          <Route path="/add-student" element={<AddStudentForm />} />
+          <Route path="/post-jobs" element={<Post_jobs />} />
+          <Route path="/student-details" element={<StudentDetails />} />
+          <Route path="/add-user" element={<AddUser />} />
+
         </Routes>
       </BrowserRouter>
     </div>

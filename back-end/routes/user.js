@@ -9,26 +9,26 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.post('/signup', async (req, res) => {
-    const { username, password } = req.body;
+app.post('/add-user', async (req, res) => {
+    const { username, password, userType } = req.body;
 
-    const existingUser = await User.findOne({ username });
+    const existingUser = await User.findOne({ username, userType });
 
     if (existingUser) {
-        return res.status(400).json({ error: "username is already registered" });
+        return res.json({ status: 400, message: "username is already registered" });
     }
 
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
-    const user = User({ username, password: hashedPassword });
+    const user = User({ username, password: hashedPassword, userType });
 
     try {
         await user.save();
-        res.status(201).json({ message: "User registered successfully!!" });
+        res.status(201).json({ status: 201, message: "User registered successfully!!" });
     } catch(error) {
         console.error(error);
-        res.status(500).json({ status: 500, error: "Internal server error" });
+        res.status(500).json({ status: 500, message: "Internal server error" });
     }
 });
 
@@ -43,7 +43,7 @@ app.post('/signin', async (req, res) => {
 
     const passwordMatch = await bcrypt.compare(password, user.password);
 
-    if (!password) {
+    if (!passwordMatch) {
         return res.status(401).json({ status: 401, error: 'Incorrect Password' });
     }
     

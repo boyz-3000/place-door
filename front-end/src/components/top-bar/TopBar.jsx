@@ -18,7 +18,7 @@ function TopBar() {
           <div className="col-lg-1 col-md-1 col-sm-1 col-1 item-1">
             <div>
               <i
-                class="fa-sharp fa-solid fa-bars"
+                className="fa-sharp fa-solid fa-bars"
                 onClick={() => setShow(true)}
               ></i>
             </div>
@@ -34,7 +34,7 @@ function TopBar() {
             <div>
               <Link to="/profile">
                 {" "}
-                <i class="fa-sharp fa-regular fa-circle-user"></i>
+                <i className="fa-sharp fa-regular fa-circle-user"></i>
               </Link>
             </div>
           </div>
