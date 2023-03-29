@@ -62,6 +62,7 @@ const Post_jobs = () => {
     e.preventDefault();
 
     try {
+
       console.log(jobRole, mode, lastDate, state, tags, stipend, ctc);
       const response = await fetch('http://localhost:5001/post-job', {
         method: 'POST',

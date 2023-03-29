@@ -17,26 +17,43 @@ import UserContext from './UserContext';
 
 
 function App(){
-  const [user, setUser] = useState("ayush");
+  const [user, setUser] = useState("");
+  const [userType, setUserType] = useState("student");
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, userType, setUserType }}>
       <div className="app">
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<SigninForm />} />
-            <Route path="/jobs" element={<Jobs />} />
-            <Route path="/resume" element={<Resume />} />
-            <Route path="/applied" element={<Applied />} />
-            <Route path="/update" element={<Updates />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/applied-student" element={<AppliedStudent />} />
-            <Route path="/post-jobs" element={<Post_jobs />} />
-            <Route path="/student-details" element={<StudentDetails />} />
-            <Route path="/add-user" element={<AddUser />} />
-
-          </Routes>
-        </BrowserRouter>
+        {
+          userType==="student" && 
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<SigninForm />} />
+              <Route path="/jobs" element={<Jobs />} />
+              <Route path="/resume" element={<Resume />} />
+              <Route path="/applied" element={<Applied />} />
+              <Route path="/update" element={<Updates />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+          </BrowserRouter>
+        }
+        {
+          userType==="company" && 
+          <BrowserRouter>
+            <Routes>
+              <Route path="/applied-student" element={<AppliedStudent />} />
+              <Route path="/post-jobs" element={<Post_jobs />} />
+            </Routes>
+          </BrowserRouter>
+        }
+        {  
+          userType==="admin" &&
+          <BrowserRouter>
+            <Routes>
+              <Route path="/student-details" element={<StudentDetails />} />
+              <Route path="/add-user" element={<AddUser />} />
+            </Routes>
+          </BrowserRouter>
+          }
       </div>
       </UserContext.Provider>
   )

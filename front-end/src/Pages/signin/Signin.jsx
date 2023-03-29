@@ -6,7 +6,7 @@ import UserContext from '../../UserContext';
 
 
 function SigninForm() {
-  const { setUser } = useContext(UserContext);
+  const { setUser, setUserType } = useContext(UserContext);
 
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -37,6 +37,7 @@ function SigninForm() {
       console.log(data); // Do something with the response
       if (data.status === 201) {
         setUser(username);
+        setUserType("student")
         navigate('/jobs')
       }
     } catch (error) {

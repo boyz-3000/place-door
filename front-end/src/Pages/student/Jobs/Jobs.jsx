@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Card from "../../../components/card/Card";
 import "./Jobs.css";
 import CardData from "./CardData";
 import TopBar from "../../../components/top-bar/TopBar";
 import axios from "axios";
+import UserContext from "../../../UserContext";
 
 function Jobs() {
+
+  const { user, userType } = useContext(UserContext);
 
   const [companies, setCompanies] = useState([]);
 
@@ -32,6 +35,7 @@ function Jobs() {
     <TopBar/>
     <div className="container text-center dashboard">
       <div className="row">
+        {console.log(userType)}
         {companies?.map((company) => (
           <div className="col-lg-4 col-md-6 col-sm-12 card-item">
             <Card
