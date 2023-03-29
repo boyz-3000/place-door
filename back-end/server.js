@@ -5,10 +5,13 @@ const userRoutes = require('././routes/user');
 const jobRoutes = require('./routes/jobs');
 const studentRoutes = require('./routes/student-details');
 const postJob = require('./routes/postJob')
+const cors = require('cors');
+
 
 const app = express();
 
 app.use(express.json());
+app.use(cors());
 dotenv.config();
 
 PORT = process.env.PORT
