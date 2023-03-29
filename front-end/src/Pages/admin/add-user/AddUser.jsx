@@ -5,6 +5,11 @@ import axios from "axios";
 function AddUser(props) {
 
   const [username, setUsername] = useState("");
+  const users = [
+    { _username: "user1", _password: "password1", _userType: "admin" },
+    { _username: "user2", _password: "password2", _userType: "company" },
+    { _username: "user3", _password: "password3", _userType: "admin" },
+  ];
   const [password, setPassword] = useState("");
   const [userType, setUserType] = useState("admin");
   const [usernameError, setUsernameError] = useState("");
@@ -15,6 +20,54 @@ function AddUser(props) {
   const handleUserType = (event) => {
     setUserType(event.target.value);
   };
+
+
+  const submitUsers = async (users) => {
+    try {
+      const config = {
+        headers: {
+          "Content-type": "application/json"
+        }
+      };
+  
+      const promises = users.map(async (user) => {
+        const { _username, _password, _userType } = user;
+        console.log({_username, _password, _userType})
+        const { data } = await axios.post("http://localhost:5001/add-user",
+          {
+            _username,
+            _password,
+            _userType
+          },
+          config
+        );
+        // localStorage.setItem('userInfo', JSON.stringify(data));
+        return data.status;
+      });
+  
+      const results = await Promise.all(promises);
+      return results;
+    } catch (error) {
+      console.log(error);
+      throw new Error("Error occurred while signing up users.");
+    }
+  };
+
+  const _submitHandler = async (e) => {
+    e.preventDefault();
+
+    const statuses = await submitUsers(users);
+    console.log(statuses);
+
+    if (statuses.includes(201)) {
+      setSubmitMsg("Users Registered Successfully!!");
+      setUsername("");
+      setPassword("");
+      setUserType("admin");
+    } else if (statuses.includes(400)) {
+      setSubmitMsg("One or more users already registered!!");
+    }
+  }
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -86,12 +139,6 @@ function AddUser(props) {
   const isUsernameValid = username.length >= 5 && !usernameError;
   const isPasswordValid = password.length >= 8 && !passwordError;
 
-  // const checkInputs = () => {
-  //   if (!isUsernameValid || !isPasswordValid){
-
-  //   }
-  // }
-
   const checkField = () => {
     setButtonClicked(true);
     
@@ -103,7 +150,7 @@ function AddUser(props) {
         <i className="fa-solid fa-graduation-cap"></i>
         <h1 className="title">PlaceDoor</h1>
         <hr />
-        <form onSubmit={submitHandler}>
+        <form onSubmit={_submitHandler}>
           <div className="input_container">
             <input
               type="text"

@@ -18,7 +18,7 @@ import UserContext from './UserContext';
 
 function App(){
   const [user, setUser] = useState("");
-  const [userType, setUserType] = useState("student");
+  const [userType, setUserType] = useState("company");
 
   return (
     <UserContext.Provider value={{ user, setUser, userType, setUserType }}>
