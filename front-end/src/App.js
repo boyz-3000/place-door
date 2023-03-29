@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Updates from "./Pages/student/Updates";
 import SigninForm from "./components/signin/SigninForm";
 import Jobs from "./Pages/student/Jobs/Jobs";
-import Resume from "./Pages/student/Resume";
+import Resume from "./Pages/student/Resume/resume";
 import Applied from "./Pages/student/Applied/Applied";
 import Profile from "./Pages/student/Profile/Profile";
 import AppliedStudent from "./Pages/company/applied-students/applied-students";
