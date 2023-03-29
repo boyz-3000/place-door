@@ -5,9 +5,11 @@ import TopBar from "../../../components/top-bar/TopBar";
 import "./states_data";
 import { states } from "./states_data";
 import { WithContext as ReactTags } from "react-tag-input";
+// import { statesDB } from "./states_data";
 
 const Post_jobs = () => {
-  const [tags, setTags] = React.useState([]);
+
+  let statesDB = require('./states.json');
 
   const handleDelete = (i) => {
     setTags(tags.filter((tag, index) => index !== i));
@@ -28,34 +30,31 @@ const Post_jobs = () => {
   };
 
   const handleTagClick = (index) => {
-    console.log("The tag at index " + index + " was clicked");
+    // console.log("The tag at index " + index + " was clicked");
   };
 
-  const [job_role, setJobRole] = useState([]);
+  const [job_role, setJobRole] = useState("");
+  const [mode, setMode] = useState(false);
+  const [date, setDate] = useState("");
+  const [state, setState] = useState([]);
   const [city, setcity] = useState([]);
-  const [mode, setMode] = useState([]);
-  const [date, setDate] = useState([]);
-  const [options, setOptions] = useState([]);
   const [pincode, setPincode] = useState([]);
+  const [tags, setTags] = React.useState([]);
   const [stipend, setStipend] = useState([]);
   const [_package, setPackage] = useState([]);
   const [add_details, setAddDetails] = useState([]);
 
-  const [selectedOption, setSelectedOption] = useState("option1");
-
-  const handleOptionChange = (event) => {
-    setSelectedOption(event.target.value);
-  };
-
   const handleState = (e) => {
+    setState(e.target.value);
     const getstate = e.target.value;
-    const citydata = states.find((s) => s.state === getstate).districts;
+    // const citydata = states.find((s) => s.state === getstate).districts;
+    const citydata =  statesDB[getstate];
     setcity(citydata);
   };
 
   const submit = () => {
-    console.log(_package);
-    console.log(mode);
+    // console.log(_package);
+    // console.log(mode);
   };
 
   return (
@@ -84,11 +83,12 @@ const Post_jobs = () => {
 
               <div className="col-lg-6 mb-3">
                 <label className="col-form-label col-sm-1 mode_label">Mode</label>
-                  <label className="toggle">
-                    <input type="checkbox"/>
-                    <span className="slider"></span>
-                    <span className="labels" data-on="Onsite" data-off="WFH"></span>
-                  </label>
+                <label className="toggle">
+                  <input type="checkbox"onChange={(e) => setMode(e.target.checked)} checked={mode} />
+                  {console.log(job_role, mode, date, state, city, pincode, stipend, _package)}
+                  <span className="slider"></span>
+                  <span className="labels" data-on="Onsite" data-off="WFH" ></span>
+                </label>
               </div>
             </div>
             <div className="row mb-3">
