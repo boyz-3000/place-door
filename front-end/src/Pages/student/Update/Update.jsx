@@ -16,9 +16,9 @@ function Update() {
     setIsMessage(getMessage);
   };
 
-  const check=()=>{
+  const check = () => {
     setIsShown(true);
-  }
+  };
   return (
     <div>
       <TopBar />
@@ -30,8 +30,8 @@ function Update() {
                 <th scope="col">Updates</th>
               </tr>
             </thead>
-            <tbody >
-              {Chats.map((x,index) => (
+            <tbody>
+              {Chats.map((x, index) => (
                 <tr onClick={() => handleChat(x.sender)} key={index}>
                   <td>{x.sender}</td>
                 </tr>
@@ -41,11 +41,9 @@ function Update() {
         </div>
         {isShown && (
           <div className="col-lg-9 col-md-9 col-sm-0 scrollable">
-            {
-              isMessage.map((m)=>(
-                <Message message={m}/>
-              ))
-            }
+            {isMessage.map((m) => (
+              <Message message={m} />
+            ))}
           </div>
         )}
       </div>
