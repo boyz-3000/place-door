@@ -23,8 +23,8 @@ function Update() {
     <div>
       <TopBar />
       <div className="row">
-        <div className="col-lg-3 col-md-3 col-sm-1">
-          <table class="table table-hover">
+        <div className="col-lg-3 col-md-3 col-sm-1 scrollable">
+          <table className="table table-hover">
             <thead>
               <tr>
                 <th scope="col">Updates</th>
@@ -40,7 +40,7 @@ function Update() {
           </table>
         </div>
         {isShown && (
-          <div className="col-lg-9 col-md-9 col-sm-0">
+          <div className="col-lg-9 col-md-9 col-sm-0 scrollable">
             {
               isMessage.map((m)=>(
                 <Message message={m}/>
