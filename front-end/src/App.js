@@ -23,11 +23,15 @@ function App(){
   return (
     <UserContext.Provider value={{ user, setUser, userType, setUserType }}>
       <div className="app">
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<SigninForm />} />
+          </Routes>
+        </BrowserRouter>
         {
           userType==="student" && 
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<SigninForm />} />
               <Route path="/jobs" element={<Jobs />} />
               <Route path="/resume" element={<Resume />} />
               <Route path="/applied" element={<Applied />} />
