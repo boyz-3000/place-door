@@ -1,6 +1,6 @@
 import React from "react";
 import "./TopBar.css";
-import Profile from "../../Pages/student/Profile/Profile";
+// import Profile from "../../Pages/student/Profile/Profile";
 import Modal from "../modal/Modal";
 import Menu from "../menu/Menu";
 import { Link } from "react-router-dom";

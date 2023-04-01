@@ -6,7 +6,7 @@ import SigninForm from "./Pages/signin/Signin";
 import Jobs from "./Pages/student/Jobs/Jobs";
 import Resume from "./Pages/student/Resume";
 import Applied from "./Pages/student/Applied/Applied";
-import Profile from "./Pages/student/Profile/Profile";
+import Profile from "./Pages/Profile/Profile";
 import AppliedStudent from "./Pages/company/applied-students/applied-students";
 import Post_jobs from "./Pages/company/post-job/post-jobs";
 import "./App.css";
