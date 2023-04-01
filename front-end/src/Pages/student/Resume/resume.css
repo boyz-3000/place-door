@@ -1,44 +1,208 @@
 .resume {
     display: flex;
+    font-family: "Times New Roman", Times, serif;
     /* background-color: yellow; */
 }
 
 .left {
     width: 40%;
-    background-color: blue;
+    background-color: #335384;
     display: flex;
     align-items: center;
     flex-direction: column;
 }
 
-.right {
-    width: 70%;
-    background-color: green;
+.profile-div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* background-color: black; */
+    border-bottom: 1px solid #fff;
+    padding: 5%;
 }
 
 .profile-img {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     /* background: cover, */
     /* backgroundPosition: 'center', */
-    background-size: 200px 200px;
-    cursor: pointer
+    background-size: 300px 300px;
+    cursor: pointer;
 }
 
-.block{
-    background-color: blue;
+.left-body {
+    /* background-color: pink; */
+    margin: 5%;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: right;
+}
+
+.contact-block {
+    /* background-color: blue; */
+    /* background-color: yellow; */
+    width: 95%;
+    margin-left: 5%;
 }
 
 .heading {
-    background-color: red;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* background-color: red; */
 }
 
-.hr-lines{
+.text {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    font-size: 1.7rem;
+    width: auto;
+    /* color: white; */
+    /* background-color: yellow; */
+    padding: 2.5% 2.5%;
+}
+
+.left .heading {
+    color: #fff;
+}
+
+.line {
+    height: 3px;
+    min-width: 38%;
+    /* background-color: white; */
+}
+
+.left .line {
+    background-color: white;
+}
+
+.content {
+    margin-left: 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: right;
+    align-items: right;
+    /* background-color: black; */
+    color: #fff;
+    width: 90%;
+}
+
+#content {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    /* background-color: black; */
+    /* border: 1px solid white; */
+    height: 3rem;
+}
+
+#content p {
+    margin: 0;
+    /* background-color: red; */
+}
+
+#content p,
+#content i {
+    padding: 2% 2%;
+}
+
+.tag-block .content {
+    /* background-color: black; */
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: left;
+}
+
+.ReactTags__tags {
+    position: ab;
+}
+
+
+/* Styles for the input */
+.ReactTags__tagInput {
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.ReactTags__tagInput input.ReactTags__tagInputField,
+.ReactTags__tagInput input.ReactTags__tagInputField:focus {
+    height: 40px;
+    margin: 0;
+    min-width: 150px;
+    font-size: 15px;
+    border: 0;
+    color: grey;
+    padding: 2%;
+}
+
+.ReactTags__editInput {
+    border-radius: 0.4rem;
+}
+
+.ReactTags__editTagInput {
+    display: inline-flex;
+}
+
+/* Styles for selected tags */
+.ReactTags__selected span.ReactTags__tag {
+    background: #fff;
+    color: #645cbb;
+    display: inline-block;
+    border-radius: 0.4rem;
+    padding-left: 2%;
+    padding-right: 1%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    margin: 1% 1%;
+    font-weight: 500;
+    /* background-color: rgb(166, 226, 166); */
+}
+
+.ReactTags__selected a.ReactTags__remove {
+    color: #aaa;
+    cursor: pointer;
+}
+
+
+
+.ReactTags__remove {
+    border: none;
+    cursor: pointer;
+    background: none;
+    color: red;
+    font-weight: 1000;
+    /* background-color: yellow; */
+    /* padding-left: 0.2rem; */
+    /* text: 20px; */
+    /* background-color: yellow; */
+
+}
+
+.ReactTags__remove:hover {
+    color: white;
+    background-color: rgb(250, 9, 9);
+    border-radius: 0.4rem;
+    margin-left: 0.5rem;
+    transition: 0.3s;
+}
+
+.ReactTags__tagInputField {
+    outline: 0;
+    border-radius: .4rem;
+    width: 20rem;
+}
+
+/* .hr-lines{
     font-size: 100%;
     position: relative;
     color: #fff;
+    text-indent: -9999px;
   }
 
 .hr-lines:after{
@@ -50,4 +214,55 @@
     position: absolute;
     top: 50%;
     right: 0;
+} */
+
+
+
+@media print {
+
+    .text {
+        font-size: 100%;
+    }
+
+    #content p {
+        font-size: 15px;
+    }
+
+}
+
+
+
+.right {
+    width: 70%;
+    /* background-color: green; */
+    display: flex;
+    align-items: left;
+    justify-content: left;
+    flex-direction: column;
+    padding: 2.5%;
+    border: 3px solid #335384;
+    text-align: left;
+}
+
+.name {
+    color: #335384;
+    justify-content: left;
+    align-items: left;
+    /* border: 1px solid #335384; */
+    /* background-color: red; */
+}
+
+.description {
+    /* border: 1px solid #335384 */
+    padding-top: 2%;
+    font-weight: bold;
+    /* background-color: blue; */
+}
+
+.right .heading {
+    color: black;
+}
+
+.right .line {
+    background-color: black;
 }
