@@ -1,14 +1,16 @@
 import React, { useState, useEffect, useContext } from "react";
 import Card from "../../../components/card/Card";
 import "./Jobs.css";
-import CardData from "./CardData";
 import TopBar from "../../../components/top-bar/TopBar";
 import axios from "axios";
 import UserContext from "../../../UserContext";
+import { useNavigate } from 'react-router-dom';
 
 function Jobs() {
 
   const { user, userType } = useContext(UserContext);
+  const { loggedIn, setLoggedIn } = useContext(UserContext);
+  const navigate = useNavigate();
 
   const [companies, setCompanies] = useState([]);
 
@@ -29,6 +31,10 @@ function Jobs() {
     console.log('waiting');
     console.log(fetchCompanies());
   }, []);
+
+  if (!loggedIn) {
+    navigate('/');
+  } 
 
   return (
     <>

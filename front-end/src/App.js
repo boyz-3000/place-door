@@ -16,22 +16,24 @@ import AddUser from "./Pages/admin/add-user/AddUser";
 import UserContext from './UserContext';
 
 
-function App(){
+function App() {
   const [user, setUser] = useState("");
-  const [userType, setUserType] = useState("company");
+  const [userType, setUserType] = useState("student");
+  const [loggedIn, setLoggedIn] = useState(true);
 
   return (
-    <UserContext.Provider value={{ user, setUser, userType, setUserType }}>
+    <UserContext.Provider value={{ user, setUser, userType, setUserType, loggedIn, setLoggedIn }}>
       <div className="app">
-        <BrowserRouter>
+        {/* <BrowserRouter>
           <Routes>
             <Route path="/" element={<SigninForm />} />
           </Routes>
-        </BrowserRouter>
+        </BrowserRouter> */}
         {
-          userType==="student" && 
+          userType === "student" &&
           <BrowserRouter>
             <Routes>
+              <Route path="/" element={<SigninForm />} />
               <Route path="/jobs" element={<Jobs />} />
               <Route path="/resume" element={<Resume />} />
               <Route path="/applied" element={<Applied />} />
@@ -41,25 +43,27 @@ function App(){
           </BrowserRouter>
         }
         {
-          userType==="company" && 
+          userType === "company" &&
           <BrowserRouter>
             <Routes>
+              <Route path="/" element={<SigninForm />} />
               <Route path="/applied-student" element={<AppliedStudent />} />
               <Route path="/post-jobs" element={<Post_jobs />} />
             </Routes>
           </BrowserRouter>
         }
-        {  
-          userType==="admin" &&
+        {
+          userType === "admin" &&
           <BrowserRouter>
             <Routes>
+              <Route path="/" element={<SigninForm />} />
               <Route path="/student-details" element={<StudentDetails />} />
               <Route path="/add-user" element={<AddUser />} />
             </Routes>
           </BrowserRouter>
-          }
+        }
       </div>
-      </UserContext.Provider>
+    </UserContext.Provider>
   )
 }
 
