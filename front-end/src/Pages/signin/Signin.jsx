@@ -6,10 +6,12 @@ import UserContext from '../../UserContext';
 
 
 function SigninForm() {
-  const { user, userType } = useContext(UserContext);
-  const { setUser, setUserType } = useContext(UserContext);
-  const { loggedIn, setLoggedIn } = useContext(UserContext);
+  // const { userName, setUserName } = useContext(UserContext);
+  // const { userType, setUserType } = useContext(UserContext);
+  // const { loggedIn, setLoggedIn } = useContext(UserContext);
 
+  const userType = window.localStorage.getItem('userType'); 
+  
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [activeButton, setActiveButton] = useState('student');
@@ -39,27 +41,36 @@ function SigninForm() {
       console.log(data.status)
       console.log(data); // Do something with the response
       if (data.status === 201) {
-        setUser(username);
-        setLoggedIn(true);
-        navigate('/jobs');
+        // setUserName(username);
+        window.localStorage.setItem('userName', username);
+        window.localStorage.setItem('loggedIn', true);
+        // setLoggedIn(true);
+        if (userType === 'student') {
+          navigate('/jobs');
+        } else if (userType === 'company') {
+          navigate('post-jobs');
+        } else {
+          navigate('add-user');
+        }
       }
     } catch (error) {
       console.log('ero')
       console.error(error);
-      setLoggedIn(false);
+      window.localStorage.setItem('loggedIn', false);
     }
   };
 
   return (
     <div className='page-bg'>
+      {console.log(userType)}
       <div className='login-type-div'>
-        <div className='login-type' onClick={() => setUserType('student')} style={{ backgroundColor: userType === 'student' ? 'green' : 'white' , color: userType === 'student' ? 'white' : 'blue'}}>
+        <div className='login-type' onClick={() => window.localStorage.setItem('userType', 'student')} style={{ backgroundColor: userType === 'student' ? 'green' : 'white', color: userType === 'student' ? 'white' : 'blue' }}>
           Student
         </div>
-        <div className='login-type' onClick={() => setUserType('company')} style={{ backgroundColor: userType === 'company' ? 'green' : 'white' , color: userType === 'company' ? 'white' : 'blue'}}>
+        <div className='login-type' onClick={() => window.localStorage.setItem('userType', 'company')} style={{ backgroundColor: userType === 'company' ? 'green' : 'white', color: userType === 'company' ? 'white' : 'blue' }}>
           Company
         </div>
-        <div className='login-type' onClick={() => setUserType('admin')} style={{ backgroundColor: userType === 'admin' ? 'green' : 'white' , color: userType === 'admin' ? 'white' : 'blue'}}>
+        <div className='login-type' onClick={() => window.localStorage.setItem('userType', 'admin')} style={{ backgroundColor: userType === 'admin' ? 'green' : 'white', color: userType === 'admin' ? 'white' : 'blue' }}>
           Admin
         </div>
       </div>

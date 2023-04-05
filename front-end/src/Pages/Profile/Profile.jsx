@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import TopBar from "../../components/top-bar/TopBar";
 import "./Profile.css";
 import axios from "axios";
 
+import UserContext from "../../UserContext";
+import { useNavigate } from "react-router-dom";
+
 function Profile() {
+
+    const { userName } = useContext(UserContext);
+    const { loggedIn, setLoggedIn } = useContext(UserContext);
 
     const [student, setStudent] = useState({
         firstName: "",
@@ -14,12 +20,12 @@ function Profile() {
         department: "",
     });
 
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
-    const [rollNo, setRollNo] = useState("");
-    const [department, setDepartment] = useState("");
+    // const [firstName, setFirstName] = useState("");
+    // const [lastName, setLastName] = useState("");
+    // const [email, setEmail] = useState("");
+    // const [phone, setPhone] = useState("");
+    // const [rollNo, setRollNo] = useState("");
+    // const [department, setDepartment] = useState("");
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -48,6 +54,7 @@ function Profile() {
 
             console.log(response.data);
             alert("Student profile updated successfully!");
+            // setStudent({ firstName: "", lastName: "", email: "", phone: "", rollNo: "", department: ""});
             // const data = await response.json();
             // console.log(data.status)
             // console.log(data); // Do something with the response
@@ -65,6 +72,7 @@ function Profile() {
 
     return (
         <>
+            {console.log(userName)}
             <TopBar />
             <div>
                 <header>
@@ -77,7 +85,7 @@ function Profile() {
                         <i class="fa-regular fa-user" id="profile-icon"></i>
                     </div>
 
-                    <div className="col-lg-9 col-md-9 col-sm-12" id="profile-details">
+                    <form className="col-lg-9 col-md-9 col-sm-12" id="profile-details">
 
                         <div className="row">
                             <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
@@ -127,7 +135,7 @@ function Profile() {
                         <div className="button-div">
                             <button type="button" class="btn btn-primary" onClick={submitHandler}>Update</button>
                         </div>
-                    </div>
+                    </form>
 
                 </div>
             </div>

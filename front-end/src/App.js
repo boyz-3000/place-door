@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Updates from "./Pages/student/Updates";
@@ -15,21 +15,49 @@ import AddUser from "./Pages/admin/add-user/AddUser";
 
 import UserContext from './UserContext';
 
+// export const UserContext = createContext();
 
 function App() {
-  const [user, setUser] = useState("");
-  const [userType, setUserType] = useState("student");
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [userName, setUserName] = useState("");
+  const [userType, setUserType] = useState('student');
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    window.localStorage.setItem('userName', JSON.stringify(userName));
+    window.localStorage.setItem('userType', JSON.stringify(userType));
+    window.localStorage.setItem('loggedIn', JSON.stringify(loggedIn));
+  }, [userName, userType, loggedIn]);
+
+  // useEffect(() => {
+  //   const _userName = window.localStorage.getItem('userName');
+  //   if (_userName!==null) setUserName(_userName);
+  // }, []);
 
   return (
-    <UserContext.Provider value={{ user, setUser, userType, setUserType, loggedIn, setLoggedIn }}>
+    <UserContext.Provider value={{ userName, setUserName, userType, setUserType, loggedIn, setLoggedIn }}>
       <div className="app">
         {/* <BrowserRouter>
           <Routes>
             <Route path="/" element={<SigninForm />} />
           </Routes>
         </BrowserRouter> */}
-        {
+        <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<SigninForm />} />
+              <Route path="/jobs" element={<Jobs />} />
+              <Route path="/resume" element={<Resume />} />
+              <Route path="/applied" element={<Applied />} />
+              <Route path="/update" element={<Updates />} />
+              <Route path="/profile" element={<Profile />} />
+              <Route path="/" element={<SigninForm />} />
+              <Route path="/applied-student" element={<AppliedStudent />} />
+              <Route path="/post-jobs" element={<Post_jobs />} />
+              <Route path="/" element={<SigninForm />} />
+              <Route path="/student-details" element={<StudentDetails />} />
+              <Route path="/add-user" element={<AddUser />} />
+            </Routes>
+          </BrowserRouter>
+        {/* {
           userType === "student" &&
           <BrowserRouter>
             <Routes>
@@ -41,8 +69,8 @@ function App() {
               <Route path="/profile" element={<Profile />} />
             </Routes>
           </BrowserRouter>
-        }
-        {
+        } */}
+        {/* {
           userType === "company" &&
           <BrowserRouter>
             <Routes>
@@ -61,7 +89,7 @@ function App() {
               <Route path="/add-user" element={<AddUser />} />
             </Routes>
           </BrowserRouter>
-        }
+        } */}
       </div>
     </UserContext.Provider>
   )

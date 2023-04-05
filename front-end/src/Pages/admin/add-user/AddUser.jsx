@@ -1,8 +1,14 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import "./AddUser.css";
 import axios from "axios";
+import UserContext from "../../../UserContext";
+import { useNavigate } from 'react-router-dom';
 
 function AddUser(props) {
+
+  const { userName, setUserName } = useContext(UserContext);
+  const { userType, setUserType } = useContext(UserContext);
+  const { loggedIn, setLoggedIn } = useContext(UserContext);
 
   const [username, setUsername] = useState("");
   const users = [
@@ -11,7 +17,6 @@ function AddUser(props) {
     { _username: "user3", _password: "password3", _userType: "admin" },
   ];
   const [password, setPassword] = useState("");
-  const [userType, setUserType] = useState("admin");
   const [usernameError, setUsernameError] = useState("");
   const [passwordError, setPasswordError] = useState("");
   const [submitMsg, setSubmitMsg] = useState("");
@@ -146,6 +151,7 @@ function AddUser(props) {
 
   return (
     <div className="add-user-page-bg">
+      {console.log(userType)}
       <div className="signin-page">
         <i className="fa-solid fa-graduation-cap"></i>
         <h1 className="title">PlaceDoor</h1>
