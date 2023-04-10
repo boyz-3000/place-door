@@ -23,7 +23,7 @@ const companySchema = new mongoose.Schema(
             required: true,
         },
         contactNo: {
-            type: Array,
+            type: String,
             required: true,
         },
     }

@@ -3,10 +3,17 @@ import TopBar from "../../../components/top-bar/TopBar";
 import "./Profile.css";
 import axios from "axios";
 
+import "./states_data";
+import { states } from "./states_data";
+
 function CompanyProfile() {
 
     const isLoggedIn = localStorage.getItem('isLoggedIn');
     const username = localStorage.getItem('username');
+
+    const [state, setState] = useState([]);
+    const [cityDB, setcityDB] = useState([]);
+    const [city, setCity] = useState("");
 
     const [company, setCompany] = useState({
         username: username,
@@ -17,37 +24,20 @@ function CompanyProfile() {
         contactNo: "",
     });
 
+    const handleState = (e) => {
+        if (e.target.value === "") {
+            setCompany({ ...company, [state]: "" });
+            setcityDB([]);
+            return;
+        }
+        setCompany({ ...company, [state]: e.target.value });
+        const getstate = e.target.value;
+        const citydata = states.find((s) => s.state === getstate).districts;
+        // const citydata =  statesDB[getstate];
+        setcityDB(citydata);
+    };
+
     console.log(username);
-
-    // useEffect(() => {
-
-    //     if (isLoggedIn === 'false') {
-    //         navigate('/');
-    //     }
-
-    //     const username = localStorage.getItem('username');
-    //     console.log(username);
-    //     async function getCompany() {
-    //         const response = await axios.get(`http://localhost:5001/get-company:${username}`);
-    //         console.log(response);
-    //         console.log(response.data['message'] === null);
-    //         if (response.data['message'] === null) {
-    //             navigate('/profile');
-    //         } else {
-    //         }
-    //         // setCompanies(response.data);
-    //     }
-
-    //     getCompany();
-    //     console.log('waiting');
-    // }, []);
-
-    // const [firstName, setFirstName] = useState("");
-    // const [lastName, setLastName] = useState("");
-    // const [email, setEmail] = useState("");
-    // const [phone, setPhone] = useState("");
-    // const [rollNo, setRollNo] = useState("");
-    // const [department, setDepartment] = useState("");
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -60,16 +50,16 @@ function CompanyProfile() {
         console.log(company);
 
         const values = Object.values(company);
-        
+
         if (values.some(value => value === "")) {
             alert("Please fill in all the fields");
             return;
         }
-        
+
         try {
 
             const response = await axios.post(
-                `http://localhost:5001/add-company:${username}`,
+                `http://localhost:5001/add-company`,
                 company
             );
 
@@ -113,17 +103,39 @@ function CompanyProfile() {
                             </div>
                         </div>
 
-                        <div className="row">
+                        <div className="row drop-down-row">
                             <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
                                 <div className="input-group">
-                                    <for for="exampleFormControlInput1" class="form-label">City</for>
-                                    <input type="text" className="form-control" name="city" value={company.city} onChange={handleInputChange} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
+                                    <label for="inputState" className="form-label">
+                                        State
+                                    </label>
+                                    <select
+                                        id="inputState"
+                                        className="form-select"
+                                        onChange={(e) => handleState(e)}
+                                    >
+                                        <option value="">--Select State--</option>
+                                        {states.map((s, index) => (
+                                            <option value={s.state} key={index}>
+                                                {s.state}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
                                 <div className="input-group">
-                                    <for for="exampleFormControlInput1" class="form-label">State</for>
-                                    <input type="text" className="form-control" name="state" value={company.state} onChange={handleInputChange} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
+                                    <label for="inputState" className="form-label">
+                                        City
+                                    </label>
+                                    <select id="inputCity" className="form-select" onChange={handleInputChange}>
+                                        <option selected>--Select City--</option>
+                                        {cityDB.map((c, index) => (
+                                            <option value={c} key={index}>
+                                                {c}
+                                            </option>
+                                        ))}
+                                    </select>
                                 </div>
                             </div>
                         </div>

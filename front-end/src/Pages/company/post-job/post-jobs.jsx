@@ -16,17 +16,17 @@ const Post_jobs = () => {
 
   useEffect(() => {
 
-    if (isLoggedIn==='false') {
+    if (isLoggedIn === 'false') {
       navigate('/');
     }
 
     const username = localStorage.getItem('username');
     console.log(username);
     async function getCompany() {
-      const response = await axios.get(`http://localhost:5001/get-company:${username}`);
+      const response = await axios.get(`http://localhost:5001/get-company?username=${username}`);
       console.log(response);
-      console.log(response.data['message']===null);
-      if(response.data['message']===null) {
+      console.log(response.data['message'] === null);
+      if (response.data['message'] === null) {
         navigate('/profile');
       }
       // setCompanies(response.data);
@@ -40,7 +40,7 @@ const Post_jobs = () => {
   // const { user } = useContext(UserContext);
   const username = localStorage.getItem('username');
   console.log(username);
-  
+
 
   // let statesDB = require('./states.json');
 
@@ -79,6 +79,11 @@ const Post_jobs = () => {
   const [add_details, setAddDetails] = useState([]);
 
   const handleState = (e) => {
+    if (e.target.value === "") {
+      setState("");
+      setcityDB([]);
+      return;
+    }
     setState(e.target.value);
     const getstate = e.target.value;
     const citydata = states.find((s) => s.state === getstate).districts;
@@ -140,7 +145,7 @@ const Post_jobs = () => {
               <div className="col-lg-6 mb-3">
                 <label className="col-form-label col-sm-1 mode_label">Mode</label>
                 <label className="toggle">
-                  <input type="checkbox"onChange={(e) => setMode(e.target.checked)} checked={mode} />
+                  <input type="checkbox" onChange={(e) => setMode(e.target.checked)} checked={mode} />
                   {/* {console.log(jobRole, mode, date, state, city, pincode, stipend, ctc)} */}
                   <span className="slider"></span>
                   <span className="labels" data-on="Onsite" data-off="WFH" ></span>

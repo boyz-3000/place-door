@@ -6,7 +6,8 @@ import SigninForm from "./Pages/signin/Signin";
 import Jobs from "./Pages/student/Jobs/Jobs";
 import Resume from "./Pages/student/Resume";
 import Applied from "./Pages/student/Applied/Applied";
-import Profile from "./Pages/Profile/Profile";
+// import Profile from "./Pages/Profile/Profile";
+import StudentProfile from "./Pages/student/Profile/Profile";
 import AppliedStudent from "./Pages/company/applied-students/applied-students";
 import Post_jobs from "./Pages/company/post-job/post-jobs";
 import "./App.css";
@@ -49,7 +50,7 @@ function App() {
             <Route path="/resume" element={<Resume />} />
             <Route path="/applied" element={<Applied />} />
             <Route path="/update" element={<Updates />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route path="/profile" element={<StudentProfile />} />
           </Routes>
         </BrowserRouter>
       }

@@ -1,9 +1,9 @@
 import React, { useState, useContext } from "react";
-import TopBar from "../../components/top-bar/TopBar";
+import TopBar from "../../../components/top-bar/TopBar";
 import "./Profile.css";
 import axios from "axios";
 
-function Profile() {
+function StudentProfile() {
 
     const [student, setStudent] = useState({
         firstName: "",
@@ -137,4 +137,4 @@ function Profile() {
     );
 }
 
-export default Profile;
+export default StudentProfile;
