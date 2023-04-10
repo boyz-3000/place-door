@@ -3,30 +3,22 @@ import Card from "../../../components/card/Card";
 import "./Jobs.css";
 import TopBar from "../../../components/top-bar/TopBar";
 import axios from "axios";
-import UserContext from "../../../UserContext";
 import { useNavigate } from 'react-router-dom';
 
 function Jobs() {
-  const userName = localStorage.getItem('userName');
-  const userType = localStorage.getItem('userType');
-  const loggedIn = localStorage.getItem('loggedIn');
-  // const { userName, setUserName } = useContext(UserContext);
-  // const { userType, setUserType } = useContext(UserContext);
-  // const { loggedIn, setLoggedIn } = useContext(UserContext);
+  const username = localStorage.getItem('username');
   const navigate = useNavigate();
 
   const [companies, setCompanies] = useState([]);
 
   useEffect(() => {
+
+    if (localStorage.getItem('isLoggedIn')==='false') {
+      navigate('/');
+    }
+
     async function fetchCompanies() {
-      const response = await axios.get('http://localhost:5001/get-jobs');
-      // const response = await fetch('http://localhost:5001/jobs', {
-      //   method: 'GET',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   // body: JSON.stringify({ username, password })
-      // });
+      const response = await axios.get(`http://localhost:5001/get-jobs/`);
       setCompanies(response.data);
     }
 
@@ -35,18 +27,11 @@ function Jobs() {
     console.log(fetchCompanies());
   }, []);
 
-  if (!loggedIn) {
-    navigate('/');
-  }
-
   return (
     <>
       <TopBar />
       <div className="container text-center dashboard">
         <div className="row">
-          {console.log(userType)}
-          {console.log(userName)}
-          {console.log(loggedIn)}
           {companies?.map((company) => (
             <div className="col-lg-4 col-md-6 col-sm-12 card-item">
               <Card

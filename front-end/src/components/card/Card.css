@@ -74,14 +74,16 @@
   text-align: center;
 }
 .card-subtitle {
-  /* position: absolute;
+  position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); */
-  padding-top: 50%;
+  transform: translate(-50%, -50%);
+  padding-top: 30%;
   text-align: center;
   /* color: #fff; */
   font-size: 0.9rem;
+  /* background-color: red; */
+  /* padding-bottom: 15%; */
 }
 
 .card-text ul {

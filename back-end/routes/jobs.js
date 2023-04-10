@@ -26,10 +26,10 @@ app.post('/post-job', async (req, res) => {
   // const job = await Jobs.findOne({
   //   company, jobRole
   // });
-  const job = await Jobs.find();
+  const job = await Jobs.find({ company, jobRole });
 
   if (job) {
-    return res.json({ status: 400, message: "Job Role already posted!!" });
+    return res.json({ status: 400, message: `Job Role already posted!! ${company}` });
   }
 
   try {

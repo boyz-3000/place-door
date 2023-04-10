@@ -1,16 +1,16 @@
 import React, { useState, useContext } from "react";
 import "./AddUser.css";
 import axios from "axios";
-import UserContext from "../../../UserContext";
-import { useNavigate } from 'react-router-dom';
 
 function AddUser(props) {
 
-  const { userName, setUserName } = useContext(UserContext);
-  const { userType, setUserType } = useContext(UserContext);
-  const { loggedIn, setLoggedIn } = useContext(UserContext);
+  const [username, setUsername] = useState(localStorage.getItem('username'));
+  const [userType, setUserType] = useState("");
 
-  const [username, setUsername] = useState("");
+
+  console.log(localStorage.getItem('username'));
+  console.log(localStorage.getItem('usertype'));
+
   const users = [
     { _username: "user1", _password: "password1", _userType: "admin" },
     { _username: "user2", _password: "password2", _userType: "company" },
@@ -156,7 +156,7 @@ function AddUser(props) {
         <i className="fa-solid fa-graduation-cap"></i>
         <h1 className="title">PlaceDoor</h1>
         <hr />
-        <form onSubmit={_submitHandler}>
+        <form onSubmit={submitHandler}>
           <div className="input_container">
             <input
               type="text"

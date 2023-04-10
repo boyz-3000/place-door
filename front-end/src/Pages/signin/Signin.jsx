@@ -2,17 +2,14 @@ import React, { useState, useContext } from 'react'
 import "./Signin.css";
 import { useNavigate } from 'react-router-dom';
 
-import UserContext from '../../UserContext';
-
 
 function SigninForm() {
-  // const { userName, setUserName } = useContext(UserContext);
-  // const { userType, setUserType } = useContext(UserContext);
-  // const { loggedIn, setLoggedIn } = useContext(UserContext);
+  localStorage.setItem('isLoggedIn', 'false');
+  const [usernameInput, setUsernameInput] = useState('');
+  const [userType, setUserType] = useState(localStorage.getItem('userType'));
+  // const userType = localStorage.getItem('userType');
 
-  const userType = window.localStorage.getItem('userType'); 
-  
-  const [username, setUsername] = useState("");
+  const [username, setUsername] = useState(localStorage.getItem('username'));
   const [password, setPassword] = useState("");
   const [activeButton, setActiveButton] = useState('student');
   const navigate = useNavigate();
@@ -41,15 +38,16 @@ function SigninForm() {
       console.log(data.status)
       console.log(data); // Do something with the response
       if (data.status === 201) {
-        // setUserName(username);
-        window.localStorage.setItem('userName', username);
-        window.localStorage.setItem('loggedIn', true);
-        // setLoggedIn(true);
+        localStorage.setItem('username', username);
+        localStorage.setItem('isLoggedIn', 'true');
         if (userType === 'student') {
+          localStorage.setItem('userType', 'student');
           navigate('/jobs');
         } else if (userType === 'company') {
+          localStorage.setItem('userType', 'company');
           navigate('post-jobs');
         } else {
+          localStorage.setItem('userType', 'admin');
           navigate('add-user');
         }
       }
@@ -60,17 +58,22 @@ function SigninForm() {
     }
   };
 
+  const handleUserType = (_userType) => {
+    setUserType(_userType);
+    localStorage.setItem('userType', userType);
+  }
+
   return (
     <div className='page-bg'>
       {console.log(userType)}
       <div className='login-type-div'>
-        <div className='login-type' onClick={() => window.localStorage.setItem('userType', 'student')} style={{ backgroundColor: userType === 'student' ? 'green' : 'white', color: userType === 'student' ? 'white' : 'blue' }}>
+        <div className='login-type' onClick={() => handleUserType('student')} style={{ backgroundColor: userType === 'student' ? 'green' : 'white', color: userType === 'student' ? 'white' : 'blue' }}>
           Student
         </div>
-        <div className='login-type' onClick={() => window.localStorage.setItem('userType', 'company')} style={{ backgroundColor: userType === 'company' ? 'green' : 'white', color: userType === 'company' ? 'white' : 'blue' }}>
+        <div className='login-type' onClick={() => handleUserType('company')} style={{ backgroundColor: userType === 'company' ? 'green' : 'white', color: userType === 'company' ? 'white' : 'blue' }}>
           Company
         </div>
-        <div className='login-type' onClick={() => window.localStorage.setItem('userType', 'admin')} style={{ backgroundColor: userType === 'admin' ? 'green' : 'white', color: userType === 'admin' ? 'white' : 'blue' }}>
+        <div className='login-type' onClick={() => handleUserType('admin')} style={{ backgroundColor: userType === 'admin' ? 'green' : 'white', color: userType === 'admin' ? 'white' : 'blue' }}>
           Admin
         </div>
       </div>

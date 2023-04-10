@@ -3,13 +3,7 @@ import TopBar from "../../components/top-bar/TopBar";
 import "./Profile.css";
 import axios from "axios";
 
-import UserContext from "../../UserContext";
-import { useNavigate } from "react-router-dom";
-
 function Profile() {
-
-    const { userName } = useContext(UserContext);
-    const { loggedIn, setLoggedIn } = useContext(UserContext);
 
     const [student, setStudent] = useState({
         firstName: "",
@@ -72,7 +66,7 @@ function Profile() {
 
     return (
         <>
-            {console.log(userName)}
+            {/* {console.log(userName)} */}
             <TopBar />
             <div>
                 <header>

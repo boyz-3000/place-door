@@ -6,12 +6,13 @@ import "./states_data";
 import { states } from "./states_data";
 import { WithContext as ReactTags } from "react-tag-input";
 // import { statesDB } from "./states_data";
-import UserContext from "../../../UserContext";
 import { useNavigate } from 'react-router-dom';
 
 
 const Post_jobs = () => {
-  const { user } = useContext(UserContext);
+  // const { user } = useContext(UserContext);
+  const username = localStorage.getItem('username');
+  console.log(username);
   const navigate = useNavigate();
 
   // let statesDB = require('./states.json');
@@ -74,6 +75,7 @@ const Post_jobs = () => {
 
       const data = await response.json();
       console.log(data.status)
+      console.log('data');
       console.log(data); // Do something with the response
       if (data.status === 201) {
         navigate('/jobs')

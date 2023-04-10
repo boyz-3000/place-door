@@ -13,7 +13,7 @@ function Card(props) {
           <div class="flip-card-front">
             <h5 className="card-title">{props.name}</h5>
             <div className="email">
-              <h6 className="card-subtitle mb-2 ">{props.email}</h6>
+              <h6 className="card-subtitle mb-2 ">{props.job_profile}</h6>
             </div>
           </div>
           <div className="flip-card-back">
@@ -21,8 +21,8 @@ function Card(props) {
               <p className="card-text">
                 <ul>
                   <li>
-                    <i className="fa-solid fa-briefcase"></i>Job Profile :{" "}
-                    {props.job_profile}
+                    <i className="fa-solid fa-briefcase"></i>Email :{" "}
+                    {props.email}
                   </li>
                   <li>
                     <i className="fa-solid fa-clock"></i>Last Date to apply :{" "}
