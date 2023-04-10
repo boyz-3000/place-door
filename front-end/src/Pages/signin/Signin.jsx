@@ -4,14 +4,12 @@ import { useNavigate } from 'react-router-dom';
 
 
 function SigninForm() {
+  localStorage.setItem('userType', 'student');
   localStorage.setItem('isLoggedIn', 'false');
-  const [usernameInput, setUsernameInput] = useState('');
   const [userType, setUserType] = useState(localStorage.getItem('userType'));
-  // const userType = localStorage.getItem('userType');
 
-  const [username, setUsername] = useState(localStorage.getItem('username'));
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [activeButton, setActiveButton] = useState('student');
   const navigate = useNavigate();
 
 
@@ -35,7 +33,7 @@ function SigninForm() {
       });
 
       const data = await response.json();
-      console.log(data.status)
+      console.log(data.status);
       console.log(data); // Do something with the response
       if (data.status === 201) {
         localStorage.setItem('username', username);

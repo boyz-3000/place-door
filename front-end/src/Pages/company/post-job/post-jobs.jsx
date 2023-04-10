@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./post-jobs.css";
 import "../../../components/top-bar/TopBar";
 import TopBar from "../../../components/top-bar/TopBar";
@@ -7,13 +7,40 @@ import { states } from "./states_data";
 import { WithContext as ReactTags } from "react-tag-input";
 // import { statesDB } from "./states_data";
 import { useNavigate } from 'react-router-dom';
-
+import axios from "axios";
 
 const Post_jobs = () => {
+
+  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  const navigate = useNavigate();
+
+  useEffect(() => {
+
+    if (isLoggedIn==='false') {
+      navigate('/');
+    }
+
+    const username = localStorage.getItem('username');
+    console.log(username);
+    async function getCompany() {
+      const response = await axios.get(`http://localhost:5001/get-company:${username}`);
+      console.log(response);
+      console.log(response.data['message']===null);
+      if(response.data['message']===null) {
+        navigate('/profile');
+      }
+      // setCompanies(response.data);
+    }
+
+    getCompany();
+    console.log('waiting');
+  }, []);
+
+
   // const { user } = useContext(UserContext);
   const username = localStorage.getItem('username');
   console.log(username);
-  const navigate = useNavigate();
+  
 
   // let statesDB = require('./states.json');
 

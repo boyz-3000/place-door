@@ -12,11 +12,10 @@ import Post_jobs from "./Pages/company/post-job/post-jobs";
 import "./App.css";
 import StudentDetails from "./Pages/admin/student_details/StudentDetails";
 import AddUser from "./Pages/admin/add-user/AddUser";
+import CompanyProfile from "./Pages/company/profile/Profile";
 
 function App() {
-  const [isLoggedIn, setIsLoggedIn] = useState(localStorage.getItem('isLoggedIn'));
-  const [username, setUsername] = useState(localStorage.getItem('username'));
-  const [userType, setUserType] = useState(localStorage.getItem('userType'));
+  const userType = localStorage.getItem('userType');
 
   return (
     <div className="app">
@@ -61,6 +60,7 @@ function App() {
             <Route path="/" element={<SigninForm />} />
             <Route path="/applied-student" element={<AppliedStudent />} />
             <Route path="/post-jobs" element={<Post_jobs />} />
+            <Route path="/profile" element={<CompanyProfile />} />
           </Routes>
         </BrowserRouter>
       }
