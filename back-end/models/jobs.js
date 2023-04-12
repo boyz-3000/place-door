@@ -2,11 +2,7 @@ const mongoose = require('mongoose');
 
 const jobSchema = new mongoose.Schema(
     {
-        company: {
-            type: String,
-            required: true,
-        },
-        email: {
+        username: {
             type: String,
             required: true,
         },
@@ -19,14 +15,6 @@ const jobSchema = new mongoose.Schema(
             required: true,
         },
         lastDate: {
-            type: Date,
-            required: true,
-        },
-        city: {
-            type: String,
-            required: true,
-        },
-        state: {
             type: String,
             required: true,
         },
