@@ -106,36 +106,40 @@ function CompanyProfile() {
                         <div className="row drop-down-row">
                             <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
                                 <div className="input-group">
-                                    <label for="inputState" className="form-label">
-                                        State
-                                    </label>
-                                    <select
-                                        id="inputState"
-                                        className="form-select"
-                                        onChange={(e) => handleState(e)}
-                                    >
-                                        <option value="">--Select State--</option>
-                                        {states.map((s, index) => (
-                                            <option value={s.state} key={index}>
-                                                {s.state}
-                                            </option>
-                                        ))}
-                                    </select>
+                                    <div className="state_dropdown">
+                                        <label for="exampleFormControlInput1" className="form-label dd-label">
+                                            State
+                                        </label>
+                                        <select
+                                            id="inputState"
+                                            className="form-select"
+                                            onChange={(e) => handleState(e)}
+                                        >
+                                            <option value="">--Select State--</option>
+                                            {states.map((s, index) => (
+                                                <option value={s.state} key={index}>
+                                                    {s.state}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
                                 <div className="input-group">
-                                    <label for="inputState" className="form-label">
-                                        City
-                                    </label>
-                                    <select id="inputCity" className="form-select" onChange={handleInputChange}>
-                                        <option selected>--Select City--</option>
-                                        {cityDB.map((c, index) => (
-                                            <option value={c} key={index}>
-                                                {c}
-                                            </option>
-                                        ))}
-                                    </select>
+                                    <div className="city_dropdown">
+                                        <label for="exampleFormControlInput1" className="form-label dd-label">
+                                            City
+                                        </label>
+                                        <select id="inputCity" className="form-select" onChange={handleInputChange}>
+                                            <option selected>--Select City--</option>
+                                            {cityDB.map((c, index) => (
+                                                <option value={c} key={index}>
+                                                    {c}
+                                                </option>
+                                            ))}
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
