@@ -3,11 +3,12 @@ import "./Company_Detail_Card.css";
 
 
 function Company_Detail_Card(props) {
+  console.log(props.company);
     return (
         <div className="job-modal">
           <div className="row">
             <div className="col-lg-12 col-md-12 col-sm-12">
-              <h1 className="comp-name">Company</h1>
+              <h1 className="comp-name">{props.company.companyName}</h1>
             </div>
 
             <br />
@@ -17,7 +18,7 @@ function Company_Detail_Card(props) {
               </div>
               <div className="col-lg-8 col-md-12 col-sm-12">
                 <h5 className="comp-details value">
-                  Jagatpura NRI Road Jaipur
+                  {props.company.state + ", " + props.company.city}
                 </h5>
               </div>
             </div>
@@ -27,7 +28,7 @@ function Company_Detail_Card(props) {
                 <h5 className="comp-details key">Job Profile</h5>
               </div>
               <div className="col-lg-8 col-md-12 col-sm-12">
-                <h5 className="comp-details value">Flutter Developer</h5>
+                <h5 className="comp-details value">{props.company.jobRole}</h5>
               </div>
             </div>
             <br />
@@ -36,7 +37,7 @@ function Company_Detail_Card(props) {
                 <h5 className="comp-details key">Package</h5>
               </div>
               <div className="col-lg-8 col-md-12 col-sm-12">
-                <h5 className="comp-details value">8 LPA </h5>
+                <h5 className="comp-details value">{props.company.package}</h5>
               </div>
             </div>
             <br />
