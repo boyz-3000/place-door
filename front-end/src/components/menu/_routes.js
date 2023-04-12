@@ -3,7 +3,7 @@ import * as Bs from "react-icons/bs";
 import * as Io from "react-icons/io";
 import * as Bi from "react-icons/bi";
 
-const routes = [
+const studentRoutes = [
   {
     path: "/update",
     name: "Updates",
@@ -30,5 +30,40 @@ const routes = [
     icon: <Bi.BiLogOut/>,
   }
 ];
+
+const adminRoutes = [
+  {
+    path: "/add-user",
+    name: "Add User",
+    icon: <Ai.AiFillBell />,
+  },
+  {
+    path: "//student-details",
+    name: "Student Details",
+    icon: <Bs.BsFillBriefcaseFill />,
+  },
+  {
+    path: "/",
+    name: "Logout",
+    icon: <Bi.BiLogOut/>,
+  }
+];
+
+console.log(localStorage.getItem('userType'));
+
+const userType = localStorage.getItem('userType');
+
+let routes = [];
+
+if(userType==='student') {
+  routes = studentRoutes;
+} else if(userType==='company') {
+  
+}
+else{
+  routes = adminRoutes;
+}
+
+console.log(routes);
 
 export default routes;

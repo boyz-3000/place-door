@@ -201,10 +201,10 @@
     width: 20rem;
   }
 
-  .form-check .form-check-input{
+  /* .form-check .form-check-input{
     width: 5em;
     height: 1.6rem;
-  }
+  } */
 
   .toggle {
     --width: 6.8rem;

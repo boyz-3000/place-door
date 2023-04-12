@@ -42,12 +42,6 @@ function Jobs() {
           {companies?.map((company) => (
             <div className="col-lg-4 col-md-6 col-sm-12 card-item">
               <Card
-                // name={company.companyName}
-                // email={company.emailID}
-                // job_profile={company.jobRole}
-                // lastDate={company.lastDate}
-                // mode={company.mode}
-                // location={company.state + ", " + company.city}
                 company={company}
               />
             </div>

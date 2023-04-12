@@ -200,6 +200,14 @@ hr{
     }
 }
 
+.radio-buttons{
+    margin-top: 6%;
+}
 
+.form-check-label:hover{
+    cursor: pointer;
+}
 
-
+.form-check-input:hover{
+    cursor: pointer;
+}

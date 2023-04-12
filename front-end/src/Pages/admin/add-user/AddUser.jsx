@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import TopBar from "../../../components/top-bar/TopBar";
 import "./AddUser.css";
 import axios from "axios";
 
@@ -24,6 +25,7 @@ function AddUser(props) {
 
   const handleUserType = (event) => {
     setUserType(event.target.value);
+    console.log(event.target.value);
   };
 
 
@@ -34,10 +36,10 @@ function AddUser(props) {
           "Content-type": "application/json"
         }
       };
-  
+
       const promises = users.map(async (user) => {
         const { _username, _password, _userType } = user;
-        console.log({_username, _password, _userType})
+        console.log({ _username, _password, _userType })
         const { data } = await axios.post("http://localhost:5001/add-user",
           {
             _username,
@@ -49,7 +51,7 @@ function AddUser(props) {
         // localStorage.setItem('userInfo', JSON.stringify(data));
         return data.status;
       });
-  
+
       const results = await Promise.all(promises);
       return results;
     } catch (error) {
@@ -146,96 +148,99 @@ function AddUser(props) {
 
   const checkField = () => {
     setButtonClicked(true);
-    
+
   }
 
   return (
-    <div className="add-user-page-bg">
-      {console.log(userType)}
-      <div className="signin-page">
-        <i className="fa-solid fa-graduation-cap"></i>
-        <h1 className="title">PlaceDoor</h1>
-        <hr />
-        <form onSubmit={submitHandler}>
-          <div className="input_container">
-            <input
-              type="text"
-              placeholder="Username"
-              value={username}
-              // onChange={(e) => setUsername(e.target.value)}
-              onChange={handleUsernameChange}
-            />
-            {usernameError && (
-              <p className="p-error">{usernameError}</p>
-            )}
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={handlePasswordChange}
-            />
-            {passwordError && (
-              <p className="p-error">{passwordError}</p>
-            )}
-          </div>
-          <div className="radio-buttons">
-            <div className="row">
-              <div className="col-lg-6 col-md-6 col-sm-6">
-                <div className="form-check form-check-inline">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="inlineRadio1"
-                    value="admin"
-                    checked={userType === "admin"}
-                    onChange={handleUserType}
-                  />
-                  <p className="form-check-label">Admin</p>
+    <>
+      <TopBar />
+      <div className="add-user-page-bg">
+        {console.log(userType)}
+        <div className="signin-page">
+          <i className="fa-solid fa-graduation-cap"></i>
+          <h1 className="title">PlaceDoor</h1>
+          <hr />
+          <form onSubmit={submitHandler}>
+            <div className="input_container">
+              <input
+                type="text"
+                placeholder="Username"
+                value={username}
+                // onChange={(e) => setUsername(e.target.value)}
+                onChange={handleUsernameChange}
+              />
+              {usernameError && (
+                <p className="p-error">{usernameError}</p>
+              )}
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={handlePasswordChange}
+              />
+              {passwordError && (
+                <p className="p-error">{passwordError}</p>
+              )}
+            </div>
+            <div className="radio-buttons">
+              <div className="row">
+                <div className="col-lg-6 col-md-6 col-sm-6">
+                  <div className="form-check form-check-inline">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="inlineRadio1"
+                      value="admin"
+                      checked={userType === "admin"}
+                      onChange={handleUserType}
+                    />
+                    <p className="form-check-label" value="admin" onClick={() => setUserType('admin')}>Admin</p>
+                  </div>
                 </div>
-              </div>
-              <div className="col-lg-6 col-md-6 col-sm-6">
-                <div className="form-check form-check-inline">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="inlineRadio2"
-                    value="company"
-                    checked={userType === "company"}
-                    onChange={handleUserType}
-                  />
-                  <p className="form-check-label">Company</p>
+                <div className="col-lg-6 col-md-6 col-sm-6">
+                  <div className="form-check form-check-inline">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="inlineRadio2"
+                      value="company"
+                      checked={userType === "company"}
+                      onChange={handleUserType}
+                    />
+                    <p className="form-check-label" value="company" onClick={() => setUserType('company')}>Company</p>
+                  </div>
                 </div>
-              </div>
-              <div className="col-lg-6 col-md-6 col-sm-6">
-                <div className="form-check form-check-inline">
-                  <input
-                    className="form-check-input"
-                    type="radio"
-                    name="inlineRadioOptions"
-                    id="inlineRadio3"
-                    value="student"
-                    checked={userType === "student"}
-                    onChange={handleUserType}
-                  />
-                  <p className="form-check-label">Student</p>
+                <div className="col-lg-6 col-md-6 col-sm-6">
+                  <div className="form-check form-check-inline">
+                    <input
+                      className="form-check-input"
+                      type="radio"
+                      name="inlineRadioOptions"
+                      id="inlineRadio3"
+                      value="student"
+                      checked={userType === "student"}
+                      onChange={handleUserType}
+                    />
+                    <p className="form-check-label" value="student" onClick={() => setUserType('student')}>Student</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <button className="login_button" type="submit" onClick={() => { checkField() }} disabled={!(!usernameError && !passwordError)}>
-            ADD
-          </button>
-          {console.log(!(!usernameError && !passwordError))}
-          {(usernameError || passwordError) && buttonClicked && (
-            <p className="p-error">* Please fill the required fields !!</p>
-          )}
-          <p className="p-error">{submitMsg}</p>
-          <div className="link_container"></div>
-        </form>
+            <button className="login_button" type="submit" onClick={() => { checkField() }} disabled={!(!usernameError && !passwordError)}>
+              ADD
+            </button>
+            {console.log(!(!usernameError && !passwordError))}
+            {(usernameError || passwordError) && buttonClicked && (
+              <p className="p-error">* Please fill the required fields !!</p>
+            )}
+            <p className="p-error">{submitMsg}</p>
+            <div className="link_container"></div>
+          </form>
+        </div>
       </div>
-    </div>
+    </>
   );
 }
 

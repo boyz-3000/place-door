@@ -9,8 +9,20 @@ const click = () => {
   return alert("Clicked for menu.");
 };
 
+
+
 function TopBar() {
   const [show, setShow] = React.useState(false);
+  let height = 420;
+  let width = 280;
+  const userType = localStorage.getItem('userType');
+  if (userType==='company') {
+    height = 420;
+    width = 500;
+  } else {
+    height = 330;
+    width = 310;
+  }
   return (
     <div>
       <div className="bg-light">
@@ -43,8 +55,8 @@ function TopBar() {
       <Modal
         show={show}
         onClose={() => setShow(false)}
-        height={420}
-        width={280}
+        height={height}
+        width={width}
       >
         <div className="modal-content-div">
           <h1> Menu </h1>

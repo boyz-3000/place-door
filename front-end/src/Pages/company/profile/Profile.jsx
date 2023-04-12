@@ -24,15 +24,15 @@ function CompanyProfile() {
         contactNo: "",
     });
 
-    const handleState = (e) => {
-        if (e.target.value === "") {
-            setCompany({ ...company, [state]: "" });
+    const handleStateOrCity = (event) => {
+        const { name, value } = event.target;
+        if (value === "") {
+            setCompany({ ...company, [name]: "" });
             setcityDB([]);
             return;
         }
-        setCompany({ ...company, [state]: e.target.value });
-        const getstate = e.target.value;
-        const citydata = states.find((s) => s.state === getstate).districts;
+        setCompany({ ...company, [name]: value });
+        const citydata = states.find((s) => s.state === value).districts;
         // const citydata =  statesDB[getstate];
         setcityDB(citydata);
     };
@@ -42,6 +42,7 @@ function CompanyProfile() {
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setCompany({ ...company, [name]: value });
+        console.log("state" +" " +state);
     };
 
     const submitHandler = async (e) => {
@@ -113,7 +114,9 @@ function CompanyProfile() {
                                         <select
                                             id="inputState"
                                             className="form-select"
-                                            onChange={(e) => handleState(e)}
+                                            name="state"
+                                            // onChange={(e) => handleState(e)}
+                                            onChange={handleStateOrCity}
                                         >
                                             <option value="">--Select State--</option>
                                             {states.map((s, index) => (
@@ -131,7 +134,7 @@ function CompanyProfile() {
                                         <label for="exampleFormControlInput1" className="form-label dd-label">
                                             City
                                         </label>
-                                        <select id="inputCity" className="form-select" onChange={handleInputChange}>
+                                        <select id="inputCity" className="form-select" name="city" onChange={handleStateOrCity}>
                                             <option selected>--Select City--</option>
                                             {cityDB.map((c, index) => (
                                                 <option value={c} key={index}>
