@@ -36,8 +36,9 @@ function CompanyProfile() {
         // const citydata =  statesDB[getstate];
         setcityDB(citydata);
     };
+    
 
-    console.log(username);
+    console.log("username "+username);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -47,8 +48,6 @@ function CompanyProfile() {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-
-        console.log(company);
 
         const values = Object.values(company);
 
@@ -67,14 +66,12 @@ function CompanyProfile() {
             console.log(response.data);
             alert("Company profile updated successfully!");
         } catch (error) {
-            console.log('ero')
             console.error(error);
         }
     };
 
     return (
         <>
-            {/* {console.log(userName)} */}
             <TopBar />
             <div>
                 <header>
@@ -134,7 +131,7 @@ function CompanyProfile() {
                                         <label for="exampleFormControlInput1" className="form-label dd-label">
                                             City
                                         </label>
-                                        <select id="inputCity" className="form-select" name="city" onChange={handleStateOrCity}>
+                                        <select id="inputCity" className="form-select" name="city" onChange={handleInputChange}>
                                             <option selected>--Select City--</option>
                                             {cityDB.map((c, index) => (
                                                 <option value={c} key={index}>
