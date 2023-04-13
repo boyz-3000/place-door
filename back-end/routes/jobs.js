@@ -33,6 +33,9 @@ app.get("/get-jobs", async (req, res) => {
           city: "$company.city",
           contactNo: "$company.contactNo",
           jobRole: 1,
+          mode: 1,
+          lastDate: 1,
+          skillsReq: 1,
           stipend: 1,
           _package: 1,
           reqCGPA: 1,
@@ -56,7 +59,8 @@ app.post('/post-job', async (req, res) => {
   try {
     job = new Job({ username, jobRole, mode, lastDate, skillsReq, stipend, _package, reqCGPA });
     await job.save();
-    res.status(201).json({ status: 201, message: "Job Posted successfully!!" });
+    console.log(skillsReq);
+    res.status(201).json({ status: 201, message: `skills: ${skillsReq.text}` }); //"Job Posted successfully!!"
   } catch (error) {
     console.error(error);
     res.status(500).send('Internal server error');

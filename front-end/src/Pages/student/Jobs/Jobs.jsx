@@ -22,7 +22,6 @@ function Jobs() {
         .get(`http://localhost:5001/get-jobs/`)
         .then(response => {
           setCompanies(response.data);
-          console.log("done!!");
         })
         .catch(error => {
           console.log(error);
@@ -30,8 +29,6 @@ function Jobs() {
     }
 
     fetchCompanies();
-    console.log('waiting');
-    console.log('done 2!!');
   }, []);
 
   return (

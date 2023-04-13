@@ -5,7 +5,6 @@ import Modal from "../modal/Modal";
 import Company_Detail_Card from "../company/company-details-card/Company_Detail_Card";
 
 function Card(props) {
-  console.log(props);
   const [show, setShow] = React.useState(false);
   return (
     <div>

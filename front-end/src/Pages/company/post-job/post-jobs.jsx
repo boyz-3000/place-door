@@ -24,8 +24,6 @@ const Post_jobs = () => {
     console.log(username);
     async function getCompany() {
       const response = await axios.get(`http://localhost:5001/get-company?username=${username}`);
-      console.log(response);
-      console.log(response.data['message'] === null);
       if (response.data['message'] === null) {
         navigate('/profile');
       }
@@ -33,27 +31,25 @@ const Post_jobs = () => {
     }
 
     getCompany();
-    console.log('waiting');
   }, []);
 
 
   // const { user } = useContext(UserContext);
   const username = localStorage.getItem('username');
-  console.log(username);
 
 
   // let statesDB = require('./states.json');
 
   const handleDelete = (i) => {
-    setTags(tags.filter((tag, index) => index !== i));
+    setTags(skillsReq.filter((tag, index) => index !== i));
   };
 
   const handleAddition = (tag) => {
-    setTags([...tags, tag]);
+    setTags([...skillsReq, tag]);
   };
 
   const handleDrag = (tag, currPos, newPos) => {
-    const newTags = tags.slice();
+    const newTags = skillsReq.slice();
 
     newTags.splice(currPos, 1);
     newTags.splice(newPos, 0, tag);
@@ -73,7 +69,7 @@ const Post_jobs = () => {
   const [cityDB, setcityDB] = useState([]);
   const [city, setCity] = useState("");
   const [pincode, setPincode] = useState([]);
-  const [tags, setTags] = React.useState([]);
+  const [skillsReq, setTags] = useState([]);
   const [stipend, setStipend] = useState([]);
   const [_package, setPackage] = useState([]);
   const [reqCGPA, setReqCGPA] = useState("");
@@ -96,16 +92,13 @@ const Post_jobs = () => {
     e.preventDefault();
 
     try {
-
-      console.log(username, jobRole, mode, lastDate, state, city, tags, stipend, _package, reqCGPA);
       const response = await axios.post(
         'http://localhost:5001/post-job',
-        {username, jobRole, mode, lastDate, tags, stipend, _package, reqCGPA}
+        {username, jobRole, mode, lastDate, skillsReq, stipend, _package, reqCGPA}
       );
       const status = response.data['status'];
       const message = response.data['message'];
       alert(message);
-      console.log(response.data);
     } catch (error) {
       console.log(error)
       console.error(error);
@@ -165,7 +158,7 @@ const Post_jobs = () => {
                 Skills Required
               </label>
               <ReactTags
-                tags={tags}
+                tags={skillsReq}
                 handleDelete={handleDelete}
                 handleAddition={handleAddition}
                 handleDrag={handleDrag}
