@@ -75,7 +75,8 @@ const Post_jobs = () => {
   const [pincode, setPincode] = useState([]);
   const [tags, setTags] = React.useState([]);
   const [stipend, setStipend] = useState([]);
-  const [ctc, setCTC] = useState([]);
+  const [_package, setPackage] = useState([]);
+  const [reqCGPA, setReqCGPA] = useState("");
   const [add_details, setAddDetails] = useState([]);
 
   const handleState = (e) => {
@@ -96,22 +97,15 @@ const Post_jobs = () => {
 
     try {
 
-      console.log(jobRole, mode, lastDate, state, tags, stipend, ctc);
-      const response = await fetch('http://localhost:5001/post-job', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ jobRole, mode, lastDate, state, city, tags, stipend, ctc })
-      });
-
-      const data = await response.json();
-      console.log(data.status)
-      console.log('data');
-      console.log(data); // Do something with the response
-      if (data.status === 201) {
-        navigate('/jobs')
-      }
+      console.log(username, jobRole, mode, lastDate, state, city, tags, stipend, _package, reqCGPA);
+      const response = await axios.post(
+        'http://localhost:5001/post-job',
+        {username, jobRole, mode, lastDate, tags, stipend, _package, reqCGPA}
+      );
+      const status = response.data['status'];
+      const message = response.data['message'];
+      alert(message);
+      console.log(response.data);
     } catch (error) {
       console.log(error)
       console.error(error);
@@ -146,7 +140,7 @@ const Post_jobs = () => {
                 <label className="col-form-label col-sm-1 mode_label">Mode</label>
                 <label className="toggle">
                   <input type="checkbox" onChange={(e) => setMode(e.target.checked)} checked={mode} />
-                  {/* {console.log(jobRole, mode, date, state, city, pincode, stipend, ctc)} */}
+                  {/* {console.log(jobRole, mode, date, state, city, pincode, stipend, _package)} */}
                   <span className="slider"></span>
                   <span className="labels" data-on="Onsite" data-off="WFH" ></span>
                 </label>
@@ -165,47 +159,6 @@ const Post_jobs = () => {
                   onChange={(e) => setLastDate(e.target.value)}
                 />
               </div>
-            </div>
-            <div className="col-md-4">
-              <label for="inputState" className="form-label">
-                State
-              </label>
-              <select
-                id="inputState"
-                className="form-select"
-                onChange={(e) => handleState(e)}
-              >
-                <option value="">--Select State--</option>
-                {states.map((s, index) => (
-                  <option value={s.state} key={index}>
-                    {s.state}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="col-md-4">
-              <label for="inputState" className="form-label">
-                City
-              </label>
-              <select id="inputCity" className="form-select" onChange={(e) => setCity(e.target.value)}>
-                <option selected>--Select City--</option>
-                {cityDB.map((c, index) => (
-                  <option value={c} key={index}>
-                    {c}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div className="col-md-2">
-              <label for="pincode" className="form-label">
-                Pin Code
-              </label>
-              <input
-                type="text"
-                className="form-control"
-                id="pincode"
-                onChange={(e) => setPincode(e.target.value)}
-              />
             </div>
             <div className="col-12">
               <label for="stipend" className="form-label">
@@ -245,9 +198,23 @@ const Post_jobs = () => {
                 <input
                   type="text"
                   placeholder="CTC"
-                  id="ctc"
-                  value={ctc}
-                  onChange={(e) => setCTC(e.target.value)}
+                  id="_package"
+                  value={_package}
+                  onChange={(e) => setPackage(e.target.value)}
+                />
+              </div>
+            </div>
+            <div className="col-sm-8">
+              <label for="inputAddress" className="form-label">
+                Required CGPA
+              </label>
+              <div className="input-box">
+                <input
+                  type="text"
+                  placeholder="CGPA"
+                  id="reqCGPA"
+                  value={reqCGPA}
+                  onChange={(e) => setReqCGPA(e.target.value)}
                 />
               </div>
             </div>

@@ -33,8 +33,9 @@ app.get("/get-jobs", async (req, res) => {
           city: "$company.city",
           contactNo: "$company.contactNo",
           jobRole: 1,
-          ctc: 1,
           stipend: 1,
+          _package: 1,
+          reqCGPA: 1,
         },
       },
     ]);
@@ -47,19 +48,13 @@ app.get("/get-jobs", async (req, res) => {
 
 app.post('/post-job', async (req, res) => {
 
-  const { username, jobRole, mode, lastDate, city, state, skillsReq, stipend, package, reqCGPA } = req.body;
-  // const { jobRole, mode, lastDate, state, city, skillsReq, stipend, ctc } = req.body;
-  // const job = await Jobs.findOne({
-  //   company, jobRole
-  // });
-  let job = await Jobs.find({ username, jobRole });
-  // console.log(typeof job);
-  // if (job) {
-  //   return res.json({ status: 400, message: `Job Role already posted!! ${job}` });
-  // }
-
+  const { username, jobRole, mode, lastDate, skillsReq, stipend, _package, reqCGPA } = req.body;
+  let job = await Jobs.findOne({ username, jobRole });
+  if(job) {
+    return res.status(201).json({status: 200, message: "Job Already Exists!!"});
+  }
   try {
-    job = new Job({ username, jobRole, mode, lastDate, city, state, skillsReq, stipend, package, reqCGPA });
+    job = new Job({ username, jobRole, mode, lastDate, skillsReq, stipend, _package, reqCGPA });
     await job.save();
     res.status(201).json({ status: 201, message: "Job Posted successfully!!" });
   } catch (error) {

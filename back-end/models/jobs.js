@@ -26,7 +26,7 @@ const jobSchema = new mongoose.Schema(
             type: String,
             required: true,
         },
-        package: {
+        _package: {
             type: String,
             required: true,
         },
@@ -37,7 +37,7 @@ const jobSchema = new mongoose.Schema(
     }
 )
 
-const Job = mongoose.model('Job', jobSchema);
+const Job = mongoose.model('jobs', jobSchema);
 
 module.exports = Job;
 
