@@ -94,7 +94,7 @@ const Post_jobs = () => {
     try {
       const response = await axios.post(
         'http://localhost:5001/post-job',
-        {username, jobRole, mode, lastDate, skillsReq, stipend, _package, reqCGPA}
+        { username, jobRole, mode, lastDate, skillsReq, stipend, _package, reqCGPA }
       );
       const status = response.data['status'];
       const message = response.data['message'];

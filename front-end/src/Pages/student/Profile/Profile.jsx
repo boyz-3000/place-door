@@ -5,21 +5,18 @@ import axios from "axios";
 
 function StudentProfile() {
 
+    const username = localStorage.getItem('username');
+
     const [student, setStudent] = useState({
-        firstName: "",
-        lastName: "",
-        email: "",
-        phone: "",
+        username: username,
+        studentName: "",
+        emailID: "",
+        phoneNo: "",
         rollNo: "",
         department: "",
+        stream: "",
+        cgpa: "",
     });
-
-    // const [firstName, setFirstName] = useState("");
-    // const [lastName, setLastName] = useState("");
-    // const [email, setEmail] = useState("");
-    // const [phone, setPhone] = useState("");
-    // const [rollNo, setRollNo] = useState("");
-    // const [department, setDepartment] = useState("");
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
@@ -29,36 +26,14 @@ function StudentProfile() {
     const submitHandler = async (e) => {
         e.preventDefault();
 
-        console.log(student);
-
         try {
-            //   const response = await axios.put('http://localhost:5001/update-student', {
-            //     // method: 'PUT',
-            //     // headers: {
-            //     //   'Content-Type': 'application/json'
-            //     // },
-            //     // body: JSON.stringify({ username, password })
-
-            //   });
-
+            
             const response = await axios.post(
-                'http://localhost:5001/update-student',
+                `http://localhost:5001/update-student`,
                 student
             );
-
-            console.log(response.data);
             alert("Student profile updated successfully!");
-            // setStudent({ firstName: "", lastName: "", email: "", phone: "", rollNo: "", department: ""});
-            // const data = await response.json();
-            // console.log(data.status)
-            // console.log(data); // Do something with the response
-            // if (data.status === 201) {
-            //     setUser(username);
-            //     setLoggedIn(true);
-            //     navigate('/jobs');
-            // }
         } catch (error) {
-            console.log('ero')
             console.error(error);
             // setLoggedIn(false);
         }
@@ -66,7 +41,6 @@ function StudentProfile() {
 
     return (
         <>
-            {/* {console.log(userName)} */}
             <TopBar />
             <div>
                 <header>
@@ -84,29 +58,14 @@ function StudentProfile() {
                         <div className="row">
                             <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
                                 <div className="input-group">
-                                    <for for="exampleFormControlInput1" class="form-label">First Name</for>
-                                    <input type="text" className="form-control" name="firstName" value={student.firstName} onChange={handleInputChange} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
+                                    <for for="exampleFormControlInput1" class="form-label">Name</for>
+                                    <input type="text" className="form-control" name="studentName" value={student.name} placeholder="Full Name" onChange={handleInputChange} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
                                 </div>
                             </div>
-                            <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
-                                <div className="input-group">
-                                    <for for="exampleFormControlInput1" class="form-label">Last Name</for>
-                                    <input type="text" className="form-control" name="lastName" value={student.lastName} onChange={handleInputChange} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="row">
                             <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
                                 <div className="input-group">
                                     <for for="exampleFormControlInput1" class="form-label">Email ID</for>
-                                    <input type="text" className="form-control" name="email" value={student.email} onChange={handleInputChange} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
-                                </div>
-                            </div>
-                            <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
-                                <div className="input-group">
-                                    <for for="exampleFormControlInput1" class="form-label">Phone Number</for>
-                                    <input type="text" className="form-control" name="phone" value={student.phone} onChange={handleInputChange} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
+                                    <input type="text" className="form-control" name="emailID" value={student.email} placeholder="xyz@jklu.edu.in" onChange={handleInputChange} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
                                 </div>
                             </div>
                         </div>
@@ -114,14 +73,38 @@ function StudentProfile() {
                         <div className="row">
                             <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
                                 <div className="input-group">
-                                    <for for="exampleFormControlInput1" class="form-label">Roll Number</for>
-                                    <input type="text" className="form-control" name="rollNo" value={student.rollNo} onChange={handleInputChange} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
+                                    <for for="exampleFormControlInput1" class="form-label">Phone Number</for>
+                                    <input type="text" className="form-control" name="phoneNo" value={student.phone} placeholder="xxxxxxxxxx" onChange={handleInputChange} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
                                 </div>
                             </div>
                             <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
                                 <div className="input-group">
+                                    <for for="exampleFormControlInput1" class="form-label">Roll Number</for>
+                                    <input type="text" className="form-control" name="rollNo" value={student.rollNo} placeholder="e.g. 2020BTechCSE039" onChange={handleInputChange} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
+                                <div className="input-group">
                                     <for for="exampleFormControlInput1" class="form-label">Department</for>
-                                    <input type="text" className="form-control" name="department" value={student.department} onChange={handleInputChange} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
+                                    <input type="text" className="form-control" name="department" value={student.department} placeholder="e.g. BTech" onChange={handleInputChange} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
+                                </div>
+                            </div>
+                            <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
+                                <div className="input-group">
+                                    <for for="exampleFormControlInput1" class="form-label">Stream</for>
+                                    <input type="text" className="form-control" name="stream" value={student.stream} placeholder="e.g. CSE" onChange={handleInputChange} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="row">
+                            <div className="col-lg-6 col-md-6 col-sm-12 mb-3">
+                                <div className="input-group">
+                                    <for for="exampleFormControlInput1" class="form-label">CGPA</for>
+                                    <input type="text" className="form-control" name="cgpa" value={student.cgpa} placeholder="e.g. 7.8" onChange={handleInputChange} aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" />
                                 </div>
                             </div>
                         </div>

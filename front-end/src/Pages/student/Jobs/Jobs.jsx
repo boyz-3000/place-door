@@ -17,6 +17,23 @@ function Jobs() {
       navigate('/');
     }
 
+    // async function fetchStudent() {
+    //   axios
+    //     .get(`http://localhost:5001/get-jobs/`)
+    //     .then(response => {
+    //       setCompanies(response.data);
+    //     })
+    //     .catch(error => {
+    //       console.log(error);
+    //     });
+    async function fetchStudent() {
+      const response = await axios.get(`http://localhost:5001/get-student?username=${username}`);
+
+      if (response.data['message'] === null) {
+        navigate('/profile');
+      }
+    }
+
     async function fetchCompanies() {
       axios
         .get(`http://localhost:5001/get-jobs/`)
@@ -27,7 +44,7 @@ function Jobs() {
           console.log(error);
         });
     }
-
+    fetchStudent();
     fetchCompanies();
   }, []);
 

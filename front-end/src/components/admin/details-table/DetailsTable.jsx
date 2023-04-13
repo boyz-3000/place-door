@@ -10,13 +10,7 @@ function DetailsTable() {
   useEffect(() => {
     async function fetchStudents() {
       const response = await axios.get('http://localhost:5001/student-details');
-      // const response = await fetch('http://localhost:5001/jobs', {
-      //   method: 'GET',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   // body: JSON.stringify({ username, password })
-      // });
+      console.log(response);
       setStudents(response.data);
     }
 
@@ -49,7 +43,7 @@ function DetailsTable() {
               <tr key={i}>
                 <th scope="row">{i+1}</th>
                 <td>{student.name}</td>
-                <td>{student.roll}</td>
+                <td>{student.rollNo}</td>
                 <td>{student.email}</td>
                 <td>{student.phone}</td>
                 <td>{student.batch}</td>
