@@ -73,3 +73,11 @@
     animation: fade-in 1s ease;
   }
   
+  i {
+    /* background-color: red; */
+    cursor: pointer;
+  }
+
+  .icon {
+    background-color: green;
+  }

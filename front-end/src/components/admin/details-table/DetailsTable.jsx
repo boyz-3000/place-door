@@ -7,6 +7,18 @@ function DetailsTable() {
 
   const [students, setStudents] = useState([]);
 
+  const handleRefresh = () => {
+    setFilters({
+      studentName: "",
+      rollNo: "",
+      emailID: "",
+      phoneNo: "",
+      department: "",
+      stream: "",
+      cgpa: ""
+    });
+  };
+
   const [filters, setFilters] = useState({
     studentName: "",
     rollNo: "",
@@ -66,7 +78,11 @@ function DetailsTable() {
               <th scope="col">CGPA</th>
             </tr>
             <tr className="filter-row">
-              <td></td>
+              <td className="icon">
+                {/* <button onClick={handleRefresh}>
+                </button> */}
+                <i class="fa fa-refresh" aria-hidden="true" onClick={handleRefresh}></i>
+              </td>
               <td>
                 <input
                   type="text"
