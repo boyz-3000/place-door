@@ -20,27 +20,6 @@ function App() {
 
   return (
     <div className="app">
-      {/* <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<SigninForm />} />
-        </Routes>
-      </BrowserRouter> */}
-      {/* <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<SigninForm />} />
-          <Route path="/jobs" element={<Jobs />} />
-          <Route path="/resume" element={<Resume />} />
-          <Route path="/applied" element={<Applied />} />
-          <Route path="/update" element={<Updates />} />
-          <Route path="/profile" element={<Profile />} />
-          <Route path="/" element={<SigninForm />} />
-          <Route path="/applied-student" element={<AppliedStudent />} />
-          <Route path="/post-jobs" element={<Post_jobs />} />
-          <Route path="/" element={<SigninForm />} />
-          <Route path="/student-details" element={<StudentDetails />} />
-          <Route path="/add-user" element={<AddUser />} />
-        </Routes>
-      </BrowserRouter> */}
       {
         userType === "student" &&
         <BrowserRouter>
