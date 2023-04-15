@@ -10,3 +10,7 @@
 .table{
     color: #645cbb;
 } */
+
+.filter-row td{
+    max-width: 5x;
+}
