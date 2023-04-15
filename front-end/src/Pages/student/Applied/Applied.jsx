@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import AppliedJobDetails from "../../../components/student/applied-jobs/AppliedJobDetails";
 import TopBar from "../../../components/top-bar/TopBar";
-import AppliedJobData from "./AppliedJobsData";
 import axios from "axios";
 import { useNavigate } from 'react-router-dom';
 
