@@ -12,6 +12,7 @@ import AppliedStudent from "./Pages/company/applied-students/applied-students";
 import Post_jobs from "./Pages/company/post-job/post-jobs";
 import "./App.css";
 import StudentDetails from "./Pages/admin/student_details/StudentDetails";
+import CompanyDetails from "./Pages/admin/company_details/CompanyDetails";
 import AddUser from "./Pages/admin/add-user/AddUser";
 import CompanyProfile from "./Pages/company/profile/Profile";
 
@@ -50,6 +51,7 @@ function App() {
           <Routes>
             <Route path="/" element={<SigninForm />} />
             <Route path="/student-details" element={<StudentDetails />} />
+            <Route path="/company-details" element={<CompanyDetails />} />
             <Route path="/add-user" element={<AddUser />} />
           </Routes>
         </BrowserRouter>

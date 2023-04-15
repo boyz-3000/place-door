@@ -1,9 +1,8 @@
 import React, { useState, useEffect} from "react";
-import './StudentDetails.css';
 import TopBar from "../../../components/top-bar/TopBar";
 import axios from 'axios';
 
-function StudentDetails() {
+function CompanyDetails() {
     const [students, setStudents] = useState([]);
 
     const handleRefresh = () => {
@@ -60,7 +59,7 @@ function StudentDetails() {
 
     return (
         <>
-            <TopBar />
+        <TopBar />
             <div className="alert alert-secondary" role="alert">
                 Student Details
             </div>
@@ -159,4 +158,4 @@ function StudentDetails() {
     );
 }
 
-export default StudentDetails;
+export default CompanyDetails;
