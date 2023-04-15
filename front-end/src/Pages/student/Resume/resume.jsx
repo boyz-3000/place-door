@@ -13,6 +13,7 @@ const Resume = () => {
         // onAfterPrint:()=> alert("Print Sucessfull.")
     })
 
+    const [name, setName] = useState("Ayush");
 
     const [backgroundImage, setBackgroundImage] = useState('https://pixlok.com/wp-content/uploads/2022/02/Profile-Icon-SVG-09856789.png');
 
@@ -143,6 +144,21 @@ const Resume = () => {
 
     const handleHobbyTagClick = (index) => {
         console.log("The tag at index " + index + " was clicked");
+    };
+
+    const [isEditing, setIsEditing] = useState(false);
+    const [paragraph, setParagraph] = useState("This is a paragraph.");
+
+    const handleEdit = () => {
+        setIsEditing(true);
+    };
+
+    const handleSave = () => {
+        setIsEditing(false);
+    };
+
+    const handleChange = (event) => {
+        setParagraph(event.target.value);
     };
 
     return (
@@ -290,7 +306,20 @@ const Resume = () => {
                     <div className="right">
                         <div className="intro-div">
                             <div className="name">
-                                <h1>AYUSH RANWA</h1>
+                                <h1>{name}</h1>
+                                <div className="plus-icon">
+                                    <i class="fa-light fa-plus fa-xs" style={{color: "#22f765"}}></i>                                </div>
+                                {/* {isEditing ? (
+                                    <div>
+                                        <textarea value={paragraph} onChange={handleChange} />
+                                        <button onClick={handleSave}>Save</button>
+                                    </div>
+                                ) : (
+                                    <div>
+                                        <p>{paragraph}</p>
+                                        <button onClick={handleEdit}>Edit</button>
+                                    </div>
+                                )} */}
                             </div>
                             <div className="description">
                                 Being a calm and punctual individual, with my skills in competitive programming and web development and being passionate about new technologies, I would love to contribute to this community.

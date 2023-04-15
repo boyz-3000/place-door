@@ -12,6 +12,7 @@ import Post_jobs from "./Pages/company/Post-jobs/post-jobs";
 import "./App.css";
 // import StudentDetails from "./Pages/admin/student-details/StudentDetails";
 import StudentDetails from "./Pages/admin/student_details/StudentDetails";
+import Resume2 from "./Pages/student/Resume2.0/resume";
 
 function App(){
   return (
@@ -21,6 +22,7 @@ function App(){
           <Route path="/" element={<SigninForm />} />
           <Route path="/jobs" element={<Jobs />} />
           <Route path="/resume" element={<Resume />} />
+          <Route path="/resume2" element={<Resume2 />} />
           <Route path="/applied" element={<Applied />} />
           <Route path="/update" element={<Updates />} />
           <Route path="/profile" element={<Profile />} />
