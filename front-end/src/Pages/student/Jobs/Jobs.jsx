@@ -2,8 +2,9 @@ import React, { useState, useEffect, useContext } from "react";
 import Card from "../../../components/card/Card";
 import "./Jobs.css";
 import TopBar from "../../../components/top-bar/TopBar";
-import axios from "axios";
 import { useNavigate } from 'react-router-dom';
+import { getStudent } from "../../../api/student/student";
+import { getCompanies } from "../../../api/company/company";
 
 function Jobs() {
   const username = localStorage.getItem('username');
@@ -17,35 +18,16 @@ function Jobs() {
       navigate('/');
     }
 
-    // async function fetchStudent() {
-    //   axios
-    //     .get(`http://localhost:5001/get-jobs/`)
-    //     .then(response => {
-    //       setCompanies(response.data);
-    //     })
-    //     .catch(error => {
-    //       console.log(error);
-    //     });
-    async function fetchStudent() {
-      const response = await axios.get(`http://localhost:5001/get-student?username=${username}`);
-
-      if (response.data['message'] === null) {
-        navigate('/profile');
-      }
+    if (!getStudent()) {
+      navigate('/profile');
     }
 
-    async function fetchCompanies() {
-      axios
-        .get(`http://localhost:5001/get-jobs/`)
-        .then(response => {
-          setCompanies(response.data);
-        })
-        .catch(error => {
-          console.log(error);
-        });
+    async function getCompaniesData() {
+      const result = await getCompanies();
+      setCompanies(result);
     }
-    fetchStudent();
-    fetchCompanies();
+    getCompaniesData();
+
   }, []);
 
   return (

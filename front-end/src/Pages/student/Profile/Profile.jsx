@@ -1,7 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import TopBar from "../../../components/top-bar/TopBar";
 import "./Profile.css";
 import axios from "axios";
+
+import { getStudent, updateStudent } from "../../../api/student/student";
 
 function StudentProfile() {
 
@@ -18,6 +20,20 @@ function StudentProfile() {
         cgpa: "",
     });
 
+    useEffect(() => {
+        getStudent(username)
+            .then(response => {
+                const _student = response['message'];
+                setStudent(prevStudent => ({
+                    ...prevStudent,
+                    ..._student
+                }));
+            })
+            .catch(error => {
+                console.error('Error fetching student:', error);
+            });
+    }, [username]);
+
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setStudent({ ...student, [name]: value });
@@ -25,18 +41,7 @@ function StudentProfile() {
 
     const submitHandler = async (e) => {
         e.preventDefault();
-
-        try {
-            
-            const response = await axios.post(
-                `http://localhost:5001/update-student`,
-                student
-            );
-            alert("Student profile updated successfully!");
-        } catch (error) {
-            console.error(error);
-            // setLoggedIn(false);
-        }
+        await updateStudent(student);
     };
 
     return (

@@ -1,14 +1,16 @@
 import axios from "axios";
 
-async function fetchStudent(username) {
+export async function getStudent(username) {
     const response = await axios.get(`http://localhost:5001/get-student?username=${username}`);
 
     if (response.data['message'] === null) {
-        navigate('/profile');
+        // navigate('/profile');
+        return false;
     }
+    return response.data;
 }
 
-async function updateStudent() {
+export async function updateStudent(student) {
     try {
         const response = await axios.post(
             `http://localhost:5001/update-student`,
@@ -17,6 +19,5 @@ async function updateStudent() {
         alert("Student profile updated successfully!");
     } catch (error) {
         console.error(error);
-        // setLoggedIn(false);
     }
 }

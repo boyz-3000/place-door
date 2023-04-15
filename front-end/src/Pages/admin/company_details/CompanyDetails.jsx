@@ -1,30 +1,27 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
+import './CompanyDetails.css';
 import TopBar from "../../../components/top-bar/TopBar";
 import axios from 'axios';
 
 function CompanyDetails() {
-    const [students, setStudents] = useState([]);
+    const [companies, setCompanies] = useState([]);
 
     const handleRefresh = () => {
         setFilters({
-            studentName: "",
-            rollNo: "",
+            companyName: "",
             emailID: "",
-            phoneNo: "",
-            department: "",
-            stream: "",
-            cgpa: ""
+            contactNo: "",
+            city: "",
+            state: "",
         });
     };
 
     const [filters, setFilters] = useState({
-        studentName: "",
-        rollNo: "",
+        companyName: "",
         emailID: "",
-        phoneNo: "",
-        department: "",
-        stream: "",
-        cgpa: "",
+        contactNo: "",
+        city: "",
+        state: "",
     });
 
     const handleFilterChange = (event) => {
@@ -32,24 +29,24 @@ function CompanyDetails() {
         setFilters((prevFilters) => ({ ...prevFilters, [name]: value }));
     };
 
-    const filteredStudents = students.filter((student) => {
-        // Filter the students based on the current filter values
+    const filteredCompanies = companies.filter((company) => {
+        // Filter the companies based on the current filter values
         return (
-            student.studentName.toLowerCase().includes(filters.studentName.toLowerCase()) &&
-            student.rollNo.toLowerCase().includes(filters.rollNo.toLowerCase()) &&
-            student.emailID.toLowerCase().includes(filters.emailID.toLowerCase()) &&
-            student.phoneNo.toLowerCase().includes(filters.phoneNo.toLowerCase()) &&
-            student.department.toLowerCase().includes(filters.department.toLowerCase()) &&
-            student.stream.toLowerCase().includes(filters.stream.toLowerCase()) &&
-            student.cgpa.toLowerCase().includes(filters.cgpa.toLowerCase())
+            company.companyName.toLowerCase().includes(filters.companyName.toLowerCase()) &&
+            company.rollNo.toLowerCase().includes(filters.rollNo.toLowerCase()) &&
+            company.emailID.toLowerCase().includes(filters.emailID.toLowerCase()) &&
+            company.phoneNo.toLowerCase().includes(filters.phoneNo.toLowerCase()) &&
+            company.department.toLowerCase().includes(filters.department.toLowerCase()) &&
+            company.stream.toLowerCase().includes(filters.stream.toLowerCase()) &&
+            company.cgpa.toLowerCase().includes(filters.cgpa.toLowerCase())
         );
     });
 
     useEffect(() => {
         async function fetchStudents() {
-            const response = await axios.get('http://localhost:5001/student-details');
+            const response = await axios.get('http://localhost:5001/company-details');
             console.log(response);
-            setStudents(response.data);
+            setCompanies(response.data);
         }
 
         fetchStudents();
@@ -59,7 +56,7 @@ function CompanyDetails() {
 
     return (
         <>
-        <TopBar />
+            <TopBar />
             <div className="alert alert-secondary" role="alert">
                 Student Details
             </div>
@@ -68,13 +65,11 @@ function CompanyDetails() {
                     <thead>
                         <tr>
                             <th scope="col">S.No.</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Roll no.</th>
-                            <th scope="col">Email</th>
-                            <th scope="col">Phone no.</th>
-                            <th scope="col">Department</th>
-                            <th scope="col">Stream</th>
-                            <th scope="col">CGPA</th>
+                            <th scope="col">Company Name</th>
+                            <th scope="col">Email ID</th>
+                            <th scope="col">Contact No</th>
+                            <th scope="col">City</th>
+                            <th scope="col">State</th>
                         </tr>
                         <tr className="filter-row">
                             <td className="icon">
@@ -139,16 +134,16 @@ function CompanyDetails() {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredStudents?.map((student, i) => (
+                        {filteredCompanies?.map((company, i) => (
                             <tr key={i}>
                                 <th scope="row">{i + 1}</th>
-                                <td>{student.studentName}</td>
-                                <td>{student.rollNo}</td>
-                                <td>{student.emailID}</td>
-                                <td>{student.phoneNo}</td>
-                                <td>{student.department}</td>
-                                <td>{student.stream}</td>
-                                <td>{student.cgpa}</td>
+                                <td>{company.studentName}</td>
+                                <td>{company.rollNo}</td>
+                                <td>{company.emailID}</td>
+                                <td>{company.phoneNo}</td>
+                                <td>{company.department}</td>
+                                <td>{company.stream}</td>
+                                <td>{company.cgpa}</td>
                             </tr>
                         ))}
                     </tbody>

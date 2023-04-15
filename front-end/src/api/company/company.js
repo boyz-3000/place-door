@@ -1,12 +1,11 @@
 import axios from "axios";
 
-async function fetchCompanies() {
-    axios
-      .get(`http://localhost:5001/get-jobs/`)
-      .then(response => {
-        setCompanies(response.data);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+
+export async function getCompanies() {
+  try {
+    const response = await axios.get(`http://localhost:5001/get-jobs`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
   }
+}
