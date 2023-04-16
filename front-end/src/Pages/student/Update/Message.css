@@ -1,0 +1,22 @@
+.messages-div{
+    display: flex;
+    align-items: left;
+    flex-direction: column;
+    /* overflow-y: auto; */
+}
+
+.message-section{
+    margin: 1%;
+    padding: 0.8rem;
+    background-color: #ededed;
+    border-top-right-radius: 1.2rem;
+    border-bottom-right-radius: 1.2rem;
+    border-bottom-left-radius: 1.2rem;
+}
+
+p{
+    margin: 0;
+    padding-bottom: 1%;
+    padding-left: 1%;
+}
+

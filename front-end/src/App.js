@@ -1,7 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-import Updates from "./Pages/student/Updates";
 import SigninForm from "./Pages/signin/Signin";
 import Jobs from "./Pages/student/Jobs/Jobs";
 import Resume from "./Pages/student/Resume";
@@ -16,6 +15,7 @@ import CompanyDetails from "./Pages/admin/company_details/CompanyDetails";
 import AddUser from "./Pages/admin/add-user/AddUser";
 import CompanyProfile from "./Pages/company/profile/Profile";
 import Applications from "./Pages/admin/applications/Applications";
+import Update from "./Pages/student/Update/Update";
 
 function App() {
   const userType = localStorage.getItem('userType');
@@ -30,7 +30,7 @@ function App() {
             <Route path="/jobs" element={<Jobs />} />
             <Route path="/resume" element={<Resume />} />
             <Route path="/applied" element={<Applied />} />
-            <Route path="/update" element={<Updates />} />
+            <Route path="/update" element={<Update />} />
             <Route path="/profile" element={<StudentProfile />} />
           </Routes>
         </BrowserRouter>
