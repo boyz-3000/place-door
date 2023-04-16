@@ -15,6 +15,7 @@ import StudentDetails from "./Pages/admin/student_details/StudentDetails";
 import CompanyDetails from "./Pages/admin/company_details/CompanyDetails";
 import AddUser from "./Pages/admin/add-user/AddUser";
 import CompanyProfile from "./Pages/company/profile/Profile";
+import Applications from "./Pages/admin/applications/Applications";
 
 function App() {
   const userType = localStorage.getItem('userType');
@@ -52,7 +53,8 @@ function App() {
             <Route path="/" element={<SigninForm />} />
             <Route path="/student-details" element={<StudentDetails />} />
             <Route path="/company-details" element={<CompanyDetails />} />
-            <Route path="/add-user" element={<AddUser />} />
+            <Route path="/applications" element={<Applications />} />
+            <Route path="/add-user" element={<Applications />} />
           </Routes>
         </BrowserRouter>
       }
