@@ -16,15 +16,11 @@
     top: 0;
     right: 0;
     padding: 1% 1%;
-    /* background-color: red; */
     width: 600px;
 }
 
 .login-type-div div {
-    /* width: auto; */
-    /* display: block; */
     font-family: 'Lato', sans-serif;
-    /* margin: 3rem auto 1rem auto; */
     margin-right: 1.5rem;
     border-radius: 0.4rem;
     font-size: 1.3rem;
@@ -88,26 +84,6 @@
 hr {
     color: #645cbb;
 }
-
-/* .login_button{
-    display: block;
-    margin: 3rem auto 1rem auto;
-    width: 35%;
-    border-radius: 25px;
-    font-size: 1rem;
-    cursor: pointer;
-    border: 0;
-    margin-top: 3%;
-    padding: .5rem 0rem;
-    color: black;
-    -webkit-transition: ease-out 0.4s;
-    transition: ease-out 0.4s;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 13px 27px -5px, rgba(0, 0, 0, 0.3) 0px 8px 16px -8px;    
-}
-
-.login_button:hover{
-    box-shadow: inset 400px 0 0 0 #D80286;
-} */
 
 .login_button {
     display: block;

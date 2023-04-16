@@ -1,4 +1,3 @@
-/* Global styles */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -13,7 +12,6 @@ body {
   margin: 3% 8% 2% 8%;
 }
 
-/* Table styles */
 .table {
   margin: 0 auto;
   border-collapse: collapse;
@@ -70,7 +68,6 @@ td div i:hover {
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-/* Animations */
 @keyframes fade-in {
   from {
     opacity: 0;
@@ -86,7 +83,6 @@ td div i:hover {
 }
 
 i {
-  /* background-color: red; */
   cursor: pointer;
 }
 

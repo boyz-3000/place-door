@@ -17,8 +17,16 @@ function Jobs() {
     if (localStorage.getItem('isLoggedIn') === 'false') {
       navigate('/');
     }
-
-    if (!getStudent()) {
+    console.log(getStudent(username));
+    getStudent(username)
+      .then(response => {
+        const _student = response['message'];
+        console.log(_student);
+      })
+      .catch(error => {
+        console.error('Error fetching student:', error);
+      });
+    if (!getStudent(username)) {
       navigate('/profile');
     }
 

@@ -31,6 +31,24 @@ const studentRoutes = [
   }
 ];
 
+const companyRoutes = [
+  {
+    path: "/applied-student",
+    name: "Applied Students",
+    icon: <Ai.AiFillBell />,
+  },
+  {
+    path: "/post-jobs",
+    name: "Post Job",
+    icon: <Bs.BsFillBriefcaseFill />,
+  },
+  {
+    path: "/",
+    name: "Logout",
+    icon: <Bi.BiLogOut/>,
+  }
+];
+
 const adminRoutes = [
   {
     path: "/add-user",
@@ -58,7 +76,7 @@ let routes = [];
 if(userType==='student') {
   routes = studentRoutes;
 } else if(userType==='company') {
-  
+  routes = companyRoutes;
 }
 else{
   routes = adminRoutes;
