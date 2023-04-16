@@ -20,6 +20,17 @@ app.get('/get-company', async (req, res) => {
     }
 });
 
+app.get('/get-companies', async (req, res) => {
+    try {
+        const company = await Company.find();
+        res.status(201).json(company);
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal server error');
+    }
+});
+
+
 app.post('/add-company', async (req, res) => {
     const { username, companyName, emailID, state, city, contactNo } = req.body;
 

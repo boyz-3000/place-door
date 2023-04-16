@@ -33,32 +33,31 @@ function CompanyDetails() {
         // Filter the companies based on the current filter values
         return (
             company.companyName.toLowerCase().includes(filters.companyName.toLowerCase()) &&
-            company.rollNo.toLowerCase().includes(filters.rollNo.toLowerCase()) &&
             company.emailID.toLowerCase().includes(filters.emailID.toLowerCase()) &&
-            company.phoneNo.toLowerCase().includes(filters.phoneNo.toLowerCase()) &&
-            company.department.toLowerCase().includes(filters.department.toLowerCase()) &&
-            company.stream.toLowerCase().includes(filters.stream.toLowerCase()) &&
-            company.cgpa.toLowerCase().includes(filters.cgpa.toLowerCase())
+            company.contactNo.toLowerCase().includes(filters.contactNo.toLowerCase()) &&
+            company.city.toLowerCase().includes(filters.city.toLowerCase()) &&
+            company.state.toLowerCase().includes(filters.state.toLowerCase())
         );
     });
 
     useEffect(() => {
-        async function fetchStudents() {
-            const response = await axios.get('http://localhost:5001/company-details');
+        async function fetchCompanies() {
+            const response = await axios.get('http://localhost:5001/get-companies');
             console.log(response);
             setCompanies(response.data);
+            console.log(companies);
         }
 
-        fetchStudents();
+        fetchCompanies();
         console.log('waiting');
-        console.log(fetchStudents());
+        console.log(fetchCompanies());
     }, []);
 
     return (
         <>
             <TopBar />
             <div className="alert alert-secondary" role="alert">
-                Student Details
+                Company Details
             </div>
             <div className="table-container table-responsive-sm table-responsive-md">
                 <table className="table table-hover">
@@ -78,16 +77,8 @@ function CompanyDetails() {
                             <td>
                                 <input
                                     type="text"
-                                    name="studentName"
-                                    value={filters.studentName}
-                                    onChange={handleFilterChange}
-                                />
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    name="rollNo"
-                                    value={filters.rollNo}
+                                    name="companyName"
+                                    value={filters.companyName}
                                     onChange={handleFilterChange}
                                 />
                             </td>
@@ -102,32 +93,24 @@ function CompanyDetails() {
                             <td>
                                 <input
                                     type="text"
-                                    name="phoneNo"
-                                    value={filters.phoneNo}
+                                    name="contactNo"
+                                    value={filters.contactNo}
                                     onChange={handleFilterChange}
                                 />
                             </td>
                             <td>
                                 <input
                                     type="text"
-                                    name="department"
-                                    value={filters.department}
+                                    name="city"
+                                    value={filters.city}
                                     onChange={handleFilterChange}
                                 />
                             </td>
                             <td>
                                 <input
                                     type="text"
-                                    name="stream"
-                                    value={filters.stream}
-                                    onChange={handleFilterChange}
-                                />
-                            </td>
-                            <td>
-                                <input
-                                    type="text"
-                                    name="cgpa"
-                                    value={filters.cgpa}
+                                    name="state"
+                                    value={filters.state}
                                     onChange={handleFilterChange}
                                 />
                             </td>
@@ -137,13 +120,11 @@ function CompanyDetails() {
                         {filteredCompanies?.map((company, i) => (
                             <tr key={i}>
                                 <th scope="row">{i + 1}</th>
-                                <td>{company.studentName}</td>
-                                <td>{company.rollNo}</td>
+                                <td>{company.companyName}</td>
                                 <td>{company.emailID}</td>
-                                <td>{company.phoneNo}</td>
-                                <td>{company.department}</td>
-                                <td>{company.stream}</td>
-                                <td>{company.cgpa}</td>
+                                <td>{company.contactNo}</td>
+                                <td>{company.city}</td>
+                                <td>{company.state}</td>
                             </tr>
                         ))}
                     </tbody>
