@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 import './StudentDetails.css';
 import TopBar from "../../../components/top-bar/TopBar";
 import axios from 'axios';
@@ -58,6 +58,30 @@ function StudentDetails() {
         console.log(fetchStudents());
     }, []);
 
+    const [editIndex, setEditIndex] = useState(-1);
+
+    const handleSaveClick = (i, newData) => {
+        const updatedStudents = [...filteredStudents];
+        updatedStudents[i] = newData;
+        console.log(newData === updatedStudents[i]);
+        if (!(newData === updatedStudents[i])) {
+
+        }
+        setStudents(updatedStudents);
+
+        // Clear the edit state
+        setEditIndex(-1);
+    };
+
+    const handleCancelClick = () => {
+        // Clear the edit state
+        setEditIndex(-1);
+    };
+
+    const handleEditClick = (i) => {
+        setEditIndex(i);
+    };
+
     return (
         <>
             <TopBar />
@@ -76,6 +100,8 @@ function StudentDetails() {
                             <th scope="col">Department</th>
                             <th scope="col">Stream</th>
                             <th scope="col">CGPA</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
                         </tr>
                         <tr className="filter-row">
                             <td className="icon">
@@ -140,22 +166,132 @@ function StudentDetails() {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredStudents?.map((student, i) => (
-                            <tr key={i}>
-                                <th scope="row">{i + 1}</th>
-                                <td>{student.studentName}</td>
-                                <td>{student.rollNo}</td>
-                                <td>{student.emailID}</td>
-                                <td>{student.phoneNo}</td>
-                                <td>{student.department}</td>
-                                <td>{student.stream}</td>
-                                <td>{student.cgpa}</td>
-                            </tr>
-                        ))}
+                        {filteredStudents.map((student, i) => {
+                            if (i === editIndex) {
+                                // Render an editable row for the currently selected row
+                                return (
+                                    <EditableRow
+                                        key={i}
+                                        i={i}
+                                        data={student}
+                                        onSave={(newData) => handleSaveClick(i, newData)}
+                                        onCancel={handleCancelClick}
+                                    />
+                                );
+                            } else {
+                                // Render a regular row for all other rows
+                                return (
+                                    <tr key={i}>
+                                        <th scope="row">{i + 1}</th>
+                                        <td>{student.studentName}</td>
+                                        <td>{student.rollNo}</td>
+                                        <td>{student.emailID}</td>
+                                        <td>{student.phoneNo}</td>
+                                        <td>{student.department}</td>
+                                        <td>{student.stream}</td>
+                                        <td>{student.cgpa}</td>
+                                        <td>
+                                            <div onClick={() => handleEditClick(i)}>
+                                                <i className="fa-regular fa-pen-to-square fa-xl"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <i className="fa-solid fa-trash fa-xl"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                );
+                            }
+                        })}
                     </tbody>
                 </table>
             </div >
         </>
+    );
+}
+
+function EditableRow({ i, data, onSave, onCancel }) {
+    const [editedData, setEditedData] = useState(data);
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setEditedData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    return (
+        <tr className="filter-row">
+            <th scope="row">{i + 1}</th>
+            <td>
+                <input
+                    type="text"
+                    name="studentName"
+                    value={editedData.studentName}
+                    onChange={handleInputChange}
+                />
+            </td>
+            <td>
+                <input
+                    type="text"
+                    name="rollNo"
+                    value={editedData.rollNo}
+                    onChange={handleInputChange}
+                />
+            </td>
+            <td>
+                <input
+                    type="text"
+                    name="emailID"
+                    value={editedData.emailID}
+                    onChange={handleInputChange}
+                />
+            </td>
+            <td>
+                <input
+                    type="text"
+                    name="phoneNo"
+                    value={editedData.phoneNo}
+                    onChange={handleInputChange}
+                />
+            </td>
+            <td>
+                <input
+                    type="text"
+                    name="department"
+                    value={editedData.department}
+                    onChange={handleInputChange}
+                />
+            </td>
+            <td>
+                <input
+                    type="text"
+                    name="stream"
+                    value={editedData.stream}
+                    onChange={handleInputChange}
+                />
+            </td>
+            <td>
+                <input
+                    type="text"
+                    name="cgpa"
+                    value={editedData.cgpa}
+                    onChange={handleInputChange}
+                />
+            </td>
+            <td>
+                <div onClick={() => onSave(editedData)}>
+                    <i class="fa-regular fa-circle-check fa-xl"></i>
+                </div>
+            </td>
+            <td>
+                <div onClick={onCancel}>
+                    <i class="fa-solid fa-xmark fa-2xl"></i>
+                </div>
+            </td>
+        </tr>
     );
 }
 

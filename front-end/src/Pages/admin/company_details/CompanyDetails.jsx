@@ -53,6 +53,30 @@ function CompanyDetails() {
         console.log(fetchCompanies());
     }, []);
 
+    const [editIndex, setEditIndex] = useState(-1);
+
+    const handleSaveClick = (i, newData) => {
+        const updatedCompanies = [...filteredCompanies];
+        updatedCompanies[i] = newData;
+        console.log(newData === updatedCompanies[i]);
+        if (!(newData === updatedCompanies[i])) {
+
+        }
+        setCompanies(updatedCompanies);
+
+        // Clear the edit state
+        setEditIndex(-1);
+    };
+
+    const handleCancelClick = () => {
+        // Clear the edit state
+        setEditIndex(-1);
+    };
+
+    const handleEditClick = (i) => {
+        setEditIndex(i);
+    };
+
     return (
         <>
             <TopBar />
@@ -69,6 +93,8 @@ function CompanyDetails() {
                             <th scope="col">Contact No</th>
                             <th scope="col">City</th>
                             <th scope="col">State</th>
+                            <th scope="col">Edit</th>
+                            <th scope="col">Delete</th>
                         </tr>
                         <tr className="filter-row">
                             <td className="icon">
@@ -117,20 +143,114 @@ function CompanyDetails() {
                         </tr>
                     </thead>
                     <tbody>
-                        {filteredCompanies?.map((company, i) => (
-                            <tr key={i}>
-                                <th scope="row">{i + 1}</th>
-                                <td>{company.companyName}</td>
-                                <td>{company.emailID}</td>
-                                <td>{company.contactNo}</td>
-                                <td>{company.city}</td>
-                                <td>{company.state}</td>
-                            </tr>
-                        ))}
+                        {filteredCompanies.map((company, i) => {
+                            if (i === editIndex) {
+                                // Render an editable row for the currently selected row
+                                return (
+                                    <EditableRow
+                                        key={i}
+                                        i={i}
+                                        data={company}
+                                        onSave={(newData) => handleSaveClick(i, newData)}
+                                        onCancel={handleCancelClick}
+                                    />
+                                );
+                            } else {
+                                // Render a regular row for all other rows
+                                return (
+                                    <tr key={i}>
+                                        <th scope="row">{i + 1}</th>
+                                        <td>{company.companyName}</td>
+                                        <td>{company.emailID}</td>
+                                        <td>{company.contactNo}</td>
+                                        <td>{company.city}</td>
+                                        <td>{company.state}</td>
+                                        <td>
+                                            <div onClick={() => handleEditClick(i)}>
+                                                <i className="fa-regular fa-pen-to-square fa-xl"></i>
+                                            </div>
+                                        </td>
+                                        <td>
+                                            <div>
+                                                <i className="fa-solid fa-trash fa-xl"></i>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                );
+                            }
+                        })}
                     </tbody>
                 </table>
             </div >
         </>
+    );
+}
+
+function EditableRow({ i, data, onSave, onCancel }) {
+    const [editedData, setEditedData] = useState(data);
+
+    const handleInputChange = (event) => {
+        const { name, value } = event.target;
+        setEditedData((prevData) => ({
+            ...prevData,
+            [name]: value,
+        }));
+    };
+
+    return (
+        <tr className="filter-row">
+            <th scope="row">{i + 1}</th>
+            <td>
+                <input
+                    type="text"
+                    name="companyName"
+                    value={editedData.companyName}
+                    onChange={handleInputChange}
+                />
+            </td>
+            <td>
+                <input
+                    type="text"
+                    name="emailID"
+                    value={editedData.emailID}
+                    onChange={handleInputChange}
+                />
+            </td>
+            <td>
+                <input
+                    type="text"
+                    name="contactNo"
+                    value={editedData.contactNo}
+                    onChange={handleInputChange}
+                />
+            </td>
+            <td>
+                <input
+                    type="text"
+                    name="city"
+                    value={editedData.city}
+                    onChange={handleInputChange}
+                />
+            </td>
+            <td>
+                <input
+                    type="text"
+                    name="state"
+                    value={editedData.state}
+                    onChange={handleInputChange}
+                />
+            </td>
+            <td>
+                <div onClick={() => onSave(editedData)}>
+                    <i class="fa-regular fa-circle-check fa-xl"></i>
+                </div>
+            </td>
+            <td>
+                <div onClick={onCancel}>
+                    <i class="fa-solid fa-xmark fa-2xl"></i>
+                </div>
+            </td>
+        </tr>
     );
 }
 

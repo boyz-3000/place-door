@@ -1,83 +1,95 @@
 /* Global styles */
 * {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
-  
-  body {
-    background-color: #f2f2f2;
-  }
-  
-  /* Table styles */
-  .table {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    border-collapse: collapse;
-    overflow-x: auto;
-  }
-  
-  .table th,
-  .table td {
-    padding: 12px;
-    text-align: left;
-  }
-  
-  .table th {
-    background-color: #645cbb;
-    color: #fff;
-    position: sticky;
-    top: 0;
-  }
-  
-  .table th:first-child,
-  .table td:first-child {
-    padding-left: 24px;
-  }
-  
-  .table th:last-child,
-  .table td:last-child {
-    padding-right: 24px;
-  }
-  
-  .table tbody tr:nth-child(odd) {
-    background-color: #f2f2f2;
-  }
-  
-  .table tbody tr:hover {
-    background-color: #e0d7ff;
-  }
-  
-  .filter-row input {
-    width: 100%;
-    height: 40px;
-    font-size: 16px;
-    padding: 8px 12px;
-    border: none;
-    border-radius: 4px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  /* Animations */
-  @keyframes fade-in {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
-  }
-  
-  .table {
-    animation: fade-in 1s ease;
-  }
-  
-  i {
-    /* background-color: red; */
-    cursor: pointer;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: #f2f2f2;
+}
+
+.table-container {
+  margin: 3% 8% 2% 8%;
+}
+
+/* Table styles */
+.table {
+  margin: 0 auto;
+  border-collapse: collapse;
+  overflow-x: auto;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.table th {
+  background-color: #645cbb;
+  color: #fff;
+  position: sticky;
+  top: 0;
+
+}
+
+.table th:first-child,
+.table td:first-child {
+  padding-left: 24px;
+}
+
+.table th:last-child,
+.table td:last-child {
+  padding-right: 24px;
+}
+
+.table tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+.table tbody tr:hover {
+  background-color: #e0d7ff;
+}
+
+.filter-row td div {
+  margin-top: 10px;
+}
+
+td div i:hover {
+  transform: translateY(2px);
+}
+
+.filter-row input {
+  width: 100%;
+  height: 40px;
+  font-size: 16px;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
   }
 
-  .icon {
-    background-color: green;
+  to {
+    opacity: 1;
   }
+}
+
+.table {
+  animation: fade-in 1s ease;
+}
+
+i {
+  /* background-color: red; */
+  cursor: pointer;
+}
+
+.icon {
+  background-color: green;
+}
