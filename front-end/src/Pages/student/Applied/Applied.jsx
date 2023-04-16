@@ -8,19 +8,12 @@ function AppliedJobs() {
 
   const navigate = useNavigate();
 
-  const [jobs, setJobs] = useState([]);
+  const [applications, setApplications] = useState([]);
 
   useEffect(() => {
     async function fetchCompanies() {
-      const response = await axios.get('http://localhost:5001/get-jobs');
-      // const response = await fetch('http://localhost:5001/jobs', {
-      //   method: 'GET',
-      //   headers: {
-      //     'Content-Type': 'application/json'
-      //   },
-      //   // body: JSON.stringify({ username, password })
-      // });
-      setJobs(response.data);
+      const response = await axios.get('http://localhost:5001/get-applications');       
+      setApplications(response.data);
     }
 
     fetchCompanies();
@@ -36,17 +29,17 @@ function AppliedJobs() {
     <>
       <TopBar />
       <div>
-        {console.log(jobs)}
-        {jobs?.map((job) => (
+        {console.log(applications)}
+        {applications?.map((application) => (
           <AppliedJobDetails
-            name={job.company}
-            position={job.jobRole}
-            appliedDate={job.lastDate}
-            mode={job.mode}
-            package={job.package}
-            stipend={job.stipend}
-            city={job.city}
-            email={job.email}
+            name={application.company}
+            position={application.jobRole}
+            appliedDate={application.lastDate}
+            mode={application.mode}
+            package={application.package}
+            stipend={application.stipend}
+            city={application.city}
+            email={application.email}
             />
         ))}
       </div>
