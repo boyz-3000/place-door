@@ -4,7 +4,6 @@ export async function getStudent(username) {
     const response = await axios.get(`http://localhost:5001/get-student?username=${username}`);
 
     if (response.data['message'] === null) {
-        // navigate('/profile');
         return false;
     }
     return response.data;

@@ -11,6 +11,7 @@ function Jobs() {
   const navigate = useNavigate();
 
   const [companies, setCompanies] = useState([]);
+  const [student, setStudent] = useState([]);
 
   useEffect(() => {
 
@@ -20,13 +21,13 @@ function Jobs() {
     console.log(getStudent(username));
     getStudent(username)
       .then(response => {
-        const _student = response['message'];
-        console.log(_student);
+        setStudent(response['message']);
       })
       .catch(error => {
         console.error('Error fetching student:', error);
       });
-    if (!getStudent(username)) {
+    console.log(student);
+    if (student===[]) {
       navigate('/profile');
     }
 
