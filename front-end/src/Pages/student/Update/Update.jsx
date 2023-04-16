@@ -24,10 +24,10 @@ function Update() {
       <TopBar />
       <div className="row">
         <div className="col-lg-3 col-md-3 col-sm-1 scrollable">
-          <table className="table table-hover">
+          <table className="table table-hover tableFoo">
             <thead>
               <tr>
-                <th scope="col">Updates</th>
+                <th className="tableHead" scope="col">Updates</th>
               </tr>
             </thead>
             <tbody>

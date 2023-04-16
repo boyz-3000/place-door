@@ -4,12 +4,12 @@
   border-right: #ddd 1px solid;
 }
 
-.table > :not(caption) > * > * {
+.tableFoo > :not(caption) > * > * {
   padding: 5%;
   padding-left: 10%;
 }
 
-th {
+.tableHead {
   font-size: 1.5rem;
 }
 
