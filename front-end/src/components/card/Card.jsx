@@ -29,7 +29,8 @@ function Card(props) {
                     {props.company.lastDate}
                   </li>
                   <li>
-                    <i className="fa-solid fa-building"></i>Mode : {props.company.mode}
+                    <i className="fa-solid fa-building"></i>Mode : {props.company.mode === "false" && "OnSite"} 
+                    {props.company.mode === "true" && "OffSite"}
                   </li>
                   <li>
                     <i className="fa-solid fa-location-dot"></i>Location :{" "}

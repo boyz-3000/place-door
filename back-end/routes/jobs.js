@@ -32,6 +32,7 @@ app.get("/get-jobs", async (req, res) => {
           state: "$company.state",
           city: "$company.city",
           contactNo: "$company.contactNo",
+          username: 1,
           jobRole: 1,
           mode: 1,
           lastDate: 1,
@@ -59,7 +60,6 @@ app.post('/post-job', async (req, res) => {
   try {
     job = new Job({ username, jobRole, mode, lastDate, skillsReq, stipend, _package, reqCGPA });
     await job.save();
-    console.log(skillsReq);
     res.status(201).json({ status: 201, message: `skills: ${skillsReq.text}` }); //"Job Posted successfully!!"
   } catch (error) {
     console.error(error);

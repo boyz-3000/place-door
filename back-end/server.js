@@ -4,8 +4,7 @@ const connectDB = require('./config/connectdb');
 const userRoutes = require('././routes/user');
 const jobRoutes = require('./routes/jobs');
 const studentRoutes = require('./routes/student-details');
-// const postJob = require('./routes/postJob');
-// const student = require('./routes/profile/stud-profile');
+const applicationRoute = require('./routes/application');
 const company = require('./routes/company');
 const cors = require('cors');
 
@@ -27,7 +26,7 @@ app.get('/', (req, res) => {
 app.use('/', userRoutes);
 app.use('/', jobRoutes);
 app.use('/', studentRoutes);
-// app.use('/', postJob);
+app.use('/', applicationRoute);
 // app.use('/', student);
 app.use('/', company);
 
