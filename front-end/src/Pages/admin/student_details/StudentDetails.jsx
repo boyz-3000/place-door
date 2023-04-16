@@ -54,19 +54,25 @@ function StudentDetails() {
         }
 
         fetchStudents();
-        console.log('waiting');
-        console.log(fetchStudents());
     }, []);
+
+    async function updateStudent(newData) {
+        const response = await axios.post('http://localhost:5001/update-student', newData)
+        if (response.data['status']===201) {
+            alert('Student Updated Successfully!!');
+        }
+    }
 
     const [editIndex, setEditIndex] = useState(-1);
 
     const handleSaveClick = (i, newData) => {
         const updatedStudents = [...filteredStudents];
-        updatedStudents[i] = newData;
         console.log(newData === updatedStudents[i]);
-        if (!(newData === updatedStudents[i])) {
-
+        if (newData != updatedStudents[i]) {
+            updateStudent(newData);
         }
+        updatedStudents[i] = newData;
+
         setStudents(updatedStudents);
 
         // Clear the edit state

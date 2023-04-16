@@ -9,17 +9,6 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 
-app.get('/get-company', async (req, res) => {
-    const username = req.query.username;
-    try {
-        const company = await Company.findOne({ username });
-        res.status(201).json({ status: 201, message: company });
-    } catch (error) {
-        console.error(error);
-        res.status(500).send('Internal server error');
-    }
-});
-
 app.get('/get-companies', async (req, res) => {
     try {
         const company = await Company.find();
