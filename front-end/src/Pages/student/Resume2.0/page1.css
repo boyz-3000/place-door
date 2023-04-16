@@ -1,0 +1,14 @@
+.content {
+    background-color: red;
+}
+
+.form-label{
+    background-color: #645cbb;
+}
+
+.content input {
+    margin-top: 3%;
+    /* background-color: yellow; */
+    border: none;
+    border-bottom: 3px solid #645cbb;
+}

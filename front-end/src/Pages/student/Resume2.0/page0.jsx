@@ -1,7 +1,9 @@
+import './page0.css';
+
 const Page0 = () => {
     return (
         <>
-            <h1>Welcome</h1>
+            <h7>Welcome</h7>
             <p>Build your resume here!!</p>
         </>
     );

@@ -1,8 +1,18 @@
+import './page1.css';
+
 const Page1 = () => {
     return (
         <>
-            <h1>Personal Information</h1>
-            <p>Build your resume here!!</p>
+            <div className="heading">
+                <h2>Personal Information</h2>
+            </div>
+            <div className="content">
+                <input type="text" className="form-input" name="fullName" placeholder='Full Name'/><br />
+
+                <input type="text" className="form-input" name="phoneNo" placeholder='Phone No.'/><br />
+
+                <input type="text" className="form-input" name="emailID" placeholder='Email ID'/><br />
+            </div>
         </>
     );
 }
