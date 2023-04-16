@@ -49,19 +49,25 @@ function CompanyDetails() {
         }
 
         fetchCompanies();
-        console.log('waiting');
-        console.log(fetchCompanies());
     }, []);
+
+    async function updateCompanies(newData) {
+        const response = await axios.post('http://localhost:5001/add-company', newData)
+        if (response.data['status'] === 201) {
+            alert('Company Updated Successfully!!');
+        }
+    }
 
     const [editIndex, setEditIndex] = useState(-1);
 
     const handleSaveClick = (i, newData) => {
         const updatedCompanies = [...filteredCompanies];
-        updatedCompanies[i] = newData;
         console.log(newData === updatedCompanies[i]);
         if (!(newData === updatedCompanies[i])) {
-
+            updateCompanies(newData);
         }
+        updatedCompanies[i] = newData;
+
         setCompanies(updatedCompanies);
 
         // Clear the edit state
