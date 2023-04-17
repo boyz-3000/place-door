@@ -5,7 +5,7 @@ import axios from "axios";
 
 function AddUser(props) {
 
-  const [username, setUsername] = useState(localStorage.getItem('username'));
+  const [username, setUsername] = useState("");
   const [userType, setUserType] = useState("");
 
 

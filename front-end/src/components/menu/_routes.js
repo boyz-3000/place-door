@@ -59,7 +59,7 @@ const adminRoutes = [
   {
     path: "/student-details",
     name: "Student Details",
-    icon: <Bs.BsFillBriefcaseFill />,
+    icon: <Io.IoIosSchool />,
   },
   {
     path: "/company-details",

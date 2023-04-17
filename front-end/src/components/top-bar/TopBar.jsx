@@ -20,7 +20,7 @@ function TopBar() {
     height = 420;
     width = 500;
   } else {
-    height = 330;
+    height = 370;
     width = 310;
   }
   return (
