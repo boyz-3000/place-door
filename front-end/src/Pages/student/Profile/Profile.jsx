@@ -6,6 +6,7 @@ import axios from "axios";
 import { getStudent, updateStudent } from "../../../api/student/student";
 
 function StudentProfile() {
+    const navigate = useNavigate();
 
     const username = localStorage.getItem('username');
 

@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import './CompanyDetails.css';
 import TopBar from "../../../components/top-bar/TopBar";
 import axios from 'axios';
 
 function CompanyDetails() {
+
+    const navigate = useNavigate();
+
     const [companies, setCompanies] = useState([]);
 
     const handleRefresh = () => {

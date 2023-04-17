@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import './StudentDetails.css';
 import TopBar from "../../../components/top-bar/TopBar";
 import Notification from "../../../components/notification-popup/Notification";
 import axios from 'axios';
 
 function StudentDetails() {
+
+    const navigate = useNavigate();
+
     const [students, setStudents] = useState([]);
 
     const handleRefresh = () => {

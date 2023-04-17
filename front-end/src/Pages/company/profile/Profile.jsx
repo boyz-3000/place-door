@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import TopBar from "../../../components/top-bar/TopBar";
 import "./Profile.css";
 import axios from "axios";
@@ -7,6 +8,8 @@ import "./states_data";
 import { states } from "./states_data";
 
 function CompanyProfile() {
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (localStorage.getItem('isLoggedIn') === 'false') {
@@ -41,14 +44,14 @@ function CompanyProfile() {
         // const citydata =  statesDB[getstate];
         setcityDB(citydata);
     };
-    
 
-    console.log("username "+username);
+
+    console.log("username " + username);
 
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setCompany({ ...company, [name]: value });
-        console.log("state" +" " +state);
+        console.log("state" + " " + state);
     };
 
     const submitHandler = async (e) => {

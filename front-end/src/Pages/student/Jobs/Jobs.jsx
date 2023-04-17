@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 import Card from "../../../components/card/Card";
 import "./Jobs.css";
 import TopBar from "../../../components/top-bar/TopBar";
-import { useNavigate } from 'react-router-dom';
 import { getStudent } from "../../../api/student/student";
 import { getCompanies } from "../../../api/company/company";
 

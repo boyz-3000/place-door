@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import "./post-jobs.css";
 import "../../../components/top-bar/TopBar";
 import TopBar from "../../../components/top-bar/TopBar";
@@ -6,7 +7,6 @@ import "./states_data";
 import { states } from "./states_data";
 import { WithContext as ReactTags } from "react-tag-input";
 // import { statesDB } from "./states_data";
-import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 const Post_jobs = () => {

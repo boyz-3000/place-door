@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import TopBar from "../../../components/top-bar/TopBar";
 import axios from "axios";
 
 function CompAppliedStud() {
+
+    const navigate = useNavigate();
 
     const username = localStorage.getItem('username');
     console.log(username);

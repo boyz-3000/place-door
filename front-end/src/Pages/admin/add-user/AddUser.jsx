@@ -1,9 +1,12 @@
 import React, { useState, useContext } from "react";
+import { useNavigate } from 'react-router-dom';
 import TopBar from "../../../components/top-bar/TopBar";
 import "./AddUser.css";
 import axios from "axios";
 
 function AddUser(props) {
+
+  const navigate = useNavigate();
 
   const [username, setUsername] = useState("");
   const [userType, setUserType] = useState("");
