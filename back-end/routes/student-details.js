@@ -29,6 +29,27 @@ app.get('/get-student', async (req, res) => {
   }
 });
 
+app.post('/delete-student', async (req, res) => {
+  const { emailID } = req.body;
+
+  // Validate request body
+  if (!emailID) {
+    return res.status(400).json({ message: 'EmailID is required' });
+  }
+
+  try {
+    // Delete student document
+    const result = await Student.deleteOne({ emailID });
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: 'Student not found' });
+    }
+    res.status(200).json({ message: 'Student deleted successfully' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'An error occurred while deleting the student' });
+  }
+});
+
 app.post('/update-student', async (req, res) => {
   // let username = req.query.username;
   const { username, studentName, emailID, phoneNo, rollNo, department, stream, cgpa } = req.body;

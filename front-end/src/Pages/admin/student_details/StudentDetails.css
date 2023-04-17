@@ -89,3 +89,11 @@ i {
 .icon {
   background-color: green;
 }
+
+.notification-icon {
+  font-size: 2rem;
+  padding: 1%;
+  margin-right: 3%;
+  border-radius: 2rem;
+  border: 1px solid white;
+}

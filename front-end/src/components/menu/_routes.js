@@ -2,6 +2,7 @@ import * as Ai from "react-icons/ai";
 import * as Bs from "react-icons/bs";
 import * as Io from "react-icons/io";
 import * as Bi from "react-icons/bi";
+import * as Ri from "react-icons/ri";
 
 const studentRoutes = [
   {
@@ -56,9 +57,19 @@ const adminRoutes = [
     icon: <Ai.AiFillBell />,
   },
   {
-    path: "//student-details",
+    path: "/student-details",
     name: "Student Details",
     icon: <Bs.BsFillBriefcaseFill />,
+  },
+  {
+    path: "/company-details",
+    name: "Company Details",
+    icon: <Bs.BsFillBriefcaseFill />,
+  },
+  {
+    path: "/applications",
+    name: "Applications",
+    icon: <Ri.RiPagesLine />,
   },
   {
     path: "/",

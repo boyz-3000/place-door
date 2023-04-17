@@ -1,0 +1,54 @@
+.notification-popup {
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    bottom: 20px;
+    right: 20px;
+    color: white;
+    font-size: 1.3rem;
+    /* background-color: #fff; */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0s linear 0.5s;
+}
+
+.notification-popup.show {
+    opacity: 1;
+    visibility: visible;
+    transition-delay: 0s;
+}
+
+
+.notification-popup h2 {
+    margin-top: 0;
+}
+
+.notification-popup p {
+    margin-bottom: 0;
+}
+
+.notification-popup .close-btn {
+    position: absolute;
+    top: -5px;
+    right: 5px;
+    font-size: 30px;
+    font-weight: bold;
+    color: red;
+    cursor: pointer;
+}
+
+.children-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}

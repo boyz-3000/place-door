@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import './StudentDetails.css';
 import TopBar from "../../../components/top-bar/TopBar";
+import Notification from "../../../components/notification-popup/Notification";
 import axios from 'axios';
 
 function StudentDetails() {
@@ -45,20 +46,18 @@ function StudentDetails() {
             student.cgpa.toLowerCase().includes(filters.cgpa.toLowerCase())
         );
     });
-
+    async function fetchStudents() {
+        const response = await axios.get('http://localhost:5001/student-details');
+        console.log(response);
+        setStudents(response.data);
+    }
     useEffect(() => {
-        async function fetchStudents() {
-            const response = await axios.get('http://localhost:5001/student-details');
-            console.log(response);
-            setStudents(response.data);
-        }
-
         fetchStudents();
     }, []);
 
     async function updateStudent(newData) {
         const response = await axios.post('http://localhost:5001/update-student', newData)
-        if (response.data['status']===201) {
+        if (response.data['status'] === 201) {
             alert('Student Updated Successfully!!');
         }
     }
@@ -87,6 +86,22 @@ function StudentDetails() {
     const handleEditClick = (i) => {
         setEditIndex(i);
     };
+
+    async function deleteStudent(emailID) {
+        console.log(emailID);
+        const response = await axios.post('http://localhost:5001/delete-student', { emailID })
+        if (response.data['status'] === 200) {
+            alert('Student Deleted Successfully!!');
+        }
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        // window.location.reload(false);
+        // await new Promise(resolve => setTimeout(resolve, 2000));
+        fetchStudents();
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        setShow(true);
+    }
+
+    const [show, setShow] = useState(false);
 
     return (
         <>
@@ -202,7 +217,7 @@ function StudentDetails() {
                                             </div>
                                         </td>
                                         <td>
-                                            <div>
+                                            <div onClick={() => deleteStudent(student.emailID)}>
                                                 <i className="fa-solid fa-trash fa-xl"></i>
                                             </div>
                                         </td>
@@ -213,6 +228,13 @@ function StudentDetails() {
                     </tbody>
                 </table>
             </div >
+            {
+                show && 
+                <Notification height={100} width={450} color={'#3CCF4E'}>
+                    <i class="notification-icon fa-solid fa-check"></i>
+                    <p>Student Deleted Successfully!!</p>
+                </Notification>
+            }
         </>
     );
 }
