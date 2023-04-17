@@ -34,6 +34,10 @@ const Post_jobs = () => {
   }, []);
 
 
+  async function handleChangeFun(event) {
+    return await event.target.value;
+  }
+
   // const { user } = useContext(UserContext);
   const username = localStorage.getItem('username');
 
