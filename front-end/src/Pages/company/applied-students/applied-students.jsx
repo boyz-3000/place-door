@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import AppliedStudentsData from "./AppliedStudentsData";
-import CompAppliedStudDetails from "../../../components/company/comp-applied-stud/CompAppliedStudDetails";
 import TopBar from "../../../components/top-bar/TopBar";
 import axios from "axios";
 
@@ -53,8 +51,13 @@ function CompAppliedStud() {
     });
 
     useEffect(() => {
+
+        if (localStorage.getItem('isLoggedIn') === 'false') {
+            navigate('/');
+        }
+
         async function fetchStudents() {
-            const response = await axios.get('http://localhost:5001/get-applied-students', {username});
+            const response = await axios.get('http://localhost:5001/get-applied-students', { username });
             // console.log(response);
             setAppliedStudents(response.data);
             console.log(response.data);

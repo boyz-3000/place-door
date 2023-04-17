@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import TopBar from "../../../components/top-bar/TopBar";
 import "./Profile.css";
 import axios from "axios";
@@ -8,7 +8,12 @@ import { states } from "./states_data";
 
 function CompanyProfile() {
 
-    const isLoggedIn = localStorage.getItem('isLoggedIn');
+    useEffect(() => {
+        if (localStorage.getItem('isLoggedIn') === 'false') {
+            navigate('/');
+        }
+    }, []);
+
     const username = localStorage.getItem('username');
 
     const [state, setState] = useState([]);

@@ -21,6 +21,9 @@ function StudentProfile() {
     });
 
     useEffect(() => {
+        if (localStorage.getItem('isLoggedIn') === 'false') {
+            navigate('/');
+        }
         getStudent(username)
             .then(response => {
                 const _student = response['message'];

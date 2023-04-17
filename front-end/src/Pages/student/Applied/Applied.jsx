@@ -11,8 +11,13 @@ function AppliedJobs() {
   const [applications, setApplications] = useState([]);
 
   useEffect(() => {
+
+    if (localStorage.getItem('isLoggedIn') === 'false') {
+      navigate('/');
+    }
+
     async function fetchCompanies() {
-      const response = await axios.get('http://localhost:5001/get-applications');       
+      const response = await axios.get('http://localhost:5001/get-applications');
       setApplications(response.data);
     }
 
@@ -40,7 +45,7 @@ function AppliedJobs() {
             stipend={application.stipend}
             city={application.city}
             email={application.email}
-            />
+          />
         ))}
       </div>
     </>
