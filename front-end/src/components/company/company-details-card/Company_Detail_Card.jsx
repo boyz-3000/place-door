@@ -69,14 +69,14 @@ function Company_Detail_Card(props) {
           </div>
         </div>
         <br />
-        <div className="row">
+        {/* <div className="row">
           <div className="col-lg-3 col-md-12 col-sm-12">
             <h5 className="comp-details key">Technology Stack</h5>
           </div>
           <div className="col-lg-8 col-md-12 col-sm-12">
             <h5 className="comp-details value">{props.company.skillsReq}</h5>
           </div>
-        </div>
+        </div> */}
         <br />
         <div className="row">
           <div className="col-lg-3 col-md-12 col-sm-12">

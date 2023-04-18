@@ -19,6 +19,18 @@ app.get('/get-companies', async (req, res) => {
     }
 });
 
+app.get('/get-company', async (req, res) => {
+    const username = req.query.username;
+    try {
+        const company = await Company.findOne({ username });
+        console.log(company===null)
+        res.status(201).json({message: company});
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Internal server error');
+    }
+});
+
 
 app.post('/add-company', async (req, res) => {
     const { username, companyName, emailID, state, city, contactNo } = req.body;

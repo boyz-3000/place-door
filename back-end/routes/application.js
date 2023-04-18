@@ -31,21 +31,37 @@ app.get('/get-applied-companies/:username', async (req, res) => {
       },
       {
         $lookup: {
+          from: 'jobs',
+          // localField: 'companyUsername',
+          // foreignField: 'username',
+          let: { companyUsername: "$companyUsername", jobRole: "$jobRole" },
+          pipeline: [
+            {
+              $match:
+              {
+                $expr:
+                {
+                  $and:
+                    [
+                      { $eq: ["$username", "$$companyUsername"] },
+                      { $eq: ["$jobRole", "$$jobRole"] }
+                    ]
+                }
+              }
+            }
+          ],
+          as: 'job'
+        },
+      },
+      {
+        $unwind: "$job",
+      },
+      {
+        $lookup: {
           from: 'companies',
           localField: 'companyUsername',
           foreignField: 'username',
           as: 'company'
-        },
-      },
-      {
-        $unwind: "$company",
-      },
-      {
-        $lookup: {
-          from: 'jobs',
-          localField: 'companyUsername',
-          foreignField: 'username',
-          as: 'job'
         },
       },
       {
@@ -55,13 +71,19 @@ app.get('/get-applied-companies/:username', async (req, res) => {
         $project: {
           _id: 0,
           jobRole: "$job.jobRole",
-          mode: "$job.mode",
+          mode: {
+            $cond: {
+              if: "$job.mode",
+              then: "Online",
+              else: "Offline"
+            }
+          },
           stipend: "$job.stipend",
           _package: "$job._package",
-          companyName: "$company.companyName",
-          companyEmail: "$company.emailID",
-          state: "$company.state",
-          city: "$company.city",
+          companyName: { $arrayElemAt: ["$company.companyName", 0] },
+          emailID: { $arrayElemAt: ["$company.emailID", 0] },
+          state: { $arrayElemAt: ["$company.state", 0] },
+          city: { $arrayElemAt: ["$company.city", 0] },
         },
       },
     ]);

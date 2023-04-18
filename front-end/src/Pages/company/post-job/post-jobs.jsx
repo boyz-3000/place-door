@@ -24,7 +24,7 @@ const Post_jobs = () => {
       const response = await axios.get(
         `http://localhost:5001/get-company?username=${username}`
       );
-      if (response.data["message"] === null) {
+      if (response.data['message'] === null) {
         navigate("/profile");
       }
       // setCompanies(response.data);

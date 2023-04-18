@@ -97,7 +97,7 @@ function Applications() {
                             <th scope="col">Job Role</th>
                             <th scope="col">Company Name</th>
                             <th scope="col">Company Email</th>
-                            <th scope="col">Edit</th>
+                            {/* <th scope="col">Edit</th> */}
                             <th scope="col">Delete</th>
                         </tr>
                         <tr className="filter-row">
@@ -178,11 +178,11 @@ function Applications() {
                                         <td>{application.jobRole}</td>
                                         <td>{application.companyName}</td>
                                         <td>{application.companyEmail}</td>
-                                        <td>
+                                        {/* <td>
                                             <div onClick={() => handleEditClick(i)}>
                                                 <i className="fa-regular fa-pen-to-square fa-xl"></i>
                                             </div>
-                                        </td>
+                                        </td> */}
                                         <td>
                                             <div>
                                                 <i className="fa-solid fa-trash fa-xl"></i>
