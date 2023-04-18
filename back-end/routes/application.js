@@ -12,7 +12,7 @@ app.use(cors());
 app.get('/get-applied-company', async (req, res) => {
   const { username } = req.body;
   try {
-    const result = await Application.find({username});
+    const result = await Application.find({ username });
     res.json(result);
   } catch (error) {
     console.log(error);
@@ -24,7 +24,7 @@ app.get('/get-applied-companies/:username', async (req, res) => {
 
   try {
     const result = await Application.aggregate([
-      { 
+      {
         $match: {
           studentUsername: req.params.username,
         },
@@ -72,12 +72,58 @@ app.get('/get-applied-companies/:username', async (req, res) => {
   }
 });
 
-app.get('/get-company-applications', async (req, res) => {
-
+app.post('/delete-student-application', async (req, res) => {
+  const { emailID, jobRole } = req.body;
   try {
-
+    // Delete student document
+    const result = await Application.deleteOne({ emailID, jobRole });
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ message: 'Student not found' });
+    }
+    res.status(200).json({ message: 'Student deleted successfully' });
   } catch (error) {
-    res.status(500).send('Internal server error');
+    console.error(error);
+    res.status(500).json({ message: 'An error occurred while deleting the student' });
+  }
+});
+
+app.get('/get-applied-students/:username', async (req, res) => {
+  console.log(req.params.username);
+  try {
+    const result = await Application.aggregate([
+      {
+        $match: {
+          companyUsername: req.params.username,
+        },
+      },
+      {
+        $lookup: {
+          from: "students",
+          localField: "studentUsername",
+          foreignField: "username",
+          as: "student",
+        },
+      },
+      {
+        $unwind: "$student",
+      },
+      {
+        $project: {
+          _id: 0,
+          studentName: "$student.studentName",
+          rollNo: "$student.rollNo",
+          emailID: "$student.emailID",
+          jobRole: 1,
+          phoneNo: "$student.phoneNo",
+          department: "$student.department",
+          stream: "$student.stream",
+          cgpa: "$student.cgpa"
+        },
+      },
+    ]);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(500), ('Internal Server Error!!')
   }
 });
 
