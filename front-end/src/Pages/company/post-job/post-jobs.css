@@ -17,8 +17,8 @@
 .main_card label {
   color: white;
   opacity: 1;
-  font-family: 'Helvetica', sans-serif;
-  font-size: .8rem;
+  font-family: "Helvetica", sans-serif;
+  font-size: 0.8rem;
 }
 
 .first-div {
@@ -53,11 +53,9 @@
   padding: 1%;
 }
 
-
 .col-12 {
   padding: 1%;
 }
-
 
 .col-sm-8 {
   padding: 1%;
@@ -71,12 +69,10 @@
   padding-top: 2%;
 }
 
-
 .job_role {
   margin-bottom: 3%;
   padding-left: 1%;
 }
-
 
 .job_form_hr {
   color: #fff;
@@ -114,7 +110,6 @@
   border: none;
   outline: none;
   padding: 0.5rem;
-
 }
 
 .file_input input::-webkit-file-upload-button {
@@ -193,7 +188,7 @@
 
 .ReactTags__tagInputField {
   outline: 0;
-  border-radius: .4rem;
+  border-radius: 0.4rem;
   width: 20rem;
 }
 
@@ -228,7 +223,7 @@
 }
 
 .toggle .slider::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -240,11 +235,11 @@
   transition: all 0.4s ease-in-out;
 }
 
-.toggle input:checked+.slider {
-  background-color: #2196F3;
+.toggle input:checked + .slider {
+  background-color: #2196f3;
 }
 
-.toggle input:checked+.slider::before {
+.toggle input:checked + .slider::before {
   transform: translateX(calc(var(--width) - var(--height)));
 }
 
@@ -254,7 +249,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  font-size: .8rem;
+  font-size: 0.8rem;
   font-family: sans-serif;
   transition: all 0.4s ease-in-out;
 }
@@ -277,21 +272,20 @@
   opacity: 0;
   text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.4);
   transition: all 0.4s ease-in-out;
-
 }
 
-.toggle input:checked~.labels::after {
+.toggle input:checked ~ .labels::after {
   opacity: 0;
 }
 
-.toggle input:checked~.labels::before {
+.toggle input:checked ~ .labels::before {
   opacity: 1;
 }
 
-.addLine{
+.addLine {
   padding-top: 4%;
 }
 
-.post-form{
+.post-form {
   padding-left: 3%;
 }

@@ -61,7 +61,7 @@ function TopBar() {
         <div className="modal-content-div">
           <h1> Menu </h1>
           <hr />
-          <Menu />
+          <Menu setShow={setShow}/>
         </div>
       </Modal>
     </div>

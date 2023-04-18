@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import "./post-jobs.css";
 import "../../../components/top-bar/TopBar";
 import TopBar from "../../../components/top-bar/TopBar";
@@ -10,22 +10,22 @@ import { WithContext as ReactTags } from "react-tag-input";
 import axios from "axios";
 
 const Post_jobs = () => {
-
-  const isLoggedIn = localStorage.getItem('isLoggedIn');
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
   const navigate = useNavigate();
 
   useEffect(() => {
-
-    if (isLoggedIn === 'false') {
-      navigate('/');
+    if (isLoggedIn === "false") {
+      navigate("/");
     }
 
-    const username = localStorage.getItem('username');
+    const username = localStorage.getItem("username");
     console.log(username);
     async function getCompany() {
-      const response = await axios.get(`http://localhost:5001/get-company?username=${username}`);
-      if (response.data['message'] === null) {
-        navigate('/profile');
+      const response = await axios.get(
+        `http://localhost:5001/get-company?username=${username}`
+      );
+      if (response.data["message"] === null) {
+        navigate("/profile");
       }
       // setCompanies(response.data);
     }
@@ -33,14 +33,12 @@ const Post_jobs = () => {
     getCompany();
   }, []);
 
-
   async function handleChangeFun(event) {
     return await event.target.value;
   }
 
   // const { user } = useContext(UserContext);
-  const username = localStorage.getItem('username');
-
+  const username = localStorage.getItem("username");
 
   // let statesDB = require('./states.json');
 
@@ -96,15 +94,21 @@ const Post_jobs = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
-        'http://localhost:5001/post-job',
-        { username, jobRole, mode, lastDate, skillsReq, stipend, _package, reqCGPA }
-      );
-      const status = response.data['status'];
-      const message = response.data['message'];
+      const response = await axios.post("http://localhost:5001/post-job", {
+        username,
+        jobRole,
+        mode,
+        lastDate,
+        skillsReq,
+        stipend,
+        _package,
+        reqCGPA,
+      });
+      const status = response.data["status"];
+      const message = response.data["message"];
       alert(message);
     } catch (error) {
-      console.log(error)
+      console.log(error);
       console.error(error);
     }
   };
@@ -134,12 +138,22 @@ const Post_jobs = () => {
               </div>
 
               <div className="col-lg-6 mb-3">
-                <label className="col-form-label col-sm-1 mode_label">Mode</label>
+                <label className="col-form-label col-sm-1 mode_label">
+                  Mode
+                </label>
                 <label className="toggle">
-                  <input type="checkbox" onChange={(e) => setMode(e.target.checked)} checked={mode} />
+                  <input
+                    type="checkbox"
+                    onChange={(e) => setMode(e.target.checked)}
+                    checked={mode}
+                  />
                   {/* {console.log(jobRole, mode, date, state, city, pincode, stipend, _package)} */}
                   <span className="slider"></span>
-                  <span className="labels" data-on="Onsite" data-off="WFH" ></span>
+                  <span
+                    className="labels"
+                    data-on="Onsite"
+                    data-off="WFH"
+                  ></span>
                 </label>
               </div>
             </div>
@@ -157,7 +171,6 @@ const Post_jobs = () => {
                 />
               </div>
             </div>
-            <div> 
             <div className="col-12">
               <label for="stipend" className="form-label">
                 Skills Required
@@ -172,57 +185,59 @@ const Post_jobs = () => {
                 placeholder="Enter Skills Required"
               />
             </div>
-            <div className="col-sm-8">
-              <label for="stipend" className="form-label">
-                Stipend
-              </label>
-              <div className="input-box">
-                <span className="prefix">₹</span>
-                <input
-                  type="text"
-                  placeholder="Stipend"
-                  id="stipend"
-                  onChange={(e) => setStipend(e.target.value)}
-                />
+            <div className="row">
+              <div className="col-lg-6 col-sm-8">
+                <label for="stipend" className="form-label">
+                  Stipend
+                </label>
+                <div className="input-box">
+                  <span className="prefix">₹</span>
+                  <input
+                    type="text"
+                    placeholder="Stipend"
+                    id="stipend"
+                    onChange={(e) => setStipend(e.target.value)}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="col-sm-8">
-              <label for="inputAddress" className="form-label">
-                Package(LPA)
-              </label>
-              <div className="input-box">
-                <span className="prefix">₹</span>
-                <input
-                  type="text"
-                  placeholder="CTC"
-                  id="_package"
-                  value={_package}
-                  onChange={(e) => setPackage(e.target.value)}
-                />
+              <div className="col-lg-6 col-sm-8">
+                <label for="inputAddress" className="form-label">
+                  Package(LPA)
+                </label>
+                <div className="input-box">
+                  <span className="prefix">₹</span>
+                  <input
+                    type="text"
+                    placeholder="CTC"
+                    id="_package"
+                    value={_package}
+                    onChange={(e) => setPackage(e.target.value)}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="col-sm-8">
-              <label for="inputAddress" className="form-label">
-                Required CGPA
-              </label>
-              <div className="input-box">
-                <input
-                  type="text"
-                  placeholder="CGPA"
-                  id="reqCGPA"
-                  value={reqCGPA}
-                  onChange={(e) => setReqCGPA(e.target.value)}
-                />
+              <div className="col-lg-6 col-sm-8">
+                <label for="inputAddress" className="form-label">
+                  Required CGPA
+                </label>
+                <div className="input-box">
+                  <input
+                    type="text"
+                    placeholder="CGPA"
+                    id="reqCGPA"
+                    value={reqCGPA}
+                    onChange={(e) => setReqCGPA(e.target.value)}
+                  />
+                </div>
               </div>
-            </div>
-            <div className="col-sm-8">
-              <label>Additional Details</label>
-              <div className="file_input">
-                <input
-                  type="file"
-                  className="inputfile"
-                  onChange={(e) => setAddDetails(e.target.value)}
-                />
+              <div className="col-lg-6 col-sm-8">
+                <label>Additional Details</label>
+                <div className="file_input">
+                  <input
+                    type="file"
+                    className="inputfile"
+                    onChange={(e) => setAddDetails(e.target.value)}
+                  />
+                </div>
               </div>
             </div>
             <div className="col-12">
@@ -233,7 +248,6 @@ const Post_jobs = () => {
               >
                 Post Job
               </button>
-            </div>
             </div>
           </form>
         </div>
