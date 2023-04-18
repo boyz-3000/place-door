@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import TopBar from "../../../components/top-bar/TopBar";
+import { useNavigate } from "react-router-dom";
 import "./Profile.css";
-import axios from "axios";
 
 import { getStudent, updateStudent } from "../../../api/student/student";
 
