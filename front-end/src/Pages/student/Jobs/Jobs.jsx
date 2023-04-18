@@ -44,10 +44,11 @@ function Jobs() {
       <TopBar />
       <div className="container text-center dashboard">
         <div className="row">
-          {companies?.map((company) => (
+          {companies?.map((company, i) => (
             <div className="col-lg-4 col-md-6 col-sm-12 card-item">
               <Card
                 company={company}
+                key={i}
               />
             </div>
           ))}

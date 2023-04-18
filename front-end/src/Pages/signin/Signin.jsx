@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import "./Signin.css";
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 
 function SigninForm() {
@@ -24,18 +25,9 @@ function SigninForm() {
     e.preventDefault();
 
     try {
-      const response = await fetch('http://localhost:5001/signin', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ username, password })
-      });
-
-      const data = await response.json();
-      console.log(data.status);
-      console.log(data); // Do something with the response
-      if (data.status === 201) {
+      const response = await axios.get(`http://localhost:5001/signin?username=${username}&password=${password}`);
+      console.log(response.data.status);
+      if (response.data.status === 201) {
         localStorage.setItem('username', username);
         localStorage.setItem('isLoggedIn', 'true');
         if (userType === 'student') {
@@ -48,6 +40,11 @@ function SigninForm() {
           localStorage.setItem('userType', 'admin');
           navigate('add-user');
         }
+      }
+      else if(response.data.status === 404) {
+        alert('Incorrect Password!!');
+      } else {
+        alert("User doesn't exists!!");
       }
     } catch (error) {
       console.log('ero')

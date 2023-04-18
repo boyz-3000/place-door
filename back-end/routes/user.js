@@ -32,8 +32,8 @@ app.post('/add-user', async (req, res) => {
     }
 });
 
-app.post('/signin', async (req, res) => {
-    const { username, password } = req.body;
+app.get('/signin', async (req, res) => {
+    const { username, password } = req.query;
 
     const user = await User.findOne({ username });
 

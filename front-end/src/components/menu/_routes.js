@@ -3,6 +3,7 @@ import * as Bs from "react-icons/bs";
 import * as Io from "react-icons/io";
 import * as Bi from "react-icons/bi";
 import * as Ri from "react-icons/ri";
+import * as Cg from "react-icons/cg";
 
 const studentRoutes = [
   {
@@ -42,6 +43,11 @@ const companyRoutes = [
     path: "/post-jobs",
     name: "Post Job",
     icon: <Bs.BsFillBriefcaseFill />,
+  },
+  {
+    path: "/profile",
+    name: "Profile",
+    icon : <Cg.CgProfile />
   },
   {
     path: "/",
