@@ -143,7 +143,7 @@ const Post_jobs = () => {
                 </label>
               </div>
             </div>
-            <div className="row mb-3">
+            <div className="row mb-3 addLine">
               <label className="col-sm-2 col-form-label">
                 Last Date to Apply
               </label>
@@ -157,6 +157,7 @@ const Post_jobs = () => {
                 />
               </div>
             </div>
+            <div> 
             <div className="col-12">
               <label for="stipend" className="form-label">
                 Skills Required
@@ -185,7 +186,6 @@ const Post_jobs = () => {
                 />
               </div>
             </div>
-
             <div className="col-sm-8">
               <label for="inputAddress" className="form-label">
                 Package(LPA)
@@ -233,6 +233,7 @@ const Post_jobs = () => {
               >
                 Post Job
               </button>
+            </div>
             </div>
           </form>
         </div>

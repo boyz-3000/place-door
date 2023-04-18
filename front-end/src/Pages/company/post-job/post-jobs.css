@@ -24,6 +24,7 @@
 .first-div {
   display: flex;
   flex-direction: row;
+  padding-left: 1%;
 }
 
 .mode-div {
@@ -285,4 +286,12 @@
 
 .toggle input:checked~.labels::before {
   opacity: 1;
+}
+
+.addLine{
+  padding-top: 4%;
+}
+
+.post-form{
+  padding-left: 3%;
 }
