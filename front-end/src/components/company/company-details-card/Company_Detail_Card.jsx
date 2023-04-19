@@ -65,7 +65,7 @@ function Company_Detail_Card(props) {
             <h5 className="comp-details key">Required CGPA</h5>
           </div>
           <div className="col-lg-8 col-md-12 col-sm-12">
-            <h5 className="comp-details value">{"Above " + props.company._package}</h5>
+            <h5 className="comp-details value">{"Above " + props.company.reqCGPA}</h5>
           </div>
         </div>
         <br />
